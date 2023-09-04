@@ -3,7 +3,7 @@ java_library(
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
     deps = [
-        "//src/main/java/green",
-        "//src/main/java/green/knob",
+        "//src/main/java/flora",
+        "//src/main/java/flora/knob",
     ],
 )

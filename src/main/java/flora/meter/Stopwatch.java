@@ -1,6 +1,6 @@
-package green.meter;
+package flora.meter;
 
-import green.Meter;
+import flora.Meter;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Optional;

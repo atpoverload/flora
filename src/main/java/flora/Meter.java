@@ -1,4 +1,4 @@
-package green;
+package flora;
 
 /** An interface that returns data measured over a metering session. */
 public interface Meter {

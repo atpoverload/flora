@@ -1,4 +1,4 @@
-package green;
+package flora;
 
 /** An interface that represents a configurable property. */
 public interface Knob {

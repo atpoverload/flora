@@ -1,5 +1,6 @@
 java_library(
-    name = "green",
+    name = "meter",
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
+    deps = ["//src/main/java/flora"],
 )

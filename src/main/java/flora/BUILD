@@ -1,6 +1,5 @@
 java_library(
-    name = "knob",
+    name = "flora",
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
-    deps = ["//src/main/java/green"],
 )

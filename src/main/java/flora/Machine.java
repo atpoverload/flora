@@ -1,4 +1,4 @@
-package green;
+package flora;
 
 import static java.util.stream.Collectors.toMap;
 

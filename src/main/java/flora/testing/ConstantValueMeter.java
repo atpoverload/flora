@@ -1,6 +1,6 @@
-package green.testing;
+package flora.testing;
 
-import green.meter.SnapshotMeter;
+import flora.meter.SnapshotMeter;
 import java.util.concurrent.atomic.AtomicLong;
 
 /** A {@link SnapshotMeter} that always returns the same value. */

@@ -1,10 +1,10 @@
-package green.strategy;
+package flora.strategy;
 
 import static java.util.stream.Collectors.joining;
 
-import green.Knob;
-import green.Strategy;
-import green.knob.Knobs;
+import flora.Knob;
+import flora.Strategy;
+import flora.knob.Knobs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
