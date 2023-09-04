@@ -8,6 +8,9 @@ import flora.Strategy;
 import flora.knob.IntRangeKnob;
 import flora.meter.Stopwatch;
 import flora.strategy.RandomArchivingStrategy;
+import flora.strategy.mab.MultiArmedBanditStrategy;
+import flora.strategy.mab.epsilon.RandomEpsilonPolicy;
+import flora.strategy.mab.exploit.HighestConfiguration;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -93,6 +96,12 @@ final class FibonacciMachine extends Machine {
 
     System.out.println(
         runWith(new RandomArchivingStrategy(newFibonacciKnobs(minCpus, maxCpus, nFirst, nLast))));
+    System.out.println(
+        runWith(
+            new MultiArmedBanditStrategy(
+                new FibonacciBandit(minCpus, maxCpus, nFirst, nLast),
+                new RandomEpsilonPolicy(0.10, "first"),
+                HighestConfiguration.getPolicy())));
   }
 
   private static FibonacciMachine runWith(Strategy strategy) {
