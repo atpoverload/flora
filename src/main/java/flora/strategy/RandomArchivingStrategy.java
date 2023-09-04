@@ -11,17 +11,17 @@ import java.util.Map;
 
 /** A {@link Strategy} that randomly selects a configuration and archives all evaluations. */
 public final class RandomArchivingStrategy implements Strategy {
-  private final HashMap<String, Knob> baseKnobs = new HashMap<>();
+  private final HashMap<String, Knob> knobs = new HashMap<>();
   private final ArrayList<Evaluation> data = new ArrayList<>();
 
   public RandomArchivingStrategy(Map<String, Knob> knobs) {
-    knobs.forEach(this.baseKnobs::put);
+    knobs.forEach(this.knobs::put);
   }
 
   /** Creates knobs with random values. */
   @Override
   public final Map<String, Knob> nextConfiguration() {
-    return Knobs.withRandomValues(baseKnobs);
+    return Knobs.withRandomValues(knobs);
   }
 
   /** Stores each update pair in an underlying archive. */
