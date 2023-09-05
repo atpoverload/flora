@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package eflect;
+
+option java_multiple_files = true;
+option java_package = "eflect";
+
+import "google/protobuf/timestamp.proto";
+
+// protos to represent the jiffies timesharing objects
+//
+// the messages here represent the fields for /proc/stat and
+// /proc/[pid]/stat to track application behavior by cpu location
+//
+// refer to https://man7.org/linux/man-pages/man5/proc.5.html
+
+// TODO(timur): since jiffies are system dependent, these values should only be
+//   compared within the same runtime (i.e. data set). if we wanted to get real
+//   cycles, we'd need to retain the jiffies update time (typically 10MHz).
+message CpuReading {
+  // currently executing cpu
+  uint32 cpu = 1;
+  // jiffy kinds
+  uint32 user = 2;
+  uint32 nice = 3;
+  uint32 system = 4;
+  uint32 idle = 5;
+  uint32 iowait = 6;
+  uint32 irq = 7;
+  uint32 softirq = 8;
+  uint32 steal = 9;
+  uint32 guest = 10;
+  uint32 guest_nice = 11;
+}
+
+// instaneous sample of the cpu jiffies
+message CpuSample {
+  // unix time in ms
+  uint64 timestamp = 1;
+  repeated CpuReading reading = 2;
+}
+
+// TODO(timur): i don't like the security risk associated with being able
+//  to directly compare readings from samples and differences
+// difference between two cpu samples
+message CpuDifference {
+  // unix time in ms
+  uint64 start = 1;
+  // unix time in ms
+  uint64 end = 2;
+  repeated CpuReading reading = 3;
+}
+
+// TODO(timur): there is quite a lot of metadata we can retain still but a lot
+//   of it is contextual
+message TaskReading {
+  uint32 task_id = 1;
+  string name = 2;
+  // currently executing cpu
+  uint32 cpu = 3;
+  // jiffy kinds
+  uint32 user = 4;
+  uint32 system = 5;
+}
+
+// instaneous sample of the task jiffies
+message TaskSample {
+  // unix time in ms
+  uint64 timestamp = 1;
+  repeated TaskReading reading = 2;
+}
+
+// difference between two task samples
+message TaskDifference {
+  // unix time in ms
+  uint64 start = 1;
+  // unix time in ms
+  uint64 end = 2;
+  repeated TaskReading reading = 3;
+}
