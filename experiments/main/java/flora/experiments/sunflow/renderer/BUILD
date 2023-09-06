@@ -2,6 +2,7 @@ java_library(
     name = "renderer",
     srcs = glob(["*.java"]),
     deps = [
+        "//contrib/main/java/flora/meter/contrib",
         "//src/main/java/flora",
         "//src/main/java/flora/knob",
         "//src/main/java/flora/meter",

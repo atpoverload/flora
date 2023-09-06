@@ -51,14 +51,4 @@ public final class BufferedImageDisplay implements Display {
     graphics.dispose();
     return imageCopy;
   }
-
-  // @Override
-  // public Measurement read() {
-  //   BufferedImage imageCopy =
-  //       new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
-  //   Graphics2D graphics = imageCopy.createGraphics();
-  //   graphics.drawImage(image, 0, 0, null);
-  //   graphics.dispose();
-  //   return imageCopy;
-  // }
 }

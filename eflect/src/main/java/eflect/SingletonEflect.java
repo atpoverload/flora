@@ -15,7 +15,7 @@ public final class SingletonEflect implements Eflect {
   private static final AtomicInteger counter = new AtomicInteger();
   private static final ThreadFactory threadFactory =
       r -> {
-        Thread t = new Thread(r, "eflect-" + counter.getAndIncrement());
+        Thread t = new Thread(r, String.format("eflect-%d", counter.getAndIncrement()));
         t.setDaemon(true);
         return t;
       };
