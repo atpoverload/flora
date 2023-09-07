@@ -4,6 +4,7 @@ import static eflect.VirtualizationUtil.forwardDifference;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -42,11 +43,9 @@ public class JiffiesVirtualizer {
   private static List<Virtualization> align(
       List<CpuDifference> cpus, List<TaskDifference> tasks, long millisThresh) {
     Map<Long, List<CpuDifference>> cpuMap =
-        cpus.stream()
-            .collect(groupingBy(diff -> diff.getStart() / millisThresh));
+        cpus.stream().collect(groupingBy(diff -> diff.getStart() / millisThresh));
     Map<Long, List<TaskDifference>> taskMap =
-        tasks.stream()
-            .collect(groupingBy(diff -> diff.getStart() / millisThresh));
+        tasks.stream().collect(groupingBy(diff -> diff.getStart() / millisThresh));
 
     HashSet<Long> buckets = new HashSet<>(taskMap.keySet());
     buckets.retainAll(cpuMap.keySet());
@@ -65,12 +64,14 @@ public class JiffiesVirtualizer {
   private static List<Virtualization.VirtualizedComponent> virtualizeJiffies(
       List<CpuDifference> cpus, List<TaskDifference> tasks) {
     int[] cpuJiffies = getJiffiesByCpu(cpus);
-    int[] taskJiffies = getTaskJiffiesByCpu(tasks);
+    Map<Integer, Integer> taskJiffies = getTaskJiffiesByCpu(tasks);
     return getJiffiesByTask(tasks).stream()
         .map(
             r ->
                 virtualizeTask(
-                    r, Math.max(Math.max(cpuJiffies[r.getCpu()], taskJiffies[r.getCpu()]), 1)))
+                    r,
+                    Math.max(
+                        Math.max(cpuJiffies[r.getCpu()], taskJiffies.getOrDefault(r.getCpu())), 1)))
         .collect(toList());
   }
 
@@ -106,8 +107,10 @@ public class JiffiesVirtualizer {
         .entrySet()
         .stream()
         .sorted(comparing(e -> e.getKey()))
-        .mapToInt(e -> e.getValue().stream().mapToInt(r -> r.getUser() + r.getSystem()).sum())
-        .toArray();
+        .collect(
+            toMap(
+                e -> e.getKey(),
+                e -> e.getValue().stream().mapToInt(r -> r.getUser() + r.getSystem()).sum()));
   }
 
   private static List<TaskReading> getJiffiesByTask(List<TaskDifference> tasks) {

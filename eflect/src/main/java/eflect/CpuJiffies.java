@@ -105,7 +105,8 @@ public final class CpuJiffies {
               .setUser(Integer.parseInt(stat[CpuIndex.USER.index]))
               .setNice(Integer.parseInt(stat[CpuIndex.NICE.index]))
               .setSystem(Integer.parseInt(stat[CpuIndex.SYSTEM.index]))
-              .setIdle(Integer.parseInt(stat[CpuIndex.IDLE.index]))
+              // TODO: idle requires a long
+              // .setIdle(Integer.parseInt(stat[CpuIndex.IDLE.index]))
               .setIowait(Integer.parseInt(stat[CpuIndex.IOWAIT.index]))
               .setIrq(Integer.parseInt(stat[CpuIndex.IRQ.index]))
               .setSoftirq(Integer.parseInt(stat[CpuIndex.SOFTIRQ.index]))

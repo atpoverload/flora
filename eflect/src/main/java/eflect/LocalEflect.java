@@ -47,9 +47,10 @@ public final class LocalEflect implements Eflect {
         return;
       }
 
-      if (data.isEmpty()) {
-        logger.info("ignoring start request while last collection hasn't been read");
-        return;
+      // TODO: this is a strange potential failure if we forgot to read
+      if (!dataFutures.isEmpty()) {
+        logger.info("data has not been read; retrieving it now for safety");
+        this.read();
       }
 
       // start a new collection
@@ -67,11 +68,12 @@ public final class LocalEflect implements Eflect {
   @Override
   public void stop() {
     synchronized (this) {
-      if (isRunning) {
+      if (!isRunning) {
         logger.info("ignoring stop request while not sampling");
         return;
       }
-      dataFutures.stream().forEach(future -> future.cancel(true));
+      isRunning = false;
+      dataFutures.forEach(future -> future.cancel(true));
       logger.info("stopped sampling");
     }
   }
