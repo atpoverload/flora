@@ -71,7 +71,7 @@ public class JiffiesVirtualizer {
                 virtualizeTask(
                     r,
                     Math.max(
-                        Math.max(cpuJiffies[r.getCpu()], taskJiffies.getOrDefault(r.getCpu())), 1)))
+                        Math.max(cpuJiffies[r.getCpu()], taskJiffies.getOrDefault(r.getCpu(), 0)), 1)))
         .collect(toList());
   }
 
@@ -100,7 +100,7 @@ public class JiffiesVirtualizer {
         .toArray();
   }
 
-  private static int[] getTaskJiffiesByCpu(List<TaskDifference> tasks) {
+  private static Map<Integer, Integer> getTaskJiffiesByCpu(List<TaskDifference> tasks) {
     return tasks.stream()
         .flatMap(diff -> diff.getReadingList().stream())
         .collect(groupingBy(r -> r.getCpu()))
