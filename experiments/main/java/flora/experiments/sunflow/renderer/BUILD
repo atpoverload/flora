@@ -24,3 +24,12 @@ java_binary(
         "@sunflow//jar",
     ],
 )
+
+java_binary(
+    name = "KillableSceneRenderer",
+    runtime_deps = [
+        ":renderer",
+        "@janino//jar",
+        "@sunflow//jar",
+    ],
+)

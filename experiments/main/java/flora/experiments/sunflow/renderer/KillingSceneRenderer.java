@@ -1,7 +1,7 @@
 package flora.experiments.sunflow.renderer;
 
-import flora.experiments.sunflow.ConfigurableRenderingMachine;
 import flora.experiments.sunflow.ConfigurableScene;
+import flora.experiments.sunflow.KillableConfigurableRenderingMachine;
 import flora.experiments.sunflow.MseBandit;
 import flora.experiments.sunflow.scenes.CornellBox;
 import flora.meter.Stopwatch;
@@ -13,11 +13,11 @@ import java.util.Map;
 import org.sunflow.system.UI;
 
 /** Driver that renders a Cornell box using a given strategy. */
-public final class SceneRenderer {
+public final class KillingSceneRenderer {
   public static void main(String[] args) {
     UI.verbosity(0);
-    ConfigurableRenderingMachine machine =
-        ConfigurableRenderingMachine.withMseReference(
+    KillableConfigurableRenderingMachine machine =
+        KillableConfigurableRenderingMachine.withMseReference(
             Map.of("stopwatch", new Stopwatch(), "eflect", EflectMeter.newLocalMeter(4)),
             new MultiArmedBanditStrategy(
                 new MseBandit(ConfigurableScene.getKnobs()),
