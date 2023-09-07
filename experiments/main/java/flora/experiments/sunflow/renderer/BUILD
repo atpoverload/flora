@@ -26,7 +26,7 @@ java_binary(
 )
 
 java_binary(
-    name = "KillableSceneRenderer",
+    name = "KillingSceneRenderer",
     runtime_deps = [
         ":renderer",
         "@janino//jar",
