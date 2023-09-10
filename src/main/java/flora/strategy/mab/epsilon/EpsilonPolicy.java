@@ -1,14 +1,12 @@
 package flora.strategy.mab.epsilon;
 
-import static flora.knob.Knobs.getConfigurationCount;
-
 import flora.strategy.mab.ExplorationPolicy;
-import flora.strategy.mab.MultiArmedBanditContext;
+import flora.strategy.mab.MultiArmedBandit;
 
 /** A greedy {@link ExplorationPolicy} that uses a factor to determine when to explore. */
 public abstract class EpsilonPolicy implements ExplorationPolicy {
   public enum EpsilonPolicyKind {
-    FIRST, // explore each configuration at least once before exploiting
+    // FIRST, // explore each configuration at least once before exploiting
     GREEDY, // exploit as soon as possible
   }
 
@@ -26,16 +24,16 @@ public abstract class EpsilonPolicy implements ExplorationPolicy {
 
   /** Return whether we have sufficient data and rolled a number lower than {@code epsilon}. */
   @Override
-  public final boolean doExplore(MultiArmedBanditContext context) {
+  public final <K, C, KC extends MultiArmedBandit<K, C, KC>> boolean doExplore(KC bandit) {
     // Have to run at least once to "prime the pump"
-    if (context.getTotalRewardCount() < 1) {
+    if (bandit.totalRewardedCount() < 1) {
       return true;
     }
     switch (this.policyKind) {
-      case FIRST:
-        boolean triedAllConfigs =
-            context.getConfigurations().size() < getConfigurationCount(context.getKnobs());
-        return triedAllConfigs || Math.random() < epsilon;
+        // case FIRST:
+        //   boolean triedAllConfigs =
+        //       bandit.rewardedConfigurations().size() < bandit.knobs().count();
+        //   return triedAllConfigs || Math.random() < epsilon;
       case GREEDY:
         return Math.random() < epsilon;
       default:

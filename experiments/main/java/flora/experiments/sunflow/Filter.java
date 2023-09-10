@@ -1,7 +1,5 @@
 package flora.experiments.sunflow;
 
-import flora.Knob;
-
 /** Enum for the built-in filter options for {@link SunflowAPI} */
 public enum Filter {
   BOX,
@@ -35,9 +33,5 @@ public enum Filter {
         return "gaussian";
     }
     throw new IllegalStateException(String.format("%s wasn't an enum?", this));
-  }
-
-  public static Filter fromKnob(Knob knob) {
-    return Enum.valueOf(Filter.class, knob.getEnum(Filter.class));
   }
 }

@@ -4,7 +4,7 @@ import flora.meter.SnapshotMeter;
 import java.util.concurrent.atomic.AtomicLong;
 
 /** A {@link SnapshotMeter} that always returns the same value. */
-public final class ConstantValueMeter extends SnapshotMeter {
+public class ConstantValueMeter extends SnapshotMeter {
   private final AtomicLong value = new AtomicLong(0);
 
   public ConstantValueMeter(double value) {

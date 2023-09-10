@@ -1,8 +1,7 @@
 package flora.experiments.sunflow.scenes;
 
-import flora.Knob;
 import flora.experiments.sunflow.ConfigurableScene;
-import java.util.Map;
+import flora.experiments.sunflow.RenderingConfiguration;
 import org.sunflow.SunflowAPI;
 import org.sunflow.math.Matrix4;
 import org.sunflow.math.Point3;
@@ -10,7 +9,7 @@ import org.sunflow.math.Vector3;
 
 /** Scene for a Cornell box (https://en.wikipedia.org/wiki/Cornell_box). */
 public final class CornellBox extends ConfigurableScene {
-  public CornellBox(Map<String, Knob> knobs) {
+  public CornellBox(RenderingConfiguration knobs) {
     super(knobs);
   }
 

@@ -1,8 +1,7 @@
 package flora.experiments.sunflow.renderer;
 
-import flora.experiments.sunflow.ConfigurableRenderingMachine;
-import flora.experiments.sunflow.ConfigurableScene;
-import flora.experiments.sunflow.MseBandit;
+import flora.experiments.sunflow.image.ImageDistanceBandit;
+import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scenes.CornellBox;
 import flora.meter.Stopwatch;
 import flora.meter.contrib.EflectMeter;
@@ -16,18 +15,19 @@ import org.sunflow.system.UI;
 public final class SceneRenderer {
   public static void main(String[] args) {
     UI.verbosity(0);
-    ConfigurableRenderingMachine machine =
-        ConfigurableRenderingMachine.withMseReference(
+    RenderingMachine<ImageDistanceBandit> machine =
+        RenderingMachine.withReferenceScore(
             Map.of("stopwatch", new Stopwatch(), "eflect", EflectMeter.newLocalMeter(4)),
-            new MultiArmedBanditStrategy(
-                new MseBandit(ConfigurableScene.getKnobs()),
-                new RandomEpsilonPolicy(0.10, "first"),
-                LowestConfiguration.getPolicy()),
-            CornellBox::new);
-    for (int i = 0; i < 100; i++) {
+            new MultiArmedBanditStrategy<>(
+                new ImageDistanceBandit(ImageDistanceScore.MSE),
+                new RandomEpsilonPolicy(0.10, "greedy"),
+                LowestConfiguration.instance()),
+            CornellBox::new,
+            ImageDistanceScore.MSE);
+    for (int i = 0; i < 10; i++) {
       machine.run();
     }
 
-    System.out.println(machine);
+    System.out.println(machine.strategy());
   }
 }
