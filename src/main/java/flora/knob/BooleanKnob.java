@@ -11,8 +11,6 @@ public final class BooleanKnob implements Knob {
     return instance;
   }
 
-  private BooleanKnob() {}
-
   /** Returns the number of possible booleans, which is two (true or false). */
   @Override
   public int configurationCount() {
@@ -40,4 +38,12 @@ public final class BooleanKnob implements Knob {
         throw new KnobValueException(this, Boolean.class, index);
     }
   }
+
+  @Override
+  public String toString() {
+    return this.getClass().getName();
+  }
+
+  /** Do not instantiate outside of the singleton. */
+  private BooleanKnob() {}
 }

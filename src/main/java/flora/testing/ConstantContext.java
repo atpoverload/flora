@@ -1,8 +1,9 @@
 package flora.testing;
 
-import flora.KnobContext;
+import flora.WorkloadContext;
 
-public final class ConstantContext<K> implements KnobContext<K, K> {
+/** A context that always returns the same value. */
+public final class ConstantContext<K> implements WorkloadContext<K, K> {
   private final K knobs;
   private final K configuration;
 

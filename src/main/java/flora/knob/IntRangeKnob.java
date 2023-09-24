@@ -44,6 +44,7 @@ public final class IntRangeKnob implements Knob {
     throw new KnobValueException(this, cls, index);
   }
 
+  /** Returns the range value if it's inbounds, otherwise throw. */
   public int fromIndex(int index) {
     if (0 <= index && index < configurationCount()) {
       return start + index * step;

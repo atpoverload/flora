@@ -4,16 +4,15 @@ import flora.Strategy;
 import java.util.Map;
 
 /** A {@link Strategy} that implements the MAB algorithm through configuration weighting. */
-public final class MultiArmedBanditStrategy<K, C, KC extends MultiArmedBandit<K, C, KC>>
-    implements Strategy<K, C, KC> {
-  private final KC bandit;
+public final class MultiArmedBanditStrategy<K, C, MAB extends MultiArmedBandit<K, C, MAB>>
+    implements Strategy<K, C, MAB> {
+
+  private final MAB bandit;
   private final ExplorationPolicy explorationPolicy;
   private final ExploitationPolicy exploitationPolicy;
 
   public MultiArmedBanditStrategy(
-      KC bandit,
-      ExplorationPolicy explorationPolicy,
-      ExploitationPolicy exploitationPolicy) {
+      MAB bandit, ExplorationPolicy explorationPolicy, ExploitationPolicy exploitationPolicy) {
     this.bandit = bandit;
     this.explorationPolicy = explorationPolicy;
     this.exploitationPolicy = exploitationPolicy;
@@ -21,7 +20,7 @@ public final class MultiArmedBanditStrategy<K, C, KC extends MultiArmedBandit<K,
 
   /** Check if we need to explore. Otherwise, exploit. */
   @Override
-  public final KC context() {
+  public final MAB context() {
     if (explorationPolicy.doExplore(bandit)) {
       return explorationPolicy.explore(bandit);
     } else {
@@ -31,7 +30,7 @@ public final class MultiArmedBanditStrategy<K, C, KC extends MultiArmedBandit<K,
 
   /** Adds to the total reward for the configuration. */
   @Override
-  public final void update(KC bandit, Map<String, Double> measurement) {
-    this.bandit.addConfiguration(bandit, measurement);
+  public final void update(MAB bandit, Map<String, Double> measurement) {
+    this.bandit.updateBandit(bandit, measurement);
   }
 }

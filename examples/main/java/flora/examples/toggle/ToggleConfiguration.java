@@ -1,7 +1,7 @@
 package flora.examples.toggle;
 
-/** Configuration for the {@link ToggleMachine}. */
-record ToggleConfiguration(boolean toggle1, boolean toggle2)
+/** Configuration for the {@link ToggleContext}. */
+public record ToggleConfiguration(boolean toggle1, boolean toggle2)
     implements Comparable<ToggleConfiguration> {
   @Override
   public int compareTo(ToggleConfiguration other) {

@@ -6,6 +6,5 @@ java_library(
         "//src/main/java/flora",
         "//src/main/java/flora/context",
         "//src/main/java/flora/knob",
-        "//src/main/java/flora/strategy",
     ],
 )

@@ -1,21 +1,18 @@
 package flora.examples.toggle;
 
-import static java.util.stream.Collectors.joining;
-
-import flora.machine.ComposedMachine;
+import flora.Machine;
+import flora.Meter;
+import flora.meter.CpuJiffiesMeter;
 import flora.meter.Stopwatch;
-import flora.strategy.ArchivingStrategy;
-import flora.strategy.ArchivingStrategy.ArchiveRecordSummary;
-import flora.strategy.RandomArchivingStrategy;
+import java.util.HashMap;
 import java.util.Map;
 
 /** A simple example for a {@link Machine} that adjusts toggles. */
-final class ToggleMachine extends ComposedMachine<ToggleKnobs, ToggleConfiguration, ToggleContext> {
-  private ToggleMachine() {
-    super(
-        Map.of("stopwatch1", new Stopwatch(), "stopwatch2", new Stopwatch()),
-        new RandomArchivingStrategy<>(ToggleContext.random()));
-  }
+public final class ToggleMachine extends Machine<ToggleKnobs, ToggleConfiguration, ToggleContext> {
+  private final Map<String, Meter> meters =
+      Map.of("stopwatch", new Stopwatch(), "jiffies", new CpuJiffiesMeter());
+
+  public ToggleMachine() {}
 
   @Override
   public void runWorkload(ToggleContext context) {
@@ -30,34 +27,7 @@ final class ToggleMachine extends ComposedMachine<ToggleKnobs, ToggleConfigurati
   }
 
   @Override
-  public String toString() {
-    ArchiveRecordSummary<ToggleKnobs, ToggleConfiguration, ToggleContext> summary = summary();
-    return summary.means().keySet().stream()
-        .sorted()
-        .flatMap(
-            configuration ->
-                summary.means().get(configuration).keySet().stream()
-                    .map(
-                        measure ->
-                            String.format(
-                                "%-49s : %s = %.6f +/- %.6f (%d)",
-                                configuration,
-                                measure,
-                                summary.means().get(configuration).get(measure),
-                                summary.deviations().get(configuration).get(measure),
-                                summary.counts().get(configuration).get(measure))))
-        .collect(joining("\n"));
-  }
-
-  private ArchiveRecordSummary<ToggleKnobs, ToggleConfiguration, ToggleContext> summary() {
-    return ((ArchivingStrategy<ToggleKnobs, ToggleConfiguration, ToggleContext>) strategy())
-        .summary();
-  }
-
-  public static void main(String[] args) {
-    ToggleMachine machine = new ToggleMachine();
-    for (int i = 0; i < 10; i++) machine.run();
-    System.out.println(machine.strategy());
-    System.out.println(machine);
+  public Map<String, Meter> meters() {
+    return new HashMap<>(meters);
   }
 }

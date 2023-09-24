@@ -1,14 +1,14 @@
 package flora.examples.fibonacci;
 
 import static java.util.concurrent.Executors.newFixedThreadPool;
-import static java.util.stream.Collectors.joining;
 
 import flora.Machine;
 import flora.Strategy;
 import flora.knob.IntRangeKnob;
 import flora.machine.ComposedMachine;
+import flora.meter.CpuJiffiesMeter;
 import flora.meter.Stopwatch;
-import flora.strategy.RandomArchivingStrategy;
+import flora.strategy.archiving.RandomArchivingStrategy;
 import flora.strategy.mab.MultiArmedBanditStrategy;
 import flora.strategy.mab.epsilon.RandomEpsilonPolicy;
 import flora.strategy.mab.exploit.HighestConfiguration;
@@ -42,9 +42,8 @@ final class FibonacciMachine
             return t;
           });
 
-  private FibonacciMachine(
-      Strategy<FibonacciKnobs, FibonacciConfiguration, FibonacciBandit> strategy) {
-    super(Map.of("stopwatch", new Stopwatch()), strategy);
+  private FibonacciMachine() {
+    super(Map.of("stopwatch", new Stopwatch(), "jiffies", new CpuJiffiesMeter()));
   }
 
   /** Compute the nth fibonacci number. Multiple threads will separately compute the same value. */
@@ -69,7 +68,7 @@ final class FibonacciMachine
 
   private static FibonacciBandit parseArgs(String[] args) {
     int nFirst = 25;
-    int nLast = 30;
+    int nLast = 35;
     if (args.length != 0 && args.length != 2) {
       throw new IllegalArgumentException(
           String.format("expects zero or two arguments, got %s", Arrays.toString(args)));
@@ -86,7 +85,7 @@ final class FibonacciMachine
 
     return new FibonacciBandit(
         new FibonacciKnobs(new IntRangeKnob(minCpus, maxCpus), new IntRangeKnob(nFirst, nLast)),
-        new FibonacciConfiguration(0, 0));
+        new FibonacciConfiguration(minCpus, nFirst));
   }
 
   public static void main(String[] args) {
@@ -94,28 +93,8 @@ final class FibonacciMachine
 
     RandomArchivingStrategy<FibonacciKnobs, FibonacciConfiguration, FibonacciBandit> strategy =
         new RandomArchivingStrategy<>(context);
-    runWith(strategy);
-    System.out.println(
-        strategy.summary().means().keySet().stream()
-            .sorted()
-            .flatMap(
-                configuration ->
-                    strategy.summary().means().get(configuration).keySet().stream()
-                        .map(
-                            measure ->
-                                String.format(
-                                    "%-49s = %.6f (%d)",
-                                    configuration,
-                                    FibonacciBandit.logThroughput(
-                                        configuration,
-                                        strategy.summary().means().get(configuration).get(measure)
-                                            + strategy
-                                                .summary()
-                                                .deviations()
-                                                .get(configuration)
-                                                .get(measure)),
-                                    strategy.summary().counts().get(configuration).get(measure))))
-            .collect(joining("\n")));
+    // runWith(strategy);
+    // System.out.println(strategy.summary());
     runWith(
         new MultiArmedBanditStrategy<>(
             context, new RandomEpsilonPolicy(0.20, "greedy"), HighestConfiguration.instance()));
@@ -129,12 +108,14 @@ final class FibonacciMachine
                         c, context.averageReward(c), context.rewardedCount(c))));
   }
 
-  private static FibonacciMachine runWith(
+  private static void runWith(
       Strategy<FibonacciKnobs, FibonacciConfiguration, FibonacciBandit> strategy) {
     System.out.println(String.format("Running with %s", strategy.getClass().getSimpleName()));
-    FibonacciMachine machine = new FibonacciMachine(strategy);
+    FibonacciMachine machine = new FibonacciMachine();
     Instant ts = Instant.now();
-    while (Duration.between(ts, Instant.now()).toSeconds() < 300) machine.run();
-    return machine;
+    while (Duration.between(ts, Instant.now()).toSeconds() < 300) {
+      var context = strategy.context();
+      strategy.update(context, machine.run(context));
+    }
   }
 }

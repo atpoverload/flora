@@ -3,7 +3,7 @@ package flora;
 import java.util.Map;
 
 /** An interface that provides and consumes contexts. */
-public interface Strategy<K, C, KC extends KnobContext<K, C>> {
+public interface Strategy<K, C, KC extends WorkloadContext<K, C>> {
   /** Returns the {@link KnobContext} of the strategy. */
   KC context();
 

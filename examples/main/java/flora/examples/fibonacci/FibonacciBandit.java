@@ -26,9 +26,14 @@ public final class FibonacciBandit
 
   private final FibonacciKnobs knobs;
 
-  FibonacciBandit(FibonacciKnobs knobs, FibonacciConfiguration configuration) {
+  public FibonacciBandit(FibonacciKnobs knobs) {
     this.knobs = knobs;
-    setConfiguration(configuration);
+    withConfiguration(FibonacciConfiguration.DEFAULT);
+  }
+
+  public FibonacciBandit(FibonacciKnobs knobs, FibonacciConfiguration configuration) {
+    this.knobs = knobs;
+    withConfiguration(configuration);
   }
 
   /** Returns the stored knobs. */
@@ -39,14 +44,13 @@ public final class FibonacciBandit
 
   /** Rewards the configuration with the log of the operation throughput. */
   @Override
-  protected double reward(FibonacciConfiguration configuration, Map<String, Double> measurement) {
-    setConfiguration(configuration);
-    return logThroughput(configuration, measurement.get("stopwatch"));
+  protected double reward(FibonacciBandit context, Map<String, Double> measurement) {
+    return logThroughput(context.configuration(), measurement.get("stopwatch"));
   }
 
   /** Creates a new bandit with the same knobs and a random configuration. */
   @Override
-  public FibonacciBandit randomize() {
+  public FibonacciBandit random() {
     return new FibonacciBandit(
         knobs,
         new FibonacciConfiguration(

@@ -39,18 +39,18 @@ public class EflectMeter implements Meter {
 
   @Override
   public void start() {
-    this.eflect.start();
+    eflect.start();
   }
 
   @Override
   public void stop() {
-    this.eflect.stop();
+    eflect.stop();
   }
 
   @Override
   public double read() {
     double energy = 0;
-    for (Virtualization virtualization : this.eflect.read()) {
+    for (Virtualization virtualization : eflect.read()) {
       for (VirtualizedComponent component : virtualization.getVirtualizationList()) {
         if (component.getUnit() == VirtualizedComponent.Unit.ENERGY) {
           energy += component.getValue();

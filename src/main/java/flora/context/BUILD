@@ -2,5 +2,8 @@ java_library(
     name = "context",
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
-    deps = ["//src/main/java/flora"],
+    deps = [
+        "//src/main/java/flora",
+        "//src/main/java/flora/knob",
+    ],
 )

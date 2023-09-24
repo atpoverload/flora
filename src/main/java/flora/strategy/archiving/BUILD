@@ -1,5 +1,5 @@
 java_library(
-    name = "strategy",
+    name = "archiving",
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
     deps = [

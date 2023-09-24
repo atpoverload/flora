@@ -14,7 +14,7 @@ public final class RandomEpsilonPolicy extends EpsilonPolicy {
 
   /** Selects a random configuration of knobs. */
   @Override
-  public <K, C, KC extends MultiArmedBandit<K, C, KC>> KC explore(KC bandit) {
-    return bandit.randomize();
+  public <K, C, MAB extends MultiArmedBandit<K, C, MAB>> MAB explore(MAB bandit) {
+    return bandit.random();
   }
 }

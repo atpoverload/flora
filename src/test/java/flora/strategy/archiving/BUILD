@@ -1,7 +1,8 @@
 TEST_SRCS = [
     "//src/main/java/flora",
-    "//src/main/java/flora/strategy",
-    "//src/main/java/flora/testing",
+    "//src/main/java/flora/context",
+    "//src/main/java/flora/knob",
+    "//src/main/java/flora/strategy/archiving",
 ]
 
 java_test(

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /** A {@link Knob} that represents a collection of ints. */
 public final class IntCollectionKnob implements Knob {
-  /** Constructs an {@code IntCollectionKnob} from the given numbers. */
+  /** Creates an {@code IntCollectionKnob} from the given numbers. */
   public IntCollectionKnob of(int first, int second, int... others) {
     int[] values = new int[2 + others.length];
     values[0] = first;
@@ -42,6 +42,7 @@ public final class IntCollectionKnob implements Knob {
     throw new KnobValueException(this, cls, index);
   }
 
+  /** Returns the value at the index if it's in the value range, otherwise throw. */
   public int fromIndex(int index) {
     if (0 <= index && index < configurationCount()) {
       return values[index];
@@ -49,6 +50,7 @@ public final class IntCollectionKnob implements Knob {
     throw new KnobValueException(this, Integer.class, index);
   }
 
+  /** Returns a defensive copy of the values. */
   public int[] values() {
     return Arrays.copyOf(values, configurationCount());
   }
