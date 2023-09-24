@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Driver {
-  private static ToggleContext createStrategy(int[] configuration) {
+  private static ToggleContext createContext(int[] configuration) {
     return ToggleContext.fromIndicies(configuration[0], configuration[1]);
   }
 
@@ -17,7 +17,7 @@ public final class Driver {
     CompatNumberProblem<ToggleContext> problem =
         new CompatNumberProblem<>(
             new Knob[] {knobs.toggle1(), knobs.toggle2()},
-            new EarsMachineAdapter<>(new ToggleMachine(), s -> createStrategy(s.configuration())));
+            new EarsMachineAdapter<>(new ToggleMachine(), s -> createContext(s.configuration())));
 
     System.out.println(problem.measurements);
     problem.evaluate(List.of(0, 0));

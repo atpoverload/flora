@@ -3,15 +3,13 @@ package flora.strategy.contrib.ears;
 import static java.util.stream.Collectors.toList;
 
 import flora.Knob;
-import flora.Strategy;
 import flora.WorkloadContext;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public final class CompatNumberProblem<Ctx extends WorkloadContext<?, ?>>
-    implements Strategy<EarsKnob[], int[], EarsContext> {
+public final class CompatNumberProblem<Ctx extends WorkloadContext<?, ?>> {
   public final ArrayList<Map<String, Double>> measurements = new ArrayList<>();
 
   private final EarsKnob[] knobs;
@@ -24,20 +22,12 @@ public final class CompatNumberProblem<Ctx extends WorkloadContext<?, ?>>
     this.configuration = new int[knobs.length];
   }
 
-  @Override
-  public EarsContext context() {
-    return new EarsContext(knobs, configuration);
-  }
-
-  @Override
-  public void update(EarsContext context, Map<String, Double> measurement) {}
-
   public void evaluate(List<Integer> solution) {
     for (int i = 0; i < solution.size(); i++) {
       configuration[i] = solution.get(i);
     }
-    EarsContext context = context();
-    update(context, machine.run(context));
+    EarsContext context = new EarsContext(knobs, configuration);
+    machine.run(context);
   }
 
   public void makeFeasible(List<Integer> solution) {
