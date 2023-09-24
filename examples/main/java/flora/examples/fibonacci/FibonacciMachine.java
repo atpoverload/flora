@@ -67,7 +67,7 @@ final class FibonacciMachine
   }
 
   private static FibonacciBandit parseArgs(String[] args) {
-    int nFirst = 25;
+    int nFirst = 30;
     int nLast = 35;
     if (args.length != 0 && args.length != 2) {
       throw new IllegalArgumentException(
@@ -105,7 +105,7 @@ final class FibonacciMachine
                 System.out.println(
                     String.format(
                         "%-49s = %.6f (%d)",
-                        c, context.averageReward(c), context.rewardedCount(c))));
+                        c, context.averageReward(c), context.count(c))));
   }
 
   private static void runWith(

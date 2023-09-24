@@ -45,7 +45,9 @@ public final class FibonacciBandit
   /** Rewards the configuration with the log of the operation throughput. */
   @Override
   protected double reward(FibonacciBandit context, Map<String, Double> measurement) {
-    return logThroughput(context.configuration(), measurement.get("stopwatch"));
+    return logThroughput(
+        context.configuration(),
+        measurement.get("stopwatch") / (Math.max(1, measurement.get("jiffies"))));
   }
 
   /** Creates a new bandit with the same knobs and a random configuration. */

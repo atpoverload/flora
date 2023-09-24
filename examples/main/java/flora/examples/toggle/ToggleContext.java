@@ -7,9 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /** Context for the {@link ToggleMachine}. */
 public final class ToggleContext
     extends MultiArmedBandit<ToggleKnobs, ToggleConfiguration, ToggleContext> {
-  public static ToggleContext defaultContext() {
-    return ToggleContext.fromBooleans(false, false);
-  }
+  public static final ToggleContext DEFAULT_CONTEXT = ToggleContext.fromBooleans(false, false);
 
   public static ToggleContext randomContext() {
     return ToggleContext.fromBooleans(
@@ -51,6 +49,6 @@ public final class ToggleContext
 
   @Override
   protected double reward(ToggleContext context, Map<String, Double> measurements) {
-    return measurements.get("stopwatch") / measurements.get("jiffies");
+    return measurements.get("stopwatch");
   }
 }
