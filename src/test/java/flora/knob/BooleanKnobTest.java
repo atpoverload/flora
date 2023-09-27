@@ -6,7 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import flora.Knob;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class BooleanKnobTest {
   private static final int GOOD_INDEX = 0;
   private static final int BAD_INDEX = 2;

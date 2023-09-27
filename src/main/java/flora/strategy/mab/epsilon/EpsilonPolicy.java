@@ -30,14 +30,14 @@ public abstract class EpsilonPolicy implements ExplorationPolicy {
   @Override
   public final <K, C, MAB extends MultiArmedBandit<K, C, MAB>> boolean doExplore(MAB bandit) {
     // Have to run at least once to "prime the pump"
-    if (bandit.totalRewardedCount() < 1) {
+    if (bandit.totalCount() < 1) {
       return true;
     }
     switch (this.policyKind) {
       case GREEDY:
         return Math.random() < epsilon;
       case DECREASING:
-        return Math.random() < (epsilon * sigmoid(bandit.totalRewardedCount(), 0.0025));
+        return Math.random() < (epsilon * sigmoid(bandit.totalCount(), 0.0025));
       default:
         throw new IllegalStateException(
             String.format("Unhandled enum case for policy kind %s", this.policyKind));

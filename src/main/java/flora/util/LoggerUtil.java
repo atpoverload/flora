@@ -23,10 +23,7 @@ public final class LoggerUtil {
             @Override
             public String format(LogRecord record) {
               return String.join(
-                  " ",
-                  makePrefix(new Date(record.getMillis())),
-                  record.getMessage(),
-                  System.lineSeparator());
+                  " ", makePrefix(record), record.getMessage(), System.lineSeparator());
             }
           });
 
@@ -45,11 +42,12 @@ public final class LoggerUtil {
     }
   }
 
-  private static String makePrefix(Date date) {
+  private static String makePrefix(LogRecord record) {
     return String.join(
         " ",
+        String.format("[%s]", record.getLevel()),
         "flora",
-        "(" + dateFormatter.format(date) + ")",
+        String.format("(%s)", dateFormatter.format(new Date(record.getMillis()))),
         "[" + Thread.currentThread().getName() + "]:");
   }
 

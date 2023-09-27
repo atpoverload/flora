@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import flora.Knob;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class EnumKnobTest {
   private enum A {
     X,
@@ -57,7 +60,7 @@ public class EnumKnobTest {
     }
   }
 
-    @Test
+  @Test
   public void fromIndex_generic_badType_valueException() {
     Knob knob = new EnumKnob<>(A.class);
     KnobValueException expectedError = new KnobValueException(knob, String.class, GOOD_INDEX);

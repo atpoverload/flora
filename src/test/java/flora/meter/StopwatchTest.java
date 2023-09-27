@@ -7,7 +7,10 @@ import flora.Meter;
 import java.time.Duration;
 import java.time.Instant;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class StopwatchTest {
   private static final long SLEEP_TIME_MS = 100;
   private static final double SLEEP_TIME_SEC = (double) SLEEP_TIME_MS / 1000;

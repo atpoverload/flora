@@ -15,7 +15,7 @@ import java.util.Map;
 public abstract class MultiArmedBandit<K, C, MAB extends MultiArmedBandit<K, C, MAB>>
     implements RandomizableContext<K, C, MAB> {
   // TODO: should be changed to more efficient
-  private final HashMap<C, Integer> rewardedCount = new HashMap<>();
+  private final HashMap<C, Integer> counts = new HashMap<>();
   private final HashMap<C, Double> rewards = new HashMap<>();
 
   private C configuration;
@@ -23,13 +23,13 @@ public abstract class MultiArmedBandit<K, C, MAB extends MultiArmedBandit<K, C, 
   protected abstract double reward(MAB context, Map<String, Double> measurement);
 
   /** Grabs the reward from the inputs and adds it to the storage. */
-  final void updateBandit(MAB context, Map<String, Double> measurement) {
+  public final void update(MAB context, Map<String, Double> measurement) {
     double reward = reward(context, measurement);
     C configuration = context.configuration();
     rewards.putIfAbsent(configuration, reward);
-    rewards.computeIfPresent(configuration, (c, oldReward) -> oldReward + reward);
-    rewardedCount.putIfAbsent(configuration, 0);
-    rewardedCount.computeIfPresent(configuration, (c, oldCount) -> oldCount + 1);
+    rewards.computeIfPresent(configuration, (unused, oldReward) -> oldReward + reward);
+    counts.putIfAbsent(configuration, 0);
+    counts.computeIfPresent(configuration, (unused, oldCount) -> oldCount + 1);
   }
 
   @SuppressWarnings("unchecked")
@@ -46,12 +46,12 @@ public abstract class MultiArmedBandit<K, C, MAB extends MultiArmedBandit<K, C, 
   // TODO: this interface is a little messy
   /** Return all rewarded configurations. */
   public final List<C> rewardedConfigurations() {
-    return new ArrayList<>(rewardedCount.keySet());
+    return new ArrayList<>(counts.keySet());
   }
 
   /** Returns the number of rewards given to the configuration. */
-  public final int rewardedCount(C configuration) {
-    return rewardedCount.get(configuration);
+  public final int count(C configuration) {
+    return counts.get(configuration);
   }
 
   /** Returns the total reward for the configuration. */
@@ -61,12 +61,12 @@ public abstract class MultiArmedBandit<K, C, MAB extends MultiArmedBandit<K, C, 
 
   /** Returns the average reward for the configuration. */
   public final double averageReward(C configuration) {
-    return rewards.get(configuration) / rewardedCount.get(configuration);
+    return rewards.get(configuration) / counts.get(configuration);
   }
 
   /** Return the total number of rewards given. */
-  public final int totalRewardedCount() {
-    return rewardedCount.values().stream().mapToInt(Integer::intValue).sum();
+  public final int totalCount() {
+    return counts.values().stream().mapToInt(Integer::intValue).sum();
   }
 
   /** Return the total reward over all configurations. */
@@ -79,7 +79,7 @@ public abstract class MultiArmedBandit<K, C, MAB extends MultiArmedBandit<K, C, 
   public String toString() {
     return String.format(
         "{\"count\":{%s},\"reward\":{%s}}",
-        rewardedCount.entrySet().stream()
+        counts.entrySet().stream()
             .map(e -> String.format("\"%s\":%d", e.getKey(), e.getValue().longValue()))
             .collect(joining(",")),
         rewards.entrySet().stream()

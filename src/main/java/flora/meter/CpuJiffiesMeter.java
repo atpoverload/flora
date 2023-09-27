@@ -31,7 +31,7 @@ public class CpuJiffiesMeter implements Meter {
   @Override
   public void start() {
     if (isRunning) {
-      logger.info(
+      logger.fine(
           String.format("ignoring start for %s while running", this.getClass().getSimpleName()));
       return;
     }
@@ -43,7 +43,7 @@ public class CpuJiffiesMeter implements Meter {
       start = reader.readLine();
       reader.close();
     } catch (IOException e) {
-      logger.info(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
+      logger.fine(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
       start = "";
       isRunning = false;
     }
@@ -53,7 +53,7 @@ public class CpuJiffiesMeter implements Meter {
   @Override
   public void stop() {
     if (!isRunning) {
-      logger.info(
+      logger.fine(
           String.format("ignoring stop for %s while stopped", this.getClass().getSimpleName()));
       return;
     }
@@ -62,7 +62,7 @@ public class CpuJiffiesMeter implements Meter {
       end = reader.readLine();
       reader.close();
     } catch (IOException e) {
-      logger.info(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
+      logger.fine(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
       start = "";
     }
     isRunning = false;
@@ -72,10 +72,10 @@ public class CpuJiffiesMeter implements Meter {
   @Override
   public double read() {
     if (start.isBlank() && end.isBlank()) {
-      logger.info(String.format("reading unused %s returns 0", this.getClass().getSimpleName()));
+      logger.fine(String.format("reading unused %s returns 0", this.getClass().getSimpleName()));
       return 0;
     } else if (end.isBlank()) {
-      logger.info(
+      logger.fine(
           String.format(
               "reading while running %s returns current", this.getClass().getSimpleName()));
       try {
@@ -84,7 +84,7 @@ public class CpuJiffiesMeter implements Meter {
         reader.close();
         return parseJiffies(now) - parseJiffies(start);
       } catch (IOException e) {
-        logger.info(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
+        logger.fine(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
         end = "";
       }
     }

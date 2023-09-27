@@ -31,6 +31,6 @@ public final class MultiArmedBanditStrategy<K, C, MAB extends MultiArmedBandit<K
   /** Adds to the total reward for the configuration. */
   @Override
   public final void update(MAB bandit, Map<String, Double> measurement) {
-    this.bandit.updateBandit(bandit, measurement);
+    this.bandit.update(bandit, measurement);
   }
 }
