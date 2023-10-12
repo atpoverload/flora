@@ -3,7 +3,7 @@ package flora.knob;
 import flora.Knob;
 
 /** A {@link Knob} that represents an inclusive range of integers. */
-public final class IntRangeKnob implements Knob {
+public final class IntRangeKnob implements IntKnob {
   private final int start;
   private final int end;
   private final int step;
@@ -45,6 +45,7 @@ public final class IntRangeKnob implements Knob {
   }
 
   /** Returns the range value if it's inbounds, otherwise throw. */
+  @Override
   public int fromIndex(int index) {
     if (0 <= index && index < configurationCount()) {
       return start + index * step;

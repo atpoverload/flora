@@ -12,7 +12,7 @@ public final class ImageDistanceBandit
   private final ImageDistanceScore score;
 
   public ImageDistanceBandit(ImageDistanceScore score) {
-    setConfiguration(RenderingConfiguration.defaultConfiguration());
+    withConfiguration(RenderingConfiguration.defaultConfiguration());
     this.score = score;
   }
 
@@ -24,13 +24,14 @@ public final class ImageDistanceBandit
 
   /** Returns the mse measurement. */
   @Override
-  public double reward(RenderingConfiguration knobs, Map<String, Double> measurement) {
+  public double reward(ImageDistanceBandit bandit, Map<String, Double> measurement) {
     return measurement.get(score.name());
   }
 
   /** Randomizes the configuration from the knobs. */
-  public ImageDistanceBandit randomize() {
-    setConfiguration(knobs.randomConfiguration());
+  @Override
+  public ImageDistanceBandit random() {
+    withConfiguration(knobs.randomConfiguration());
     return this;
   }
 }

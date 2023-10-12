@@ -4,7 +4,7 @@ import flora.Knob;
 import java.util.Arrays;
 
 /** A {@link Knob} that represents a collection of ints. */
-public final class IntCollectionKnob implements Knob {
+public final class IntCollectionKnob implements IntKnob {
   /** Creates an {@code IntCollectionKnob} from the given numbers. */
   public IntCollectionKnob of(int first, int second, int... others) {
     int[] values = new int[2 + others.length];
@@ -43,6 +43,7 @@ public final class IntCollectionKnob implements Knob {
   }
 
   /** Returns the value at the index if it's in the value range, otherwise throw. */
+  @Override
   public int fromIndex(int index) {
     if (0 <= index && index < configurationCount()) {
       return values[index];
