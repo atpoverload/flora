@@ -4,12 +4,8 @@ import flora.Knob;
 
 /** A {@link Knob} that represents a boolean. */
 public final class BooleanKnob implements Knob {
-  private static final BooleanKnob instance = new BooleanKnob();
-
-  /** Returns a cached instance to prevent unnecessary copying. */
-  public static BooleanKnob instance() {
-    return instance;
-  }
+  /** A cached instance to prevent unnecessary copying. */
+  public static final BooleanKnob INSTANCE = new BooleanKnob();
 
   /** Returns the number of possible booleans, which is two (true or false). */
   @Override

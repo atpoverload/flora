@@ -8,6 +8,11 @@ public final class BooleanContext
   public static final BooleanContext TRUE_CONTEXT = new BooleanContext(true);
   public static final BooleanContext FALSE_CONTEXT = new BooleanContext(false);
 
+  /** Returns one of the two possible contexts. */
+  public static BooleanContext randomContext() {
+    return ThreadLocalRandom.current().nextBoolean() ? TRUE_CONTEXT : FALSE_CONTEXT;
+  }
+
   private final boolean value;
 
   private BooleanContext(boolean value) {
@@ -16,7 +21,7 @@ public final class BooleanContext
 
   @Override
   public BooleanKnob knobs() {
-    return BooleanKnob.instance();
+    return BooleanKnob.INSTANCE;
   }
 
   @Override
@@ -26,6 +31,6 @@ public final class BooleanContext
 
   @Override
   public BooleanContext random() {
-    return ThreadLocalRandom.current().nextBoolean() ? TRUE_CONTEXT : FALSE_CONTEXT;
+    return randomContext();
   }
 }

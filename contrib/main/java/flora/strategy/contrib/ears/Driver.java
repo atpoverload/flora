@@ -13,7 +13,7 @@ public final class Driver {
   }
 
   public static void main(String[] args) {
-    ToggleKnobs knobs = ToggleKnobs.instance();
+    ToggleKnobs knobs = ToggleKnobs.INSTANCE;
     CompatNumberProblem<ToggleContext> problem =
         new CompatNumberProblem<>(
             new Knob[] {knobs.toggle1(), knobs.toggle2()},

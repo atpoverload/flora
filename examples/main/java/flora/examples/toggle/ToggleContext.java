@@ -26,20 +26,15 @@ public final class ToggleContext
 
   /** Builds a context from two indicies. */
   public static ToggleContext fromIndicies(int toggle1, int toggle2) {
-    ToggleKnobs knobs = ToggleKnobs.instance();
+    ToggleKnobs knobs = ToggleKnobs.INSTANCE;
     return new ToggleContext(
         new ToggleConfiguration(
             knobs.toggle1().fromIndex(toggle1), knobs.toggle2().fromIndex(toggle2)));
   }
 
-  private ToggleContext(ToggleConfiguration configuration) {
-    // TODO: this is a hack
-    withConfiguration(configuration);
-  }
-
   @Override
   public ToggleKnobs knobs() {
-    return ToggleKnobs.instance();
+    return ToggleKnobs.INSTANCE;
   }
 
   @Override
@@ -50,5 +45,10 @@ public final class ToggleContext
   @Override
   protected double reward(ToggleContext context, Map<String, Double> measurements) {
     return measurements.get("stopwatch");
+  }
+
+  private ToggleContext(ToggleConfiguration configuration) {
+    // TODO: this is a hack
+    withConfiguration(configuration);
   }
 }

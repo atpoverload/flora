@@ -84,8 +84,8 @@ public class CpuJiffiesMeter implements Meter {
         reader.close();
         return parseJiffies(now) - parseJiffies(start);
       } catch (IOException e) {
-        logger.fine(String.format("resetting %s due to %s", this.getClass().getSimpleName(), e));
-        end = "";
+        logger.fine(String.format("returning 0 due to %s", e));
+        return 0;
       }
     }
     return parseJiffies(end) - parseJiffies(start);

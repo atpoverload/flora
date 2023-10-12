@@ -19,8 +19,10 @@ public final class ToggleMachine extends Machine<ToggleKnobs, ToggleConfiguratio
     long sleepTime = (long) (10 * (1 + Math.random()));
     if (context.configuration().toggle1()) sleepTime += 3 * (1 + Math.random());
     if (context.configuration().toggle2()) sleepTime += 5 * (1 + Math.random());
+    if (context.configuration().toggle1() && context.configuration().toggle2())
+      sleepTime -= 12 * (1 + Math.random());
     try {
-      Thread.sleep(sleepTime);
+      Thread.sleep(Math.max(1, sleepTime));
     } catch (Exception e) {
 
     }
