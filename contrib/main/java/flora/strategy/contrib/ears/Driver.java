@@ -1,37 +1,40 @@
 package flora.strategy.contrib.ears;
 
-import flora.Knob;
-import flora.examples.toggle.ToggleContext;
+import flora.Machine;
+import flora.Meter;
+import flora.examples.toggle.Toggle;
 import flora.examples.toggle.ToggleKnobs;
-import flora.examples.toggle.ToggleMachine;
-import java.util.ArrayList;
-import java.util.List;
+import flora.knob.meta.RangeConstrainedKnob;
+import flora.meter.CpuJiffiesMeter;
+import flora.meter.Stopwatch;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import org.um.feri.ears.algorithms.moo.nsga2.D_NSGAII;
+import org.um.feri.ears.problems.StopCriterion;
+import org.um.feri.ears.problems.Task;
 
-public final class Driver {
-  private static ToggleContext createContext(int[] configuration) {
-    return ToggleContext.fromIndicies(configuration[0], configuration[1]);
-  }
+final class Driver {
+  private static final Map<String, Meter> meters =
+      Map.of("stopwatch", new Stopwatch(), "jiffies", new CpuJiffiesMeter());
 
-  public static void main(String[] args) {
-    ToggleKnobs knobs = ToggleKnobs.INSTANCE;
-    CompatNumberProblem<ToggleContext> problem =
-        new CompatNumberProblem<>(
-            new Knob[] {knobs.toggle1(), knobs.toggle2()},
-            new EarsMachineAdapter<>(new ToggleMachine(), s -> createContext(s.configuration())));
+  private static final RangeConstrainedKnob[] knobs =
+      Arrays.stream(ToggleKnobs.INSTANCE.asArray())
+          .map(RangeConstrainedKnob::new)
+          .toArray(RangeConstrainedKnob[]::new);
 
-    System.out.println(problem.measurements);
-    problem.evaluate(List.of(0, 0));
-    System.out.println(problem.measurements);
+  public static void main(String[] args) throws Exception {
+    Machine machine =
+        new Machine() {
+          @Override
+          public Map<String, Meter> meters() {
+            return new HashMap<>(meters);
+          }
+        };
 
-    System.out.println(problem.isFeasible(List.of(0, 0)));
-
-    ArrayList<Integer> solution = new ArrayList<>();
-    solution.add(2);
-    solution.add(-1);
-    System.out.println(problem.isFeasible(solution));
-
-    problem.makeFeasible(solution);
-    System.out.println(solution);
-    System.out.println(problem.isFeasible(solution));
+    CompatNumberProblem<RangeConstrainedKnob> problem =
+        new CompatNumberProblem<>("toggle-problem", knobs, Toggle.DEFAULT, machine);
+    D_NSGAII nsga = new D_NSGAII();
+    nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 100000, 0, 0));
   }
 }

@@ -1,20 +1,20 @@
 package flora.strategy.archiving;
 
 import flora.Strategy;
-import flora.context.RandomizableContext;
+import flora.work.RandomizableWorkUnit;
 
 /** A {@link Strategy} that randomly selects a configuration and archives all updates. */
-public final class RandomArchivingStrategy<K, C, Ctx extends RandomizableContext<K, C, Ctx>>
-    extends ArchivingStrategy<K, C, Ctx> {
-  private final Ctx context;
+public final class RandomArchivingStrategy<K, C, W extends RandomizableWorkUnit<K, C, W>>
+    extends ArchivingStrategy<K, C, W> {
+  private final W workload;
 
-  public RandomArchivingStrategy(Ctx context) {
-    this.context = context;
+  public RandomArchivingStrategy(W workload) {
+    this.workload = workload;
   }
 
   /** Creates knobs with random values. */
   @Override
-  public final Ctx context() {
-    return context.random();
+  public W nextWorkload() {
+    return workload.random();
   }
 }

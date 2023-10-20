@@ -1,52 +1,77 @@
 package flora.strategy.contrib.ears;
 
-import static java.util.stream.Collectors.toList;
-
 import flora.Knob;
-import flora.WorkloadContext;
+import flora.Machine;
+import flora.WorkUnit;
+import flora.knob.meta.ConstrainedKnob;
+import flora.knob.meta.RandomizableKnob;
+import flora.work.IndexableWorkUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.function.BiFunction;
+import org.um.feri.ears.problems.NumberProblem;
+import org.um.feri.ears.problems.NumberSolution;
 
-public final class CompatNumberProblem<Ctx extends WorkloadContext<?, ?>> {
-  public final ArrayList<Map<String, Double>> measurements = new ArrayList<>();
+public final class CompatNumberProblem<K extends ConstrainedKnob & RandomizableKnob>
+    extends NumberProblem<Double> {
+  private final K[] knobs;
+  private final IndexableWorkUnit<?, ?, ?> workUnit;
+  private final Machine machine;
+  private final int numberOfObjectives;
 
-  private final EarsKnob[] knobs;
-  private final EarsMachineAdapter<Ctx> machine;
-  private final int[] configuration;
-
-  public CompatNumberProblem(Knob[] knobs, EarsMachineAdapter<Ctx> machine) {
-    this.knobs = Arrays.stream(knobs).map(EarsKnob::new).toArray(EarsKnob[]::new);
+  public CompatNumberProblem(
+      String name,
+      K[] knobs,
+      IndexableWorkUnit<?, ?, ?> workUnit,
+      Machine machine) {
+    super(name, knobs.length, 1, machine.meters().size(), 0);
+    this.knobs = knobs;
+    this.workUnit = workUnit;
     this.machine = machine;
-    this.configuration = new int[knobs.length];
-  }
 
-  public void evaluate(List<Integer> solution) {
-    for (int i = 0; i < solution.size(); i++) {
-      configuration[i] = solution.get(i);
-    }
-    EarsContext context = new EarsContext(knobs, configuration);
-    machine.run(context);
-  }
-
-  public void makeFeasible(List<Integer> solution) {
-    for (int i = 0; i < knobs.length; i++) {
-      solution.set(i, knobs[i].constrainIndex(solution.get(i)));
+    this.numberOfObjectives = machine.meters().size();
+    this.lowerLimit = new ArrayList<>();
+    this.upperLimit = new ArrayList<>();
+    for (K knob : knobs) {
+      this.lowerLimit.add(0.0);
+      this.upperLimit.add((double) knob.configurationCount());
     }
   }
 
-  public boolean isFeasible(List<Integer> solution) {
+  @Override
+  public void evaluate(NumberSolution<Double> solution) {
+    solution.setObjectives(
+        machine
+            .run(
+                workUnit.fromIndices(solution.getVariables().stream().mapToInt(Double::intValue).toArray()))
+            .values()
+            .stream()
+            .mapToDouble(d -> d)
+            .toArray());
+  }
+
+  @Override
+  public void makeFeasible(NumberSolution<Double> solution) {
     for (int i = 0; i < knobs.length; i++) {
-      int x = solution.get(i);
-      if (!(0 <= x && x < knobs[i].configurationCount())) {
+      solution.setValue(i, (double) knobs[i].constrain(solution.getValue(i).intValue()));
+    }
+  }
+
+  @Override
+  public boolean isFeasible(NumberSolution<Double> solution) {
+    for (int i = 0; i < knobs.length; i++) {
+      if (!knobs[i].isValid(solution.getValue(i).intValue())) {
         return false;
       }
     }
     return true;
   }
 
-  public List<Integer> getRandomSolution() {
-    return Arrays.stream(knobs).map(EarsKnob::randomIndex).collect(toList());
+  @Override
+  public NumberSolution<Double> getRandomSolution() {
+    final var solution = new ArrayList<Double>();
+    for (K knob : knobs) {
+      solution.add((double) knob.random());
+    }
+    return new NumberSolution<>(numberOfObjectives, solution);
   }
 }

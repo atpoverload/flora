@@ -2,15 +2,25 @@ package flora.experiments.sunflow.scenes;
 
 import flora.experiments.sunflow.ConfigurableScene;
 import flora.experiments.sunflow.RenderingConfiguration;
+import flora.experiments.sunflow.RenderingKnobs;
 import org.sunflow.SunflowAPI;
+import org.sunflow.core.Display;
 import org.sunflow.math.Matrix4;
 import org.sunflow.math.Point3;
 import org.sunflow.math.Vector3;
 
 /** Scene for a Cornell box (https://en.wikipedia.org/wiki/Cornell_box). */
-public final class CornellBox extends ConfigurableScene {
-  public CornellBox(RenderingConfiguration knobs) {
-    super(knobs);
+public final class CornellBox extends ConfigurableScene<CornellBox> {
+  private final Display display;
+
+  public CornellBox(RenderingKnobs knobs, RenderingConfiguration configuration, Display display) {
+    super(knobs, configuration, display);
+    this.display = display;
+  }
+
+  @Override
+  public CornellBox fromIndices(int[] indices) {
+    return new CornellBox(knobs(), knobs().fromIndices(indices), display);
   }
 
   @Override

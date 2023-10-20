@@ -11,15 +11,14 @@ public record RenderingConfiguration(
     Filter filter) {
 
   /** The default knobs used for the reference image. */
-  public static RenderingConfiguration defaultConfiguration() {
-    return new RenderingConfiguration(
-        /* threads= */ 12,
-        /* resolutionX= */ 768,
-        /* resolutionY= */ 768,
-        /* aaMin= */ 1,
-        /* aaMax= */ 2,
-        /* bucketSize= */ 60,
-        /* aoSamples= */ 32,
-        Filter.BLACKMAN_HARRIS);
-  }
+  public static final RenderingConfiguration DEFAULT =
+      new RenderingConfiguration(
+          /* threads= */ 12,
+          /* resolutionX= */ 768,
+          /* resolutionY= */ 768,
+          /* aaMin= */ 1,
+          /* aaMax= */ 2,
+          /* bucketSize= */ 60,
+          /* aoSamples= */ 32,
+          Filter.BLACKMAN_HARRIS);
 }

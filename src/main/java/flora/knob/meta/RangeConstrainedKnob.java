@@ -4,10 +4,10 @@ import flora.Knob;
 import java.util.concurrent.ThreadLocalRandom;
 
 /** A {@link Knob} that constrains to the range of another knob's configurations. */
-public final class MetaKnob implements ConstrainedKnob, RandomizableKnob {
+public final class RangeConstrainedKnob implements ConstrainedKnob, RandomizableKnob {
   private final Knob knob;
 
-  public MetaKnob(Knob knob) {
+  public RangeConstrainedKnob(Knob knob) {
     this.knob = knob;
   }
 
@@ -23,15 +23,21 @@ public final class MetaKnob implements ConstrainedKnob, RandomizableKnob {
     return this.knob.fromIndex(index, cls);
   }
 
-  /** Constrains the index to the underlying knob's index range. */
+  /** Returns if the index is in the underlying knob's range. */
   @Override
-  public int constrainIndex(int index) {
+  public boolean isValid(int index) {
+    return 0 <= index && index < configurationCount();
+  }
+
+  /** Constrains the index to the underlying knob's range. */
+  @Override
+  public int constrain(int index) {
     return Math.max(0, Math.min(index, configurationCount()));
   }
 
   /** Returns a random index of the underlying knob. */
   @Override
-  public int randomIndex() {
+  public int random() {
     return ThreadLocalRandom.current().nextInt(0, configurationCount());
   }
 }

@@ -5,12 +5,13 @@ import static java.util.stream.Collectors.toMap;
 import java.util.Map;
 
 /** An interface for a measurable work unit. */
-public abstract class Machine<K, C, Ctx extends WorkloadContext<K, C>> {
-  public final Map<String, Double> run(Ctx context) {
+public abstract class Machine {
+  /** Meters some unit of work. */
+  public final <K, C, W extends WorkUnit<K, C>> Map<String, Double> run(W workload) {
     Map<String, Meter> meters = meters();
     meters.values().forEach(Meter::start);
     try {
-      runWorkload(context);
+      workload.run();
     } catch (Exception e) {
       // safely turn off the meters if we failed to run the workload
       meters.values().forEach(Meter::stop);
@@ -22,9 +23,6 @@ public abstract class Machine<K, C, Ctx extends WorkloadContext<K, C>> {
     return meters.entrySet().stream().collect(toMap(e -> e.getKey(), e -> e.getValue().read()));
   }
 
-  /** Unit of work. */
-  protected abstract void runWorkload(Ctx context);
-
-  /** Returns the meters used by the machine. */
+  /** Meters used to measure the work units. */
   public abstract Map<String, Meter> meters();
 }

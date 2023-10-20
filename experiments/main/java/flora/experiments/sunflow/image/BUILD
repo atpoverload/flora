@@ -5,7 +5,7 @@ java_library(
     deps = [
         "//experiments/main/java/flora/experiments/sunflow",
         "//src/main/java/flora/meter",
-        "//src/main/java/flora/strategy/mab",
+        # "//src/main/java/flora/strategy/mab",
         "@sunflow//jar",
     ],
 )

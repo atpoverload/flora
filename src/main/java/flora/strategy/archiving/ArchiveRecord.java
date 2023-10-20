@@ -2,25 +2,27 @@ package flora.strategy.archiving;
 
 import static java.util.stream.Collectors.joining;
 
-import flora.WorkloadContext;
+import flora.WorkUnit;
 import java.util.HashMap;
 import java.util.Map;
 
-/** A snapshot of a context and measurement pair. */
-public final class ArchiveRecord<K, C, Ctx extends WorkloadContext<K, C>> {
+/** A snapshot of a workload and measurement pair. */
+public final class ArchiveRecord<K, C, W extends WorkUnit<K, C>> {
   private final Map<String, Double> measurement = new HashMap<>();
 
-  private final Ctx context;
+  private final W workload;
 
-  ArchiveRecord(Ctx context, Map<String, Double> measurement) {
-    this.context = context;
+  ArchiveRecord(W workload, Map<String, Double> measurement) {
+    this.workload = workload;
     measurement.forEach(this.measurement::put);
   }
 
-  public Ctx context() {
-    return context;
+  /** Returns the workload executed. */
+  public W workload() {
+    return workload;
   }
 
+  /** Returns the measurement for the {@code workload's} execution. */
   public Map<String, Double> measurement() {
     return new HashMap<>(measurement);
   }
@@ -29,8 +31,8 @@ public final class ArchiveRecord<K, C, Ctx extends WorkloadContext<K, C>> {
   @Override
   public String toString() {
     return String.format(
-        "{\"context\":%s,\"measurement\":{%s}}",
-        context,
+        "{\"workload\":%s,\"measurement\":{%s}}",
+        workload,
         measurement.entrySet().stream()
             .map(e -> String.format("\"%s\":%f", e.getKey(), e.getValue()))
             .collect(joining(",")));

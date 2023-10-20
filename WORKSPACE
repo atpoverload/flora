@@ -63,3 +63,8 @@ load("@maven//:compat.bzl", "compat_repositories")
 compat_repositories()
 
 grpc_java_repositories()
+
+http_jar(
+    name = "ears",
+    urls = ["https://test.lpm.feri.um.si/ears.jar"],
+)

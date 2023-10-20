@@ -8,22 +8,25 @@ import static java.util.stream.Collectors.summingDouble;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
-import flora.WorkloadContext;
+import flora.WorkUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** A by-configuration summary of {@link ArchiveRecords}. */
+/**
+ * A by-configuration summary of {@link ArchiveRecords}. Since this uses a {@link toMap}, users
+ * should make sure their {@link WorkUnit} implements {@link equals} if they wish to use an {@code
+ * ArchiveRecordSummary}.
+ */
 public class ArchiveRecordSummary<C> {
   private final Map<C, Long> counts;
   private final Map<C, Map<String, Double>> means;
   private final Map<C, Map<String, Double>> deviations;
 
   // TODO: got lazy and handwrote this. might be able to leverage DoubleSummaryStatistics
-  <K, Ctx extends WorkloadContext<K, C>> ArchiveRecordSummary(
-      List<ArchiveRecord<K, C, Ctx>> records) {
-    Map<C, List<ArchiveRecord<K, C, Ctx>>> grouped =
-        records.stream().collect(groupingBy(record -> record.context().configuration(), toList()));
+  <K, W extends WorkUnit<K, C>> ArchiveRecordSummary(List<ArchiveRecord<K, C, W>> records) {
+    Map<C, List<ArchiveRecord<K, C, W>>> grouped =
+        records.stream().collect(groupingBy(record -> record.workload().configuration(), toList()));
     counts =
         grouped.entrySet().stream()
             .collect(
@@ -74,14 +77,17 @@ public class ArchiveRecordSummary<C> {
                                     e1 -> Math.sqrt(e1.getValue() / counts.get(e.getKey()))))));
   }
 
+  /** Returns the counts for each unique configuration. */
   public Map<C, Long> counts() {
     return new HashMap<>(counts);
   }
 
+  /** Returns the mean for each unique configuration. */
   public Map<C, Map<String, Double>> means() {
     return new HashMap<>(means);
   }
 
+  /** Returns the deviation for each unique configuration. */
   public Map<C, Map<String, Double>> deviations() {
     return new HashMap<>(deviations);
   }

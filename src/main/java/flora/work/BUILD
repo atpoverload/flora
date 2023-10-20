@@ -1,5 +1,5 @@
 java_library(
-    name = "context",
+    name = "work",
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
     deps = [

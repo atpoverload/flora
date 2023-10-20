@@ -3,20 +3,20 @@ package flora.strategy.archiving;
 import static java.util.stream.Collectors.joining;
 
 import flora.Strategy;
-import flora.WorkloadContext;
+import flora.WorkUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/** A {@link Strategy} that archives all updates. Users must extend {@link context}. */
-public abstract class ArchivingStrategy<K, C, Ctx extends WorkloadContext<K, C>>
-    implements Strategy<K, C, Ctx> {
-  private final List<ArchiveRecord<K, C, Ctx>> records = new ArrayList<>();
+/** A {@link Strategy} that archives all updates. Users must extend {@link nextWorkload}. */
+public abstract class ArchivingStrategy<K, C, W extends WorkUnit<K, C>>
+    implements Strategy<K, C, W> {
+  private final List<ArchiveRecord<K, C, W>> records = new ArrayList<>();
 
   /** Stores each update pair in an underlying archive. */
   @Override
-  public void update(Ctx context, Map<String, Double> measurement) {
-    records.add(new ArchiveRecord<>(context, measurement));
+  public final void update(W workload, Map<String, Double> measurement) {
+    records.add(new ArchiveRecord<>(workload, measurement));
   }
 
   /** Returns the records as a json list. */
@@ -27,7 +27,7 @@ public abstract class ArchivingStrategy<K, C, Ctx extends WorkloadContext<K, C>>
   }
 
   /** Returns a shallow copy of all updates. */
-  public List<ArchiveRecord<K, C, Ctx>> records() {
+  public List<ArchiveRecord<K, C, W>> records() {
     return new ArrayList<>(records);
   }
 
