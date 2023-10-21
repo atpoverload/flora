@@ -8,7 +8,7 @@ import java.util.Map;
 public abstract class Machine {
   /** Meters some unit of work. */
   public final <K, C, W extends WorkUnit<K, C>> Map<String, Double> run(W workload) {
-    System.out.println(workload);
+    System.out.println(workload.configuration());
     Map<String, Meter> meters = meters();
     meters.values().forEach(Meter::start);
     try {
