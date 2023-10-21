@@ -5,6 +5,7 @@ import flora.knob.meta.ConstrainedKnob;
 import flora.knob.meta.RandomizableKnob;
 import flora.work.IndexableWorkUnit;
 import java.util.ArrayList;
+import java.util.Map;
 import org.um.feri.ears.problems.NumberProblem;
 import org.um.feri.ears.problems.NumberSolution;
 
