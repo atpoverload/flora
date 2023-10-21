@@ -46,7 +46,7 @@ public record RenderingKnobs(
 
   public Knob[] asArray() {
     return new Knob[] {
-      threads, resolutionX, resolutionY, aaMin, aaMax, bucketSize, aoSamples, filter
+      threads, resolutionX, aaMin, aaMax, bucketSize, aoSamples, filter
     };
   }
 
@@ -54,11 +54,11 @@ public record RenderingKnobs(
     return new RenderingConfiguration(
         threads.fromIndex(indices[0]),
         resolutionX.fromIndex(indices[1]),
-        resolutionY.fromIndex(indices[2]),
-        aaMin.fromIndex(indices[3]),
-        aaMax.fromIndex(indices[4]),
-        bucketSize.fromIndex(indices[5]),
-        aoSamples.fromIndex(indices[6]),
-        filter.fromIndex(indices[7]));
+        resolutionY.fromIndex(indices[1]),
+        aaMin.fromIndex(indices[2]),
+        aaMax.fromIndex(indices[3]),
+        bucketSize.fromIndex(indices[4]),
+        aoSamples.fromIndex(indices[5]),
+        filter.fromIndex(indices[6]));
   }
 }

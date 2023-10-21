@@ -1,13 +1,10 @@
 package flora.strategy.contrib.ears;
 
-import flora.Knob;
 import flora.Machine;
-import flora.WorkUnit;
 import flora.knob.meta.ConstrainedKnob;
 import flora.knob.meta.RandomizableKnob;
 import flora.work.IndexableWorkUnit;
 import java.util.ArrayList;
-import java.util.function.BiFunction;
 import org.um.feri.ears.problems.NumberProblem;
 import org.um.feri.ears.problems.NumberSolution;
 
@@ -19,10 +16,7 @@ public final class CompatNumberProblem<K extends ConstrainedKnob & RandomizableK
   private final int numberOfObjectives;
 
   public CompatNumberProblem(
-      String name,
-      K[] knobs,
-      IndexableWorkUnit<?, ?, ?> workUnit,
-      Machine machine) {
+      String name, K[] knobs, IndexableWorkUnit<?, ?, ?> workUnit, Machine machine) {
     super(name, knobs.length, 1, machine.meters().size(), 0);
     this.knobs = knobs;
     this.workUnit = workUnit;
@@ -39,14 +33,10 @@ public final class CompatNumberProblem<K extends ConstrainedKnob & RandomizableK
 
   @Override
   public void evaluate(NumberSolution<Double> solution) {
-    solution.setObjectives(
-        machine
-            .run(
-                workUnit.fromIndices(solution.getVariables().stream().mapToInt(Double::intValue).toArray()))
-            .values()
-            .stream()
-            .mapToDouble(d -> d)
-            .toArray());
+    IndexableWorkUnit<?, ?, ?> work =
+        workUnit.fromIndices(solution.getVariables().stream().mapToInt(Double::intValue).toArray());
+    Map<String, Double> measurement = machine.run(work);
+    solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
   }
 
   @Override

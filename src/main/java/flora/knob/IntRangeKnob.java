@@ -54,17 +54,17 @@ public final class IntRangeKnob implements IntKnob {
   }
 
   /** Returns the range start. */
-  public int getStart() {
+  public int start() {
     return start;
   }
 
   /** Returns the range end. */
-  public int getEnd() {
+  public int end() {
     return end;
   }
 
   /** Returns the distance between range steps. */
-  public int getStep() {
+  public int step() {
     return step;
   }
 }
