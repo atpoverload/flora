@@ -10,7 +10,7 @@ import org.sunflow.math.Point3;
 import org.sunflow.math.Vector3;
 
 /** Scene for a Cornell box (https://en.wikipedia.org/wiki/Cornell_box). */
-public final class CornellBox extends ConfigurableScene<CornellBox> {
+public final class CornellBox extends ConfigurableScene {
   private final Display display;
 
   public CornellBox(RenderingKnobs knobs, RenderingConfiguration configuration, Display display) {
@@ -19,8 +19,8 @@ public final class CornellBox extends ConfigurableScene<CornellBox> {
   }
 
   @Override
-  public CornellBox fromIndices(int[] indices) {
-    return new CornellBox(knobs(), knobs().fromIndices(indices), display);
+  public ConfigurableScene newScene(RenderingKnobs knobs, RenderingConfiguration configuration) {
+    return new CornellBox(knobs, configuration, display);
   }
 
   @Override

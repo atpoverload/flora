@@ -29,4 +29,8 @@ public record ToggleConfiguration(boolean toggle1, boolean toggle2)
         return firstCompare;
     }
   }
+
+  public int[] asArray() {
+    return new int[] {toggle1 ? 1 : 0, toggle2 ? 1 : 0};
+  }
 }

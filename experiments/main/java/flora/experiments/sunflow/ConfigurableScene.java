@@ -1,13 +1,12 @@
 package flora.experiments.sunflow;
 
-import flora.work.IndexableWorkUnit;
+import flora.WorkUnit;
 import org.sunflow.SunflowAPI;
 import org.sunflow.core.Display;
 
 /** An abstract class that can configure rendering settings for a scene. */
-public abstract class ConfigurableScene<
-        S extends IndexableWorkUnit<RenderingKnobs, RenderingConfiguration, S>>
-    extends SunflowAPI implements IndexableWorkUnit<RenderingKnobs, RenderingConfiguration, S> {
+public abstract class ConfigurableScene extends SunflowAPI
+    implements WorkUnit<RenderingKnobs, RenderingConfiguration> {
   private final RenderingKnobs knobs;
   private final RenderingConfiguration configuration;
   private final Display display;
@@ -32,8 +31,12 @@ public abstract class ConfigurableScene<
   @Override
   public final void run() {
     this.build();
+    System.out.println(configuration);
     this.render(SunflowAPI.DEFAULT_OPTIONS, display);
   }
+
+  public abstract ConfigurableScene newScene(
+      RenderingKnobs knobs, RenderingConfiguration configuration);
 
   /** Builds the configurable portion of the scene. */
   @Override

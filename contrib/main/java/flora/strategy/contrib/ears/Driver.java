@@ -3,7 +3,6 @@ package flora.strategy.contrib.ears;
 import flora.Machine;
 import flora.Meter;
 import flora.examples.toggle.Toggle;
-import flora.examples.toggle.ToggleKnobs;
 import flora.knob.meta.RangeConstrainedKnob;
 import flora.meter.CpuJiffiesMeter;
 import flora.meter.Stopwatch;
@@ -18,10 +17,26 @@ final class Driver {
   private static final Map<String, Meter> meters =
       Map.of("stopwatch", new Stopwatch(), "jiffies", new CpuJiffiesMeter());
 
-  private static final RangeConstrainedKnob[] knobs =
-      Arrays.stream(ToggleKnobs.INSTANCE.asArray())
-          .map(RangeConstrainedKnob::new)
-          .toArray(RangeConstrainedKnob[]::new);
+  private static class ToggleFactory implements RawWorkFactory<RangeConstrainedKnob, Toggle> {
+    private final RangeConstrainedKnob[] knobs;
+
+    private ToggleFactory(Toggle toggle) {
+      this.knobs =
+          Arrays.stream(toggle.knobs().asArray())
+              .map(RangeConstrainedKnob::new)
+              .toArray(RangeConstrainedKnob[]::new);
+    }
+
+    @Override
+    public RangeConstrainedKnob[] knobs() {
+      return this.knobs;
+    }
+
+    @Override
+    public Toggle fromIndices(int[] configuration) {
+      return Toggle.newFromArray(configuration);
+    }
+  }
 
   public static void main(String[] args) throws Exception {
     Machine machine =
@@ -33,7 +48,7 @@ final class Driver {
         };
 
     CompatNumberProblem<RangeConstrainedKnob> problem =
-        new CompatNumberProblem<>("toggle-problem", knobs, Toggle.DEFAULT, machine);
+        new CompatNumberProblem<>("toggle-problem", new ToggleFactory(Toggle.DEFAULT), machine);
     D_NSGAII nsga = new D_NSGAII();
     nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 100000, 0, 0));
   }

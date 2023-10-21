@@ -1,15 +1,12 @@
 package flora.examples.toggle;
 
-import flora.Knob;
 import flora.util.LoggerUtil;
-import flora.work.IndexableWorkUnit;
 import flora.work.RandomizableWorkUnit;
 import java.util.logging.Logger;
 
 /** Work unit for the {@link ToggleMachine}. */
 public record Toggle(ToggleConfiguration configuration)
-    implements RandomizableWorkUnit<ToggleKnobs, ToggleConfiguration, Toggle>,
-        IndexableWorkUnit<ToggleKnobs, ToggleConfiguration, Toggle> {
+    implements RandomizableWorkUnit<ToggleKnobs, ToggleConfiguration, Toggle> {
   public static final Toggle DEFAULT = Toggle.newFromBooleans(false, false);
 
   private static final Logger logger = LoggerUtil.getLogger();
@@ -50,11 +47,6 @@ public record Toggle(ToggleConfiguration configuration)
   @Override
   public Toggle random() {
     return Toggle.randomConfiguration();
-  }
-
-  @Override
-  public Toggle fromIndices(int[] indices) {
-    return newFromArray(indices);
   }
 
   /** Sets a sleep time based on the toggles set and then sleeps. */

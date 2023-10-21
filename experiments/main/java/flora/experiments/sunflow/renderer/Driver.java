@@ -2,6 +2,7 @@ package flora.experiments.sunflow.renderer;
 
 import flora.Machine;
 import flora.Meter;
+import flora.experiments.sunflow.ConfigurableScene;
 import flora.experiments.sunflow.RenderingConfiguration;
 import flora.experiments.sunflow.RenderingKnobs;
 import flora.experiments.sunflow.image.BufferedImageDisplay;
@@ -12,6 +13,7 @@ import flora.knob.meta.RangeConstrainedKnob;
 import flora.meter.CpuJiffiesMeter;
 import flora.meter.Stopwatch;
 import flora.strategy.contrib.ears.CompatNumberProblem;
+import flora.strategy.contrib.ears.RawWorkFactory;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +23,30 @@ import org.um.feri.ears.problems.StopCriterion;
 import org.um.feri.ears.problems.Task;
 
 final class Driver {
+  private static class RawSceneFactory
+      implements RawWorkFactory<RangeConstrainedKnob, ConfigurableScene> {
+    private final ConfigurableScene scene;
+    private final RangeConstrainedKnob[] knobs;
+
+    private RawSceneFactory(ConfigurableScene scene) {
+      this.scene = scene;
+      this.knobs =
+          Arrays.stream(scene.knobs().asArray())
+              .map(RangeConstrainedKnob::new)
+              .toArray(RangeConstrainedKnob[]::new);
+    }
+
+    @Override
+    public RangeConstrainedKnob[] knobs() {
+      return this.knobs;
+    }
+
+    @Override
+    public ConfigurableScene fromIndices(int[] configuration) {
+      return scene.newScene(scene.knobs(), scene.knobs().fromIndices(configuration));
+    }
+  }
+
   public static void main(String[] args) throws Exception {
     // Setup the knobs and display
     UI.verbosity(0);
@@ -55,7 +81,7 @@ final class Driver {
         };
 
     CompatNumberProblem<RangeConstrainedKnob> problem =
-        new CompatNumberProblem<>("rendering-problem", knobsArray, scene, machine);
+        new CompatNumberProblem<>("rendering-problem", new RawSceneFactory(scene), machine);
 
     // run the renderer
     D_NSGAII nsga = new D_NSGAII();
