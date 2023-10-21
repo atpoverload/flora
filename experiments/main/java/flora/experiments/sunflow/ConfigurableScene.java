@@ -31,7 +31,6 @@ public abstract class ConfigurableScene extends SunflowAPI
   @Override
   public final void run() {
     this.build();
-    System.out.println(configuration);
     this.render(SunflowAPI.DEFAULT_OPTIONS, display);
   }
 
