@@ -67,7 +67,7 @@ final class Driver {
     Instant start = Instant.now();
     scene.run();
     int timeOut = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
-    // System.out.println("TIMEOUT IS " + timeOut);
+    System.out.println("TIMEOUT IS " + timeOut);
 
     // setup the meters with the reference
     Map<String, Meter> meters =
