@@ -36,8 +36,12 @@ public final class CompatNumberProblem<K extends ConstrainedKnob & RandomizableK
     WorkUnit<?, ?> work =
         workFactory.fromIndices(
             solution.getVariables().stream().mapToInt(Double::intValue).toArray());
-    Map<String, Double> measurement = machine.run(work);
-    solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
+    try {
+      Map<String, Double> measurement = machine.run(work);
+      solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
+    } catch (Exception e) {
+      solution.setObjectives(new double[] {Double.MAX_VALUE, Double.MAX_VALUE});
+    }
   }
 
   @Override

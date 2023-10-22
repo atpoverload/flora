@@ -23,6 +23,7 @@ java_binary(
     name = "Driver",
     srcs = ["Driver.java"],
     deps = [
+        "//contrib/main/java/flora/meter/contrib",
         "//contrib/main/java/flora/strategy/contrib/ears",
         "//experiments/main/java/flora/experiments/sunflow",
         "//experiments/main/java/flora/experiments/sunflow/image",

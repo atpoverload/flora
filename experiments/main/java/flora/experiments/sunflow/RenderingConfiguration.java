@@ -12,7 +12,7 @@ public record RenderingConfiguration(
   /** The default knobs used for the reference image. */
   public static final RenderingConfiguration DEFAULT =
       new RenderingConfiguration(
-          RenderingKnobs.DEFAULT.threads().start(),
+          12,
           RenderingKnobs.DEFAULT.resolutionX().end(),
           RenderingKnobs.DEFAULT.resolutionY().end(),
           /* aaMin= */ 1,

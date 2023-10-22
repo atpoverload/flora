@@ -10,10 +10,11 @@ import flora.experiments.sunflow.image.ImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scenes.CornellBox;
 import flora.knob.meta.RangeConstrainedKnob;
-import flora.meter.CpuJiffiesMeter;
-import flora.meter.Stopwatch;
+import flora.meter.contrib.EflectMeter;
 import flora.strategy.contrib.ears.CompatNumberProblem;
 import flora.strategy.contrib.ears.RawWorkFactory;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,9 @@ import org.um.feri.ears.problems.StopCriterion;
 import org.um.feri.ears.problems.Task;
 
 final class Driver {
+  private static final int REFERENCE_TIMEOUT =
+      60 * 60 * 1000; // 1 hour timeout for the reference image
+
   private static class RawSceneFactory
       implements RawWorkFactory<RangeConstrainedKnob, ConfigurableScene> {
     private final ConfigurableScene scene;
@@ -58,18 +62,20 @@ final class Driver {
             .toArray(RangeConstrainedKnob[]::new);
 
     // generate the reference
-    CornellBox scene = new CornellBox(knobs, RenderingConfiguration.DEFAULT, display);
+    CornellBox scene =
+        new CornellBox(knobs, RenderingConfiguration.DEFAULT, display, REFERENCE_TIMEOUT);
+    Instant start = Instant.now();
     scene.run();
+    int timeOut = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
+    // System.out.println("TIMEOUT IS " + timeOut);
 
     // setup the meters with the reference
     Map<String, Meter> meters =
         Map.of(
-            "stopwatch",
-            new Stopwatch(),
+            "energy",
+            EflectMeter.newLocalMeter(4),
             "score",
-            new ImageDistanceMeter(display, display.getImage(), ImageDistanceScore.MSE),
-            "jiffies",
-            new CpuJiffiesMeter());
+            new ImageDistanceMeter(display, display.getImage(), ImageDistanceScore.MSE));
 
     // wire everything together
     Machine machine =
@@ -81,7 +87,11 @@ final class Driver {
         };
 
     CompatNumberProblem<RangeConstrainedKnob> problem =
-        new CompatNumberProblem<>("rendering-problem", new RawSceneFactory(scene), machine);
+        new CompatNumberProblem<>(
+            "rendering-problem",
+            new RawSceneFactory(
+                new CornellBox(knobs, RenderingConfiguration.DEFAULT, display, timeOut)),
+            machine);
 
     // run the renderer
     D_NSGAII nsga = new D_NSGAII();

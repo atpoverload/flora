@@ -17,6 +17,8 @@ public abstract class Machine {
       // safely turn off the meters if we failed to run the workload
       meters.values().forEach(Meter::stop);
       meters.values().forEach(Meter::read);
+      System.out.println(
+          String.format("%s produced a bad result: %s", workload.configuration(), e));
       throw new IllegalArgumentException(
           "The workload failed with the given configuration, so the meters were stopped.", e);
     }

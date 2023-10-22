@@ -12,15 +12,18 @@ import org.sunflow.math.Vector3;
 /** Scene for a Cornell box (https://en.wikipedia.org/wiki/Cornell_box). */
 public final class CornellBox extends ConfigurableScene {
   private final Display display;
+  private final int timeOutMs;
 
-  public CornellBox(RenderingKnobs knobs, RenderingConfiguration configuration, Display display) {
-    super(knobs, configuration, display);
+  public CornellBox(
+      RenderingKnobs knobs, RenderingConfiguration configuration, Display display, int timeOutMs) {
+    super(knobs, configuration, display, timeOutMs);
     this.display = display;
+    this.timeOutMs = timeOutMs;
   }
 
   @Override
   public ConfigurableScene newScene(RenderingKnobs knobs, RenderingConfiguration configuration) {
-    return new CornellBox(knobs, configuration, display);
+    return new CornellBox(knobs, configuration, display, timeOutMs);
   }
 
   @Override

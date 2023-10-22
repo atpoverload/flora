@@ -1,8 +1,12 @@
 package flora.experiments.sunflow;
 
 import flora.WorkUnit;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.sunflow.SunflowAPI;
 import org.sunflow.core.Display;
+import org.sunflow.system.UI;
 
 /** An abstract class that can configure rendering settings for a scene. */
 public abstract class ConfigurableScene extends SunflowAPI
@@ -10,12 +14,14 @@ public abstract class ConfigurableScene extends SunflowAPI
   private final RenderingKnobs knobs;
   private final RenderingConfiguration configuration;
   private final Display display;
+  private final int timeOutMs;
 
   protected ConfigurableScene(
-      RenderingKnobs knobs, RenderingConfiguration configuration, Display display) {
+      RenderingKnobs knobs, RenderingConfiguration configuration, Display display, int timeOutMs) {
     this.knobs = knobs;
     this.configuration = configuration;
     this.display = display;
+    this.timeOutMs = timeOutMs;
   }
 
   @Override
@@ -31,7 +37,23 @@ public abstract class ConfigurableScene extends SunflowAPI
   @Override
   public final void run() {
     this.build();
+    var timer = new Timer();
+    AtomicBoolean timedOut = new AtomicBoolean(false);
+    timer.schedule(
+        new TimerTask() {
+          @Override
+          public void run() {
+            timedOut.set(true);
+            UI.taskCancel();
+          }
+        },
+        timeOutMs);
     this.render(SunflowAPI.DEFAULT_OPTIONS, display);
+    timer.cancel();
+    if (timedOut.get()) {
+      throw new IllegalStateException(
+          String.format("Configuration %s for knobs %s timed out.", configuration, knobs));
+    }
   }
 
   public abstract ConfigurableScene newScene(
