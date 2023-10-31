@@ -2,7 +2,7 @@ package flora.experiments.sunflow.renderer;
 
 import flora.Machine;
 import flora.Meter;
-import flora.experiments.sunflow.ConfigurableScene;
+import flora.experiments.sunflow.ConfigurableSceneFactory;
 import flora.experiments.sunflow.RenderingConfiguration;
 import flora.experiments.sunflow.RenderingKnobs;
 import flora.experiments.sunflow.image.BufferedImageDisplay;
@@ -12,7 +12,6 @@ import flora.experiments.sunflow.scenes.CornellBox;
 import flora.knob.meta.RangeConstrainedKnob;
 import flora.meter.contrib.EflectMeter;
 import flora.strategy.contrib.ears.CompatNumberProblem;
-import flora.strategy.contrib.ears.RawWorkFactory;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
@@ -25,31 +24,7 @@ import org.um.feri.ears.problems.Task;
 
 final class Driver {
   private static final int REFERENCE_TIMEOUT =
-      60 * 60 * 1000; // 1 hour timeout for the reference image
-
-  private static class RawSceneFactory
-      implements RawWorkFactory<RangeConstrainedKnob, ConfigurableScene> {
-    private final ConfigurableScene scene;
-    private final RangeConstrainedKnob[] knobs;
-
-    private RawSceneFactory(ConfigurableScene scene) {
-      this.scene = scene;
-      this.knobs =
-          Arrays.stream(scene.knobs().asArray())
-              .map(RangeConstrainedKnob::new)
-              .toArray(RangeConstrainedKnob[]::new);
-    }
-
-    @Override
-    public RangeConstrainedKnob[] knobs() {
-      return this.knobs;
-    }
-
-    @Override
-    public ConfigurableScene fromIndices(int[] configuration) {
-      return scene.newScene(scene.knobs(), scene.knobs().fromIndices(configuration));
-    }
-  }
+      60 * 60 * 1000; // 1 hour timeout for the reference image (just in case)
 
   public static void main(String[] args) throws Exception {
     // Setup the knobs and display
@@ -67,7 +42,7 @@ final class Driver {
     Instant start = Instant.now();
     scene.run();
     int timeOut = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
-    System.out.println("TIMEOUT IS " + timeOut);
+    // System.out.println("TIMEOUT IS " + timeOut);
 
     // setup the meters with the reference
     Map<String, Meter> meters =
@@ -86,10 +61,10 @@ final class Driver {
           }
         };
 
-    CompatNumberProblem<RangeConstrainedKnob> problem =
-        new CompatNumberProblem<>(
+    CompatNumberProblem problem =
+        new CompatNumberProblem(
             "rendering-problem",
-            new RawSceneFactory(
+            new ConfigurableSceneFactory(
                 new CornellBox(knobs, RenderingConfiguration.DEFAULT, display, timeOut)),
             machine);
 

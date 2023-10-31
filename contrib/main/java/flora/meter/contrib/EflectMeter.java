@@ -52,7 +52,8 @@ public class EflectMeter implements Meter {
     double energy = 0;
     for (Virtualization virtualization : eflect.read()) {
       for (VirtualizedComponent component : virtualization.getVirtualizationList()) {
-        if (component.getUnit() == VirtualizedComponent.Unit.ENERGY) {
+        // TODO: filtering out negatives here but maybe we need a better method
+        if (component.getUnit() == VirtualizedComponent.Unit.ENERGY && component.getValue() > 0) {
           energy += component.getValue();
         }
       }

@@ -8,7 +8,6 @@ import java.util.Map;
 public abstract class Machine {
   /** Meters some unit of work. */
   public final <K, C, W extends WorkUnit<K, C>> Map<String, Double> run(W workload) {
-    System.out.println(workload.configuration());
     Map<String, Meter> meters = meters();
     meters.values().forEach(Meter::start);
     try {
@@ -17,15 +16,12 @@ public abstract class Machine {
       // safely turn off the meters if we failed to run the workload
       meters.values().forEach(Meter::stop);
       meters.values().forEach(Meter::read);
-      System.out.println(
-          String.format("%s produced a bad result: %s", workload.configuration(), e));
       throw new IllegalArgumentException(
           "The workload failed with the given configuration, so the meters were stopped.", e);
     }
     meters.values().forEach(Meter::stop);
     Map<String, Double> measurement =
         meters.entrySet().stream().collect(toMap(e -> e.getKey(), e -> e.getValue().read()));
-    System.out.println(measurement);
     return measurement;
   }
 

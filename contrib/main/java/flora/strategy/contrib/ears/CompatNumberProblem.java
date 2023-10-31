@@ -1,72 +1,84 @@
 package flora.strategy.contrib.ears;
 
+import static java.util.stream.Collectors.toList;
+
 import flora.Machine;
 import flora.WorkUnit;
-import flora.knob.meta.ConstrainedKnob;
-import flora.knob.meta.RandomizableKnob;
+import flora.work.EncodedWorkFactory;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 import org.um.feri.ears.problems.NumberProblem;
 import org.um.feri.ears.problems.NumberSolution;
 
-public final class CompatNumberProblem<K extends ConstrainedKnob & RandomizableKnob>
-    extends NumberProblem<Double> {
-  private final RawWorkFactory<K, ?> workFactory;
+public final class CompatNumberProblem extends NumberProblem<Double> {
+  private final EncodedWorkFactory<?, ?, ?> workFactory;
   private final Machine machine;
-  private final K[] knobs;
   private final int numberOfObjectives;
+  private final double[] failureMeasurement;
 
-  public CompatNumberProblem(String name, RawWorkFactory<K, ?> workFactory, Machine machine) {
-    super(name, workFactory.knobs().length, 1, machine.meters().size(), 0);
+  public CompatNumberProblem(
+      String name, EncodedWorkFactory<?, ?, ?> workFactory, Machine machine) {
+    super(name, workFactory.knobCount(), 1, machine.meters().size(), 0);
     this.workFactory = workFactory;
     this.machine = machine;
 
-    this.knobs = workFactory.knobs();
-    this.numberOfObjectives = machine.meters().size();
     this.lowerLimit = new ArrayList<>();
     this.upperLimit = new ArrayList<>();
-    for (K knob : knobs) {
+
+    for (int i = 0; i < workFactory.knobCount(); i++) {
       this.lowerLimit.add(0.0);
-      this.upperLimit.add((double) knob.configurationCount());
+      this.upperLimit.add((double) workFactory.configurationCount(i));
     }
+
+    this.numberOfObjectives = machine.meters().size();
+    this.failureMeasurement =
+        IntStream.range(0, machine.meters().size())
+            .mapToDouble(i -> Double.MAX_VALUE - 1)
+            .toArray();
   }
 
   @Override
   public void evaluate(NumberSolution<Double> solution) {
-    WorkUnit<?, ?> work =
-        workFactory.fromIndices(
-            solution.getVariables().stream().mapToInt(Double::intValue).toArray());
+    int[] configuration = solution.getVariables().stream().mapToInt(Double::intValue).toArray();
+    WorkUnit<?, ?> work = workFactory.newWorkUnit(configuration);
     try {
+      System.out.println(work.configuration());
       Map<String, Double> measurement = machine.run(work);
-      solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
+      double[] measures = measurement.values().stream().mapToDouble(d -> d).toArray();
+      System.out.println(Arrays.toString(measures));
+      solution.setObjectives(measures);
     } catch (Exception e) {
-      solution.setObjectives(new double[] {Double.MAX_VALUE, Double.MAX_VALUE});
+      System.out.println(Arrays.toString(failureMeasurement));
+      solution.setObjectives(failureMeasurement);
     }
   }
 
   @Override
   public void makeFeasible(NumberSolution<Double> solution) {
-    for (int i = 0; i < knobs.length; i++) {
-      solution.setValue(i, (double) knobs[i].constrain(solution.getValue(i).intValue()));
+    int[] configuration = solution.getVariables().stream().mapToInt(Double::intValue).toArray();
+    double[] repairedConfiguration =
+        Arrays.stream(workFactory.repairConfiguration(configuration)).mapToDouble(d -> d).toArray();
+    for (int i = 0; i < repairedConfiguration.length; i++) {
+      solution.setValue(i, repairedConfiguration[i]);
     }
   }
 
   @Override
   public boolean isFeasible(NumberSolution<Double> solution) {
-    for (int i = 0; i < knobs.length; i++) {
-      if (!knobs[i].isValid(solution.getValue(i).intValue())) {
-        return false;
-      }
-    }
-    return true;
+    int[] configuration = solution.getVariables().stream().mapToInt(Double::intValue).toArray();
+    return workFactory.isValidConfiguration(configuration);
   }
 
   @Override
   public NumberSolution<Double> getRandomSolution() {
-    final var solution = new ArrayList<Double>();
-    for (K knob : knobs) {
-      solution.add((double) knob.random());
-    }
-    return new NumberSolution<>(numberOfObjectives, solution);
+    List<Double> configuration =
+        Arrays.stream(workFactory.randomConfiguration())
+            .mapToDouble(d -> d)
+            .mapToObj(Double::valueOf)
+            .collect(toList());
+    return new NumberSolution<>(numberOfObjectives, configuration);
   }
 }

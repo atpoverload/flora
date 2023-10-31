@@ -12,12 +12,12 @@ public record RenderingConfiguration(
   /** The default knobs used for the reference image. */
   public static final RenderingConfiguration DEFAULT =
       new RenderingConfiguration(
-          1,
-          RenderingKnobs.DEFAULT.resolutionX().end(),
-          RenderingKnobs.DEFAULT.resolutionY().end(),
+          12,
+          RenderingKnobs.DEFAULT.resolutionX.start(),
+          RenderingKnobs.DEFAULT.resolutionY.start(),
           /* aaMin= */ 1,
           /* aaMax= */ 2,
-          RenderingKnobs.DEFAULT.bucketSize().start(),
-          RenderingKnobs.DEFAULT.aoSamples().start(),
+          RenderingKnobs.DEFAULT.bucketSize.start(),
+          RenderingKnobs.DEFAULT.aoSamples.start(),
           Filter.BLACKMAN_HARRIS);
 }

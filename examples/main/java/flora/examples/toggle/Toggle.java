@@ -45,7 +45,7 @@ public record Toggle(ToggleConfiguration configuration)
   }
 
   @Override
-  public Toggle random() {
+  public Toggle randomize() {
     return Toggle.randomConfiguration();
   }
 

@@ -5,6 +5,7 @@ java_library(
     deps = [
         "//src/main/java/flora",
         "//src/main/java/flora/knob",
+        "//src/main/java/flora/knob/meta",
         "//src/main/java/flora/work",
         "@sunflow//jar",
     ],
