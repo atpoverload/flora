@@ -6,5 +6,5 @@ import flora.WorkUnit;
 public interface RandomizableWorkUnit<K, C, W extends RandomizableWorkUnit<K, C, W>>
     extends WorkUnit<K, C> {
   /** Returns a copy of the {@link WorkUnit} with a randomly chosen configuration. */
-  W random();
+  W randomize();
 }
