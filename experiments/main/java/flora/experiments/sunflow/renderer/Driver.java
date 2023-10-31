@@ -70,6 +70,6 @@ final class Driver {
 
     // run the renderer
     D_NSGAII nsga = new D_NSGAII();
-    nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 100000, 0, 0));
+    nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 1000, 0, 0));
   }
 }
