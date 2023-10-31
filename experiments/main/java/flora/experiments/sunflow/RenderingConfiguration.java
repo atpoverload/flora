@@ -13,8 +13,8 @@ public record RenderingConfiguration(
   public static final RenderingConfiguration DEFAULT =
       new RenderingConfiguration(
           1,
-          RenderingKnobs.DEFAULT.resolutionX.start(),
-          RenderingKnobs.DEFAULT.resolutionY.start(),
+          RenderingKnobs.DEFAULT.resolutionX.end(),
+          RenderingKnobs.DEFAULT.resolutionY.end(),
           /* aaMin= */ 1,
           /* aaMax= */ 2,
           RenderingKnobs.DEFAULT.bucketSize.start(),
