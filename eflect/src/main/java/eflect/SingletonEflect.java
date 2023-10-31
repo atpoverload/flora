@@ -26,7 +26,7 @@ public final class SingletonEflect implements Eflect {
   /** Creates an instance of the underlying class if it hasn't been created yet. */
   public static synchronized SingletonEflect getInstance() {
     if (instance == null) {
-      logger.info("creating the singleton eflect");
+      logger.fine("creating the singleton eflect");
       instance =
           new SingletonEflect(
               new LocalEflect(

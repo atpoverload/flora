@@ -86,7 +86,7 @@ public final class CpuJiffies {
       }
       reader.close();
     } catch (Exception e) {
-      logger.info("unable to read " + SYSTEM_STAT_FILE);
+      logger.fine("unable to read " + SYSTEM_STAT_FILE);
     }
     return stats;
   }

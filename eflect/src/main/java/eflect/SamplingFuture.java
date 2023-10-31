@@ -165,7 +165,7 @@ public final class SamplingFuture<T> implements Future<List<T>> {
     try {
       return future.get();
     } catch (Exception e) {
-      logger.info(String.format("could not consume a future of %s", future.getClass()));
+      logger.fine(String.format("could not consume a future of %s", future.getClass()));
     }
     return Optional.empty();
   }

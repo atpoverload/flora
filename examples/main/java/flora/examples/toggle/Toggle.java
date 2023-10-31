@@ -57,7 +57,7 @@ public record Toggle(ToggleConfiguration configuration)
     if (configuration.toggle2()) sleepTime += 5 * (1 + Math.random());
     if (configuration.toggle1() && configuration.toggle2()) sleepTime -= 12 * (1 + Math.random());
     try {
-      logger.info(String.format("%s sleeps for %d ms", this.getClass().getSimpleName(), sleepTime));
+      logger.fine(String.format("%s sleeps for %d ms", this.getClass().getSimpleName(), sleepTime));
       Thread.sleep(Math.max(1, sleepTime));
     } catch (Exception e) {
 

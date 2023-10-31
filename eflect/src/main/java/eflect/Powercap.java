@@ -74,7 +74,7 @@ public final class Powercap {
       return (int)
           Stream.of(new File(POWERCAP_PATH).list()).filter(f -> f.contains("intel-rapl")).count();
     } catch (Exception e) {
-      logger.info("couldn't check the socket count; powercap likely not available");
+      logger.fine("couldn't check the socket count; powercap likely not available");
       return 0;
     }
   }
