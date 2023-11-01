@@ -68,7 +68,10 @@ public final class ConfigurableSceneFactory
       configuration[i] = this.knobs[i].constrain(configuration[i]);
     }
     // check that anti-aliasing (knobs 3 and 4) are properly bounded
-    configuration[3] = Math.max(configuration[2], configuration[3]);
+    while (this.knobs[2].fromIndex(configuration[2], Integer.class)
+        > this.knobs[3].fromIndex(configuration[3], Integer.class)) {
+      configuration[3]++;
+    }
     return configuration;
   }
 }
