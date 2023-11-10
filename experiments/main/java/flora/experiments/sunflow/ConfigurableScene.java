@@ -36,6 +36,12 @@ public abstract class ConfigurableScene extends SunflowAPI
 
   @Override
   public final void run() {
+    if (configuration.aaMin() > configuration.aaMax()) {
+      throw new RuntimeException(
+          String.format(
+              "Minimum anti-aliasing (%d) exceeds the maximum (%d).",
+              configuration.aaMin(), configuration.aaMax()));
+    }
     this.build();
     var timer = new Timer();
     AtomicBoolean timedOut = new AtomicBoolean(false);
@@ -62,6 +68,11 @@ public abstract class ConfigurableScene extends SunflowAPI
   /** Builds the configurable portion of the scene. */
   @Override
   public final void build() {
+    buildScene();
+    buildConfigurablePortion();
+  }
+
+  private void buildConfigurablePortion() {
     parameter("threads", configuration.threads());
     // spawn regular priority threads
     parameter("threads.lowPriority", false);
@@ -80,7 +91,7 @@ public abstract class ConfigurableScene extends SunflowAPI
     parameter("gi.ambocc.samples", configuration.aoSamples());
     parameter("gi.ambocc.maxdist", 600.0f);
 
-    buildScene();
+    options(SunflowAPI.DEFAULT_OPTIONS);
   }
 
   /** Builds the scene that is to be rendered. */

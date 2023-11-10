@@ -51,6 +51,7 @@ public final class CompatNumberProblem extends NumberProblem<Double> {
       System.out.println(Arrays.toString(measures));
       solution.setObjectives(measures);
     } catch (Exception e) {
+      e.printStackTrace();
       System.out.println(Arrays.toString(failureMeasurement));
       solution.setObjectives(failureMeasurement);
     }

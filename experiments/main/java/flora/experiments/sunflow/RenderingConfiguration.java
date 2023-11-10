@@ -8,16 +8,4 @@ public record RenderingConfiguration(
     int aaMax,
     int bucketSize,
     int aoSamples,
-    Filter filter) {
-  /** The default knobs used for the reference image. */
-  public static final RenderingConfiguration DEFAULT =
-      new RenderingConfiguration(
-          1,
-          RenderingKnobs.DEFAULT.resolutionX.end(),
-          RenderingKnobs.DEFAULT.resolutionY.end(),
-          /* aaMin= */ 1,
-          /* aaMax= */ 2,
-          RenderingKnobs.DEFAULT.bucketSize.start(),
-          RenderingKnobs.DEFAULT.aoSamples.start(),
-          Filter.BLACKMAN_HARRIS);
-}
+    Filter filter) {}

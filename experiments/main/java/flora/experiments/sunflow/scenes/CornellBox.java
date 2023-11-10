@@ -28,8 +28,6 @@ public final class CornellBox extends ConfigurableScene {
 
   @Override
   protected void buildScene() {
-    options(SunflowAPI.DEFAULT_OPTIONS);
-
     parameter(
         "transform",
         Matrix4.lookAt(new Point3(0, 0, -600), new Point3(0, 0, 0), new Vector3(0, 1, 0)));

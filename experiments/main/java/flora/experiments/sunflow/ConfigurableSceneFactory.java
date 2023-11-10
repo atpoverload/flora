@@ -44,8 +44,7 @@ public final class ConfigurableSceneFactory
 
   @Override
   public boolean isValidConfiguration(int[] configuration) {
-    // TODO: leak from checking at least?
-    if (configuration.length < knobs.length) {
+    if (configuration.length != knobs.length) {
       return false;
     }
     for (int i = 0; i < configuration.length; i++) {
@@ -60,7 +59,7 @@ public final class ConfigurableSceneFactory
 
   @Override
   public int[] repairConfiguration(int[] configuration) {
-    if (configuration.length != knobs.length) {
+        if (configuration.length != knobs.length) {
       // can't be repaired; select a random one
       return randomConfiguration();
     }
@@ -72,6 +71,6 @@ public final class ConfigurableSceneFactory
         > this.knobs[3].fromIndex(configuration[3], Integer.class)) {
       configuration[3]++;
     }
-    return configuration;
+        return configuration;
   }
 }

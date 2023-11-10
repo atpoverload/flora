@@ -2,12 +2,14 @@ package flora.experiments.sunflow.renderer;
 
 import flora.Machine;
 import flora.Meter;
+import flora.experiments.sunflow.ConfigurableScene;
 import flora.experiments.sunflow.ConfigurableSceneFactory;
 import flora.experiments.sunflow.RenderingConfiguration;
 import flora.experiments.sunflow.RenderingKnobs;
 import flora.experiments.sunflow.image.BufferedImageDisplay;
 import flora.experiments.sunflow.image.ImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceScore;
+import flora.experiments.sunflow.scenes.ConfigurableFileScene;
 import flora.experiments.sunflow.scenes.CornellBox;
 import flora.knob.meta.RangeConstrainedKnob;
 import flora.meter.contrib.EflectMeter;
@@ -30,15 +32,18 @@ final class Driver {
     // Setup the knobs and display
     UI.verbosity(0);
     BufferedImageDisplay display = new BufferedImageDisplay();
-    RenderingKnobs knobs = RenderingKnobs.DEFAULT;
+    RenderingKnobs knobs = RenderingKnobs.DEFAULT_KNOBS;
+    RenderingConfiguration configuration = RenderingKnobs.DEFAULT_CONFIGURATION;
     RangeConstrainedKnob[] knobsArray =
         Arrays.stream(knobs.asArray())
             .map(RangeConstrainedKnob::new)
             .toArray(RangeConstrainedKnob[]::new);
 
     // generate the reference
-    CornellBox scene =
-        new CornellBox(knobs, RenderingConfiguration.DEFAULT, display, REFERENCE_TIMEOUT);
+    ConfigurableScene scene =
+        args.length == 0
+            ? new CornellBox(knobs, configuration, display, REFERENCE_TIMEOUT)
+            : new ConfigurableFileScene(knobs, configuration, display, REFERENCE_TIMEOUT, args[0]);
     Instant start = Instant.now();
     scene.run();
     int timeOut = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
@@ -61,12 +66,12 @@ final class Driver {
           }
         };
 
+    scene =
+        args.length == 0
+            ? new CornellBox(knobs, configuration, display, timeOut)
+            : new ConfigurableFileScene(knobs, configuration, display, timeOut, args[0]);
     CompatNumberProblem problem =
-        new CompatNumberProblem(
-            "rendering-problem",
-            new ConfigurableSceneFactory(
-                new CornellBox(knobs, RenderingConfiguration.DEFAULT, display, timeOut)),
-            machine);
+        new CompatNumberProblem("rendering-problem", new ConfigurableSceneFactory(scene), machine);
 
     // run the renderer
     D_NSGAII nsga = new D_NSGAII();

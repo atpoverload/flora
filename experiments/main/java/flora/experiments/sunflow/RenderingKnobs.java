@@ -30,7 +30,7 @@ public final class RenderingKnobs {
     if (aaMin.start() > aaMax.start() || aaMin.end() > aaMax.end()) {
       throw new IllegalArgumentException(
           String.format(
-              "The anti-aliasing knobs (aaMin=%s, aaMax=%s) do not have properly ranges.",
+              "The anti-aliasing knobs (aaMin=%s, aaMax=%s) do not have proper ranges.",
               aaMin, aaMax));
     }
     this.threads = threads;
@@ -44,7 +44,7 @@ public final class RenderingKnobs {
   }
 
   /** The default knobs used for rendering. */
-  public static final RenderingKnobs DEFAULT =
+  public static final RenderingKnobs DEFAULT_KNOBS =
       new RenderingKnobs(
           /* threads= */ new IntRangeKnob(1, CPU_COUNT),
           /* resolutionX= */ new IntRangeKnob(128, 640),
@@ -54,6 +54,18 @@ public final class RenderingKnobs {
           /* bucketSize= */ new IntRangeKnob(16, 512),
           /* aoSamples= */ new IntRangeKnob(1, 64),
           new EnumKnob<>(Filter.class));
+
+  /** The default knobs used for the reference image. */
+  public static final RenderingConfiguration DEFAULT_CONFIGURATION =
+      new RenderingConfiguration(
+          1,
+          DEFAULT_KNOBS.resolutionX.end(),
+          DEFAULT_KNOBS.resolutionY.end(),
+          /* aaMin= */ 1,
+          /* aaMax= */ 2,
+          DEFAULT_KNOBS.bucketSize.start(),
+          DEFAULT_KNOBS.aoSamples.start(),
+          Filter.BLACKMAN_HARRIS);
 
   public int[] randomConfiguration() {
     ThreadLocalRandom random = ThreadLocalRandom.current();
