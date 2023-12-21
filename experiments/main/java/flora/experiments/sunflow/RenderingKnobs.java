@@ -63,8 +63,8 @@ public final class RenderingKnobs {
           DEFAULT_KNOBS.resolutionY.end(),
           /* aaMin= */ 1,
           /* aaMax= */ 2,
-          DEFAULT_KNOBS.bucketSize.start(),
-          DEFAULT_KNOBS.aoSamples.start(),
+          /* bucketSize= */ 32,
+          /* aoSamples= */ 64,
           Filter.BLACKMAN_HARRIS);
 
   public int[] randomConfiguration() {

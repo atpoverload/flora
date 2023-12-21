@@ -42,6 +42,9 @@ public final class CompatNumberProblem extends NumberProblem<Double> {
 
   @Override
   public void evaluate(NumberSolution<Double> solution) {
+    if (!isFeasible(solution)) {
+      makeFeasible(solution);
+    }
     int[] configuration = solution.getVariables().stream().mapToInt(Double::intValue).toArray();
     WorkUnit<?, ?> work = workFactory.newWorkUnit(configuration);
     try {
