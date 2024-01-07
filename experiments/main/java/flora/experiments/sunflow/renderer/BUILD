@@ -38,6 +38,25 @@ java_binary(
     ],
 )
 
+java_binary(
+    name = "PowercapDriver",
+    srcs = ["PowercapDriver.java"],
+    deps = [
+        "//contrib/main/java/flora/meter/contrib",
+        "//contrib/main/java/flora/strategy/contrib/ears",
+        "//experiments/main/java/flora/experiments/sunflow",
+        "//experiments/main/java/flora/experiments/sunflow/image",
+        "//experiments/main/java/flora/experiments/sunflow/scenes",
+        "//src/main/java/flora",
+        "//src/main/java/flora/knob",
+        "//src/main/java/flora/knob/meta",
+        "//src/main/java/flora/meter",
+        "@ears//jar",
+        "@janino//jar",
+        "@sunflow//jar",
+    ],
+)
+
 # java_binary(
 #     name = "KillingSceneRenderer",
 #     runtime_deps = [
