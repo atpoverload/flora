@@ -15,8 +15,7 @@ public final class Rapl {
 
     if (path == null) {
       try {
-        System.load("/home/timur/flora/libCPUScaler.so");
-        // NativeUtil.loadLibraryFromJar("/libCPUScaler.so");
+        System.loadLibrary("CPUScaler");
       } catch (Exception e) {
         LoggerUtil.getLogger().info("couldn't find CPUScaler!");
       }

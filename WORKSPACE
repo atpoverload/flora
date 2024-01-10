@@ -1,6 +1,47 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_jar")
 
+RULES_NIXPKGS_COMMIT = "c871abcedf5734513f7ab731ea6ba541636f4df6" 
+
+http_archive(
+    name = "io_tweag_rules_nixpkgs",
+    strip_prefix = "rules_nixpkgs-%s" % RULES_NIXPKGS_COMMIT,
+    urls = ["https://github.com/tweag/rules_nixpkgs/archive/%s.tar.gz" % RULES_NIXPKGS_COMMIT],
+    sha256 = "532634d78c35a42745bc1ceb02193c1505e676ed55746947061c2b6bb37b85fb",
+)
+
+http_archive(
+    name = "rules_java",
+    urls = [
+        "https://github.com/bazelbuild/rules_java/releases/download/7.3.2/rules_java-7.3.2.tar.gz",
+    ],
+    sha256 = "3121a00588b1581bd7c1f9b550599629e5adcc11ba9c65f482bbd5cfe47fdf30",
+)
+
+load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains")
+rules_java_dependencies()
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
+rules_nixpkgs_dependencies()
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_local_repository")
+nixpkgs_local_repository(
+  name = "nixpkgs",
+  nix_flake_lock_file = "//:flake.lock",
+  nix_file_deps = ["//:flake.lock"],
+)
+
+load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_java_configure")
+nixpkgs_java_configure(
+    attribute_path = "jdk17.home",
+    repository = "@nixpkgs",
+    toolchain = True,
+    toolchain_name = "nixpkgs_java",
+    toolchain_version = "17",
+)
+
+rules_java_toolchains()
+
 http_jar(
     name = "sunflow",
     urls = ["https://sunflow-deps.s3.amazonaws.com/sunflow.jar"],

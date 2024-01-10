@@ -36,6 +36,9 @@ java_binary(
         "@janino//jar",
         "@sunflow//jar",
     ],
+    data = [
+        "//eflect_rapl/src/main/native:libCPUScaler.so",
+    ],
 )
 
 java_binary(
