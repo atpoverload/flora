@@ -1,44 +1,45 @@
 package flora.knob;
 
 import flora.Knob;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-/** A {@link Knob} that contains a boolean. */
+/** A {@link Knob} that represents a boolean. */
 public final class BooleanKnob implements Knob {
-  private final AtomicBoolean value;
+  /** A cached instance to prevent unnecessary copying. */
+  public static final BooleanKnob INSTANCE = new BooleanKnob();
 
-  public BooleanKnob(boolean value) {
-    this.value = new AtomicBoolean(value);
+  /** Returns the number of possible booleans, which is two (true or false). */
+  @Override
+  public int configurationCount() {
+    return 2;
   }
 
-  /** Writes the knob as a json dict. */
+  /** Checks for a boolean and grabs it with {@code fromIndex}, otherwise throw. */
+  @Override
+  @SuppressWarnings("unchecked")
+  public <T extends Object> T fromIndex(int index, Class<T> cls) {
+    if (cls.equals(Boolean.class)) {
+      return (T) Boolean.valueOf(fromIndex(index));
+    }
+    throw new KnobValueException(this, cls, index);
+  }
+
+  /** Returns false/true if 0/1 is provided, otherwise throw. */
+  public boolean fromIndex(int index) {
+    switch (index) {
+      case 0:
+        return false;
+      case 1:
+        return true;
+      default:
+        throw new KnobValueException(this, Boolean.class, index);
+    }
+  }
+
   @Override
   public String toString() {
-    return String.format("{\"knob_type\":\"%s\",\"value\":%b", this.getClass(), this.value.get());
+    return this.getClass().getName();
   }
 
-  /** Returns the value. */
-  @Override
-  public boolean getBoolean() {
-    return this.value.get();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o instanceof BooleanKnob) {
-      BooleanKnob other = (BooleanKnob) o;
-      return this.value.get() == other.value.get();
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return Boolean.hashCode(this.value.get());
-  }
-
-  /** Sets the value. It is usually better to construct a new knob instead of modifying one. */
-  public void setValue(boolean value) {
-    this.value.set(value);
-  }
+  /** Do not instantiate outside of the singleton. */
+  private BooleanKnob() {}
 }

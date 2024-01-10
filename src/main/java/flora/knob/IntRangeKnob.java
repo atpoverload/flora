@@ -1,23 +1,18 @@
 package flora.knob;
 
 import flora.Knob;
-import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * A {@link Knob} that can be set to a value within a range of integers. The range is inclusive on
- * both start and end.
- */
-public final class IntRangeKnob implements Knob {
+/** A {@link Knob} that represents an inclusive range of integers. */
+public final class IntRangeKnob implements IntKnob {
   private final int start;
   private final int end;
-  private final int stepSize;
+  private final int step;
+  private final int configCount;
 
-  private final AtomicInteger value;
-
-  public IntRangeKnob(int start, int end, int stepSize) {
-    if (stepSize < 0) {
+  public IntRangeKnob(int start, int end, int step) {
+    if (step < 0) {
       throw new IllegalArgumentException(
-          String.format("The step size (%d) must be positive for an integer range.", stepSize));
+          String.format("The step size (%d) must be positive for an integer range.", step));
     } else if (end <= start) {
       throw new IllegalArgumentException(
           String.format(
@@ -25,78 +20,51 @@ public final class IntRangeKnob implements Knob {
     }
     this.start = start;
     this.end = end;
-    this.stepSize = stepSize;
-    this.value = new AtomicInteger(start);
+    this.step = step;
+    this.configCount = (end - start + 1) / step;
   }
 
   public IntRangeKnob(int start, int end) {
     this(start, end, 1);
   }
 
-  public IntRangeKnob(IntRangeKnob knob) {
-    this(knob.getStart(), knob.getEnd(), knob.getStep());
+  /** Returns the number of values in the range. */
+  @Override
+  public int configurationCount() {
+    return configCount;
   }
 
-  /** Writes the knob as a json dict. */
+  /** Returns the value for {@code index} if it's in range, and throws otherwise. */
   @Override
-  public String toString() {
-    return String.format(
-        "{\"knob_type\":\"%s\",\"value\":%s,\"start\":%d,\"end\":%d,\"step\":%d",
-        this.getClass(), this.value.get(), start, end, stepSize);
-  }
-
-  /** Returns the value. */
-  @Override
-  public final int getInt() {
-    return this.value.get();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o instanceof IntRangeKnob) {
-      IntRangeKnob other = (IntRangeKnob) o;
-      return this.start == other.start
-          && this.end == other.end
-          && this.stepSize == other.stepSize
-          && this.value.get() == other.value.get();
+  @SuppressWarnings("unchecked")
+  public <T extends Object> T fromIndex(int index, Class<T> cls) {
+    if (cls.equals(Integer.class)) {
+      return (T) Integer.valueOf(fromIndex(index));
     }
-    return false;
+    throw new KnobValueException(this, cls, index);
   }
 
+  /** Returns the range value if it's inbounds, otherwise throw. */
   @Override
-  public int hashCode() {
-    final int prime = 31;
-    int hash = 0;
-    for (int i : new int[] {start, end, stepSize, value.get()}) {
-      hash = Integer.hashCode(i) + prime * hash;
+  public int fromIndex(int index) {
+    if (0 <= index && index < configurationCount()) {
+      return start + index * step;
     }
-    return hash;
-  }
-
-  /** Safely sets the value by checking if it is within the range and throws otherwise. */
-  public void setValue(int value) {
-    if (start <= value && value <= end && (value - start) % stepSize == 0) {
-      this.value.set(value);
-    } else {
-      throw new IllegalArgumentException(
-          String.format(
-              "The value (%d) cannot be set to one outside of the range (%d, %d, %d).",
-              value, this.start, this.end, this.stepSize));
-    }
+    throw new KnobValueException(this, Integer.class, index);
   }
 
   /** Returns the range start. */
-  public int getStart() {
+  public int start() {
     return start;
   }
 
   /** Returns the range end. */
-  public int getEnd() {
+  public int end() {
     return end;
   }
 
   /** Returns the distance between range steps. */
-  public int getStep() {
-    return stepSize;
+  public int step() {
+    return step;
   }
 }

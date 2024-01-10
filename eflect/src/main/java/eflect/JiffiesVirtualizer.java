@@ -20,7 +20,7 @@ public class JiffiesVirtualizer {
   public static List<Virtualization> virtualize(
       List<CpuSample> cpus, List<TaskSample> tasks, long millisThresh) {
     if (cpus.size() < 2 || tasks.size() < 2) {
-      logger.info(
+      logger.fine(
           String.format(
               "not enough samples to align data (cpu: %d, tasks: %d)", cpus.size(), tasks.size()));
       return new ArrayList<>();

@@ -1,77 +1,97 @@
 package flora.experiments.sunflow;
 
-import flora.Knob;
-import flora.knob.EnumKnob;
-import flora.knob.IntRangeKnob;
-import java.util.Map;
+import flora.WorkUnit;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.sunflow.SunflowAPI;
+import org.sunflow.core.Display;
+import org.sunflow.system.UI;
 
 /** An abstract class that can configure rendering settings for a scene. */
-public abstract class ConfigurableScene extends SunflowAPI {
-  private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+public abstract class ConfigurableScene extends SunflowAPI
+    implements WorkUnit<RenderingKnobs, RenderingConfiguration> {
+  private final RenderingKnobs knobs;
+  private final RenderingConfiguration configuration;
+  private final Display display;
+  private final int timeOutMs;
 
-  /** The default knobs used for the reference image. */
-  public static Map<String, Knob> getKnobs() {
-    Map<String, Knob> knobs = createKnobs();
-    ((IntRangeKnob) knobs.get("threads")).setValue(1);
-    ((IntRangeKnob) knobs.get("resolutionX")).setValue(768);
-    ((IntRangeKnob) knobs.get("resolutionY")).setValue(768);
-    ((IntRangeKnob) knobs.get("aaMin")).setValue(1);
-    ((IntRangeKnob) knobs.get("aaMax")).setValue(2);
-    ((IntRangeKnob) knobs.get("bucketSize")).setValue(32);
-    ((IntRangeKnob) knobs.get("aoSamples")).setValue(64);
-    ((EnumKnob<Filter>) knobs.get("filter")).setValue("BLACKMAN_HARRIS");
+  protected ConfigurableScene(
+      RenderingKnobs knobs, RenderingConfiguration configuration, Display display, int timeOutMs) {
+    this.knobs = knobs;
+    this.configuration = configuration;
+    this.display = display;
+    this.timeOutMs = timeOutMs;
+  }
+
+  @Override
+  public final RenderingKnobs knobs() {
     return knobs;
   }
 
-  private static Map<String, Knob> createKnobs() {
-    return Map.of(
-        "threads",
-        new IntRangeKnob(1, CPU_COUNT),
-        "resolutionX",
-        new IntRangeKnob(256, 768),
-        "resolutionY",
-        new IntRangeKnob(256, 768),
-        "aaMin",
-        new IntRangeKnob(-4, 5),
-        "aaMax",
-        new IntRangeKnob(-4, 5),
-        "bucketSize",
-        new IntRangeKnob(1, 128),
-        "aoSamples",
-        new IntRangeKnob(32, 128),
-        "filter",
-        new EnumKnob<>(Filter.TRIANGLE));
+  @Override
+  public final RenderingConfiguration configuration() {
+    return configuration;
   }
 
-  private final Map<String, Knob> knobs;
-
-  protected ConfigurableScene(Map<String, Knob> knobs) {
-    this.knobs = knobs;
+  @Override
+  public final void run() {
+    if (configuration.aaMin() > configuration.aaMax()) {
+      throw new RuntimeException(
+          String.format(
+              "Minimum anti-aliasing (%d) exceeds the maximum (%d).",
+              configuration.aaMin(), configuration.aaMax()));
+    }
+    this.build();
+    var timer = new Timer();
+    AtomicBoolean timedOut = new AtomicBoolean(false);
+    timer.schedule(
+        new TimerTask() {
+          @Override
+          public void run() {
+            timedOut.set(true);
+            UI.taskCancel();
+          }
+        },
+        timeOutMs);
+    this.render(SunflowAPI.DEFAULT_OPTIONS, display);
+    timer.cancel();
+    if (timedOut.get()) {
+      throw new IllegalStateException(
+          String.format("Configuration %s for knobs %s timed out.", configuration, knobs));
+    }
   }
+
+  public abstract ConfigurableScene newScene(
+      RenderingKnobs knobs, RenderingConfiguration configuration);
 
   /** Builds the configurable portion of the scene. */
   @Override
   public final void build() {
-    parameter("threads", knobs.get("threads").getInt());
+    buildScene();
+    buildConfigurablePortion();
+  }
+
+  private void buildConfigurablePortion() {
+    parameter("threads", configuration.threads());
     // spawn regular priority threads
     parameter("threads.lowPriority", false);
-    parameter("resolutionX", knobs.get("resolutionX").getInt());
-    parameter("resolutionY", knobs.get("resolutionY").getInt());
-    parameter("aa.min", knobs.get("aaMin").getInt());
-    parameter("aa.max", knobs.get("aaMax").getInt());
-    parameter("filter", Filter.fromKnob(knobs.get("filter")).toString());
+    parameter("resolutionX", configuration.resolutionX());
+    parameter("resolutionY", configuration.resolutionY());
+    parameter("aa.min", configuration.aaMin());
+    parameter("aa.max", configuration.aaMax());
+    parameter("filter", configuration.filter().toString());
     parameter("depths.diffuse", 2);
     parameter("depths.reflection", 2);
     parameter("depths.refraction", 2);
     parameter("bucket.order", "hilbert");
-    parameter("bucket.size", knobs.get("bucketSize").getInt());
+    parameter("bucket.size", configuration.bucketSize());
 
     parameter("gi.engine", "ambocc");
-    parameter("gi.ambocc.samples", knobs.get("aoSamples").getInt());
+    parameter("gi.ambocc.samples", configuration.aoSamples());
     parameter("gi.ambocc.maxdist", 600.0f);
 
-    buildScene();
+    options(SunflowAPI.DEFAULT_OPTIONS);
   }
 
   /** Builds the scene that is to be rendered. */

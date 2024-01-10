@@ -2,11 +2,10 @@ package flora.knob;
 
 import flora.Knob;
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
 
-/** A {@link Knob} that can be set to a collection of integer values. */
-public final class IntCollectionKnob implements Knob {
-  /** Constructs an {@code IntCollectionKnob} from the given numbers. */
+/** A {@link Knob} that represents a collection of ints. */
+public final class IntCollectionKnob implements IntKnob {
+  /** Creates an {@code IntCollectionKnob} from the given numbers. */
   public IntCollectionKnob of(int first, int second, int... others) {
     int[] values = new int[2 + others.length];
     values[0] = first;
@@ -18,7 +17,6 @@ public final class IntCollectionKnob implements Knob {
   }
 
   private final int[] values;
-  private final AtomicInteger value;
 
   public IntCollectionKnob(int[] values) {
     if (values.length < 2) {
@@ -26,56 +24,35 @@ public final class IntCollectionKnob implements Knob {
           String.format("There are insufficient knob values (%s).", Arrays.toString(values)));
     }
     this.values = Arrays.copyOf(values, values.length);
-    this.value = new AtomicInteger(this.values[0]);
   }
 
-  public IntCollectionKnob(IntCollectionKnob other) {
-    this(other.values);
-  }
-
-  /** Writes the knob as a json dict. */
+  /** Returns the number of values in the collection. */
   @Override
-  public String toString() {
-    return String.format(
-        "{\"knob_type\":\"%s\",\"value\":%s,\"values\":%s",
-        this.getClass(), this.value.get(), Arrays.toString(values));
+  public int configurationCount() {
+    return values.length;
   }
 
-  /** Returns the value. */
+  /** Returns the value at {@code index} if it is in range, and throws otherwise. */
   @Override
-  public final int getInt() {
-    return this.value.get();
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (o instanceof IntCollectionKnob) {
-      IntCollectionKnob other = (IntCollectionKnob) o;
-      return Arrays.equals(this.values, other.values) && this.value.get() == other.value.get();
+  @SuppressWarnings("unchecked")
+  public <T extends Object> T fromIndex(int index, Class<T> cls) {
+    if (cls.equals(Integer.class)) {
+      return (T) Integer.valueOf(fromIndex(index));
     }
-    return false;
+    throw new KnobValueException(this, cls, index);
   }
 
+  /** Returns the value at the index if it's in the value range, otherwise throw. */
   @Override
-  public int hashCode() {
-    final int prime = 31;
-    return Arrays.hashCode(this.values) + prime * Integer.hashCode(this.value.get());
-  }
-
-  /** Safely sets the value by checking if it is part of the collection and throws otherwise. */
-  public void setValue(int value) {
-    if (Arrays.stream(values).anyMatch(v -> v == value)) {
-      this.value.set(value);
-    } else {
-      throw new IllegalArgumentException(
-          String.format(
-              "The value (%d) cannot be set to one outside of the values %s.",
-              value, Arrays.toString(this.values)));
+  public int fromIndex(int index) {
+    if (0 <= index && index < configurationCount()) {
+      return values[index];
     }
+    throw new KnobValueException(this, Integer.class, index);
   }
 
-  /** Returns a copy of the allowed collection. */
-  public int[] getValues() {
-    return Arrays.copyOf(this.values, this.values.length);
+  /** Returns a defensive copy of the values. */
+  public int[] values() {
+    return Arrays.copyOf(values, configurationCount());
   }
 }

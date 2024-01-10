@@ -1,23 +1,33 @@
 package flora.experiments.sunflow.scenes;
 
-import flora.Knob;
 import flora.experiments.sunflow.ConfigurableScene;
-import java.util.Map;
+import flora.experiments.sunflow.RenderingConfiguration;
+import flora.experiments.sunflow.RenderingKnobs;
 import org.sunflow.SunflowAPI;
+import org.sunflow.core.Display;
 import org.sunflow.math.Matrix4;
 import org.sunflow.math.Point3;
 import org.sunflow.math.Vector3;
 
 /** Scene for a Cornell box (https://en.wikipedia.org/wiki/Cornell_box). */
 public final class CornellBox extends ConfigurableScene {
-  public CornellBox(Map<String, Knob> knobs) {
-    super(knobs);
+  private final Display display;
+  private final int timeOutMs;
+
+  public CornellBox(
+      RenderingKnobs knobs, RenderingConfiguration configuration, Display display, int timeOutMs) {
+    super(knobs, configuration, display, timeOutMs);
+    this.display = display;
+    this.timeOutMs = timeOutMs;
+  }
+
+  @Override
+  public ConfigurableScene newScene(RenderingKnobs knobs, RenderingConfiguration configuration) {
+    return new CornellBox(knobs, configuration, display, timeOutMs);
   }
 
   @Override
   protected void buildScene() {
-    options(SunflowAPI.DEFAULT_OPTIONS);
-
     parameter(
         "transform",
         Matrix4.lookAt(new Point3(0, 0, -600), new Point3(0, 0, 0), new Vector3(0, 1, 0)));

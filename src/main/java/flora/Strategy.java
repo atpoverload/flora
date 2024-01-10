@@ -2,11 +2,11 @@ package flora;
 
 import java.util.Map;
 
-/** An interface that can evaluate and recommend configurations.  */
-public interface Strategy {
-  /** Returns the knob configuration recommended by the strategy. */
-  Map<String, Knob> nextConfiguration();
+/** An interface that provides and consumes contexts. */
+public interface Strategy<K, C, W extends WorkUnit<K, C>> {
+  /** Returns the {@link KnobContext} of the strategy. */
+  W nextWorkload();
 
-  /** Feeds a configuration and measurement to the strategy. */
-  void update(Map<String, Knob> knobs, Map<String, Double> measurement);
+  /** Feeds a {@link KnobContext} and measurement to the strategy. */
+  void update(W workload, Map<String, Double> measurement);
 }

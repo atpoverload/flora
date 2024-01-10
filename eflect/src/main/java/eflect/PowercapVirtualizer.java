@@ -22,7 +22,7 @@ public class PowercapVirtualizer {
   public static List<Virtualization> virtualize(
       List<PowercapSample> powercap, List<Virtualization> activity, long millisThresh) {
     if (powercap.size() < 2) {
-      logger.info(
+      logger.fine(
           String.format("not enough samples to align data (powercap: %d)", powercap.size()));
       return new ArrayList<>();
     }
@@ -32,7 +32,7 @@ public class PowercapVirtualizer {
             v ->
                 v.getVirtualizationList().stream()
                     .anyMatch(PowercapVirtualizer::hasCpuComponent))) {
-      logger.info(String.format("no cpu activity virtualizations"));
+      logger.fine(String.format("no cpu activity virtualizations"));
       return new ArrayList<>();
     }
 

@@ -111,7 +111,7 @@ public final class TaskJiffies {
         stats.add(reader.readLine());
         reader.close();
       } catch (Exception e) {
-        logger.info("unable to read task " + statFile + " before it terminated");
+        logger.fine("unable to read task " + statFile + " before it terminated");
       }
     }
     return stats;

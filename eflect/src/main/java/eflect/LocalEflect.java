@@ -36,20 +36,20 @@ public final class LocalEflect implements Eflect {
   public void start() {
     synchronized (this) {
       if (isRunning) {
-        logger.info("ignoring start request while sampling");
+        logger.fine("ignoring start request while sampling");
         return;
       }
 
       // make sure we have an executor
       if (executor.isShutdown()) {
-        logger.info(
+        logger.fine(
             String.format("ignoring start request while executor %s is shutdown", executor));
         return;
       }
 
       // TODO: this is a strange potential failure if we forgot to read
       if (!dataFutures.isEmpty()) {
-        logger.info("data has not been read; retrieving it now for safety");
+        logger.fine("data has not been read; retrieving it now for safety");
         this.read();
       }
 
@@ -59,7 +59,7 @@ public final class LocalEflect implements Eflect {
       dataFutures.add(SamplingFuture.fixedPeriod(Powercap::sample, period, executor));
       dataFutures.add(SamplingFuture.fixedPeriod(CpuJiffies::sample, period, executor));
       dataFutures.add(SamplingFuture.fixedPeriod(TaskJiffies::sampleSelf, period, executor));
-      logger.info(String.format("started sampling at %s", this.period));
+      logger.fine(String.format("started sampling at %s", this.period));
       isRunning = true;
     }
   }
@@ -69,12 +69,12 @@ public final class LocalEflect implements Eflect {
   public void stop() {
     synchronized (this) {
       if (!isRunning) {
-        logger.info("ignoring stop request while not sampling");
+        logger.fine("ignoring stop request while not sampling");
         return;
       }
       isRunning = false;
       dataFutures.forEach(future -> future.cancel(true));
-      logger.info("stopped sampling");
+      logger.fine("stopped sampling");
     }
   }
 
@@ -82,7 +82,7 @@ public final class LocalEflect implements Eflect {
   @Override
   public List<Virtualization> read() {
     if (isRunning) {
-      logger.info("ignoring read request while running");
+      logger.fine("ignoring read request while running");
       return new ArrayList<>();
     }
 

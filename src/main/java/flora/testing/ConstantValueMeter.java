@@ -1,22 +1,25 @@
 package flora.testing;
 
 import flora.meter.SnapshotMeter;
-import java.util.concurrent.atomic.AtomicLong;
 
 /** A {@link SnapshotMeter} that always returns the same value. */
-public final class ConstantValueMeter extends SnapshotMeter {
-  private final AtomicLong value = new AtomicLong(0);
+public class ConstantValueMeter extends SnapshotMeter {
+  private double value;
+
+  public ConstantValueMeter() {
+    this(0);
+  }
 
   public ConstantValueMeter(double value) {
-    this.value.set(Double.doubleToLongBits(value));
+    this.value = value;
   }
 
   @Override
   public double read() {
-    return Double.longBitsToDouble(this.value.get());
+    return value;
   }
 
   public void setValue(double value) {
-    this.value.set(Double.doubleToLongBits(value));
+    this.value = value;
   }
 }

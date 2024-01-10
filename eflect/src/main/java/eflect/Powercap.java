@@ -74,11 +74,12 @@ public final class Powercap {
       return (int)
           Stream.of(new File(POWERCAP_PATH).list()).filter(f -> f.contains("intel-rapl")).count();
     } catch (Exception e) {
-      logger.info("couldn't check the socket count; powercap likely not available");
+      logger.fine("couldn't check the socket count; powercap likely not available");
       return 0;
     }
   }
 
+  // TODO: NEED TO LOG THESE!!!!
   /**
    * Parses the contents of /sys/devices/virtual/powercap/intel-rapl/intel-rapl:<socket>/energy_uj,
    * which contains the number of microjoules consumed by the package since boot as an integer.
