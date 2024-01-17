@@ -1,6 +1,6 @@
 package flora.experiments.sunflow.renderers;
 
-import flora.Machine;
+import flora.MeteringMachine;
 import flora.contrib.ears.FloraProblem;
 import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scene.RenderingConfiguration;
@@ -21,7 +21,8 @@ final class SunflowRenderingProblem {
     UI.verbosity(0);
 
     RenderingArgs renderingArgs = RenderingArgs.fromArgs(args);
-    Machine machine = new Machine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
+    MeteringMachine machine =
+        new MeteringMachine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
 
     // wire everything together
     FloraProblem<RenderingKnobs, RenderingConfiguration, Scene> problem =

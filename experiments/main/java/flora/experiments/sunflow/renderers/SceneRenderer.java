@@ -1,6 +1,6 @@
 package flora.experiments.sunflow.renderers;
 
-import flora.Machine;
+import flora.MeteringMachine;
 import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scene.RenderingConfiguration;
 import flora.experiments.sunflow.scene.util.JsonSceneUtil;
@@ -19,7 +19,8 @@ public final class SceneRenderer {
     UI.verbosity(0);
 
     RenderingArgs renderingArgs = RenderingArgs.fromArgs(args);
-    Machine machine = new Machine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
+    MeteringMachine machine =
+        new MeteringMachine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
     DataCollector<Instant, RenderingConfiguration> collector = new DataCollector<>();
 
     for (String configFile : renderingArgs.cmd.getArgs()) {
