@@ -1,0 +1,10 @@
+{
+    "threads": 1,
+    "width": 64,
+    "height": 64,
+    "aaMin": 1,
+    "aaMax": 2,
+    "bucketSize": 32,
+    "aoSamples": 64,
+    "filter": "BLACKMAN_HARRIS"
+}

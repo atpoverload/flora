@@ -40,4 +40,8 @@ public final class EnumKnob<E extends Enum<E>> implements Knob {
     }
     throw new KnobValueException(this, this.cls, index);
   }
+
+  public Class<E> enumType() {
+    return cls;
+  }
 }

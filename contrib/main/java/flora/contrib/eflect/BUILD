@@ -3,8 +3,8 @@ java_library(
     visibility = ["//visibility:public"],
     srcs = glob(["*.java"]),
     deps = [
+        "//src/main/java/flora",
+        "//eflect/src/main/java/eflect",
         "//eflect/src/main/java/eflect/data",
-        "//eflect/src/main/java/eflect/data/jiffies",
-        "//eflect/src/main/java/eflect/util",
     ]
 )

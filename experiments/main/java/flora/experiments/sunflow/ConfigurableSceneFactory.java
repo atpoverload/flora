@@ -1,11 +1,11 @@
 package flora.experiments.sunflow;
 
+import flora.WorkFactory;
 import flora.knob.meta.RangeConstrainedKnob;
-import flora.work.EncodedWorkFactory;
 import java.util.Arrays;
 
 public final class ConfigurableSceneFactory
-    implements EncodedWorkFactory<RenderingKnobs, RenderingConfiguration, ConfigurableScene> {
+    implements WorkFactory<RenderingKnobs, RenderingConfiguration, ConfigurableScene> {
   private final ConfigurableScene scene;
   private final RangeConstrainedKnob[] knobs;
 
@@ -28,8 +28,8 @@ public final class ConfigurableSceneFactory
   }
 
   @Override
-  public int configurationCount(int knob) {
-    return this.knobs[knob].configurationCount();
+  public int[] configurationSize() {
+    return Arrays.stream(this.knobs).mapToInt(k -> k.configurationCount()).toArray();
   }
 
   @Override
@@ -43,7 +43,7 @@ public final class ConfigurableSceneFactory
   }
 
   @Override
-  public boolean isValidConfiguration(int[] configuration) {
+  public boolean isValid(int[] configuration) {
     if (configuration.length != knobs.length) {
       return false;
     }
@@ -58,8 +58,8 @@ public final class ConfigurableSceneFactory
   }
 
   @Override
-  public int[] repairConfiguration(int[] configuration) {
-        if (configuration.length != knobs.length) {
+  public int[] fixConfiguration(int[] configuration) {
+    if (configuration.length != knobs.length) {
       // can't be repaired; select a random one
       return randomConfiguration();
     }
@@ -71,6 +71,6 @@ public final class ConfigurableSceneFactory
         > this.knobs[3].fromIndex(configuration[3], Integer.class)) {
       configuration[3]++;
     }
-        return configuration;
+    return configuration;
   }
 }

@@ -1,0 +1,22 @@
+[
+    {
+        "threads": 10,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 32,
+        "aoSamples": 64,
+        "filter": "TRIANGLE"
+    },
+    {
+        "threads": 20,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 32,
+        "aoSamples": 64,
+        "filter": "TRIANGLE"
+    }
+]
