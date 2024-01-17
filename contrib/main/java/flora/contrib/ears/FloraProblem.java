@@ -2,7 +2,7 @@ package flora.contrib.ears;
 
 import static java.util.stream.Collectors.toList;
 
-import flora.Machine;
+import flora.MeteringMachine;
 import flora.WorkFactory;
 import flora.WorkUnit;
 import flora.util.DataCollector;
@@ -22,13 +22,13 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
   }
 
   private final WorkFactory<K, C, W> workFactory;
-  private final Machine machine;
+  private final MeteringMachine machine;
   private final DataCollector<Instant, C> collector = new DataCollector<>();
 
   private final int numberOfObjectives;
   private final double[] failureMeasurement;
 
-  public FloraProblem(WorkFactory<K, C, W> workFactory, Machine machine) {
+  public FloraProblem(WorkFactory<K, C, W> workFactory, MeteringMachine machine) {
     super("sunflow-rendering", workFactory.knobCount(), 1, machine.meters().length, 0);
     this.workFactory = workFactory;
     this.machine = machine;
