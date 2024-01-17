@@ -55,10 +55,9 @@ final class RenderingEngine {
   Map<String, Meter> createMeters(ImageDistanceScore score) {
     Map<String, Meter> meters = new HashMap<>();
     meters.put("runtime", new Stopwatch());
-    // if (Rapl.getInstance() != null) {
-    //   meters.put("energy", new EflectMeter(Eflect.raplEflect(4, createExecutor(), 100)));
-    // } else if (Powercap.SOCKET_COUNT > 0) {
-    if (Powercap.SOCKET_COUNT > 0) {
+    if (Rapl.getInstance() != null) {
+      meters.put("energy", new EflectMeter(Eflect.raplEflect(4, createExecutor(), 100)));
+    } else if (Powercap.SOCKET_COUNT > 0) {
       meters.put("energy", new EflectMeter(Eflect.powercapEflect(4, createExecutor(), 100)));
     }
     referenceConfiguration.ifPresent(

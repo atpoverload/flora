@@ -40,7 +40,7 @@ public final class Eflect {
                 new EnergyAccountant(
                     Rapl.getInstance().getSocketCount(),
                     /* componentCount= */ 2,
-                    /* wrapAround= */ 0,
+                    /* wrapAround= */ Rapl.getInstance().getWrapAroundEnergy(),
                     new JiffiesAccountant(
                         Rapl.getInstance().getSocketCount(),
                         cpu -> cpu / (CPU_COUNT / Rapl.getInstance().getSocketCount()))),
@@ -61,7 +61,7 @@ public final class Eflect {
                 new EnergyAccountant(
                     Powercap.SOCKET_COUNT,
                     /* componentCount= */ 3,
-                    /* wrapAround= */ Rapl.getInstance().getWrapAroundEnergy(),
+                    /* wrapAround= */ 0,
                     new JiffiesAccountant(
                         Powercap.SOCKET_COUNT, cpu -> cpu / (CPU_COUNT / Powercap.SOCKET_COUNT))),
             mergeAttempts));
