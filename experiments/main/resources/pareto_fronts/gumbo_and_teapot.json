@@ -387,7 +387,7 @@
         "aaMax": 1,
         "bucketSize": 25,
         "aoSamples": 57,
-        "filter": "CATMULL-ROM"
+        "filter": "CATMULL_ROM"
     },
     {
         "threads": 32,
