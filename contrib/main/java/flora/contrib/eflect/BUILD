@@ -7,5 +7,6 @@ java_library(
         "//src/main/java/flora/util",
         "//eflect/src/main/java/eflect",
         "//eflect/src/main/java/eflect/data",
+        "//eflect/src/main/java/eflect/util",
     ]
 )
