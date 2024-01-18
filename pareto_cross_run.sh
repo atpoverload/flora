@@ -1,7 +1,7 @@
 DATA_DIR="data/cross-study"
 mkdir "${DATA_DIR}"
 
-MAX_HEAP_SIZE_FLAG="Xmx12G"
+MAX_HEAP_SIZE_FLAG="Xmx16G"
 
 # LIB_CPUSCALER=bazel-bin/eflect/src/main/native
 # java "-${MAX_HEAP_SIZE_FLAG}" -Djava.library.path="${LIB_CPUSCALER}" \

@@ -16,6 +16,7 @@ import flora.experiments.sunflow.scene.Scene;
 import flora.experiments.sunflow.scenes.CornellBox2;
 import flora.experiments.sunflow.scenes.FileScene;
 import flora.meter.Stopwatch;
+import flora.util.LoggerUtil;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.HashMap;
@@ -56,17 +57,19 @@ final class RenderingEngine {
     Map<String, Meter> meters = new HashMap<>();
     meters.put("runtime", new Stopwatch());
     if (Rapl.getInstance() != null) {
-      meters.put("energy", new EflectMeter(Eflect.raplEflect(4, createExecutor(), 100)));
+      meters.put("energy", new EflectMeter(Eflect.raplEflect(32, createExecutor(), 100)));
     } else if (Powercap.SOCKET_COUNT > 0) {
-      meters.put("energy", new EflectMeter(Eflect.powercapEflect(4, createExecutor(), 100)));
+      meters.put("energy", new EflectMeter(Eflect.powercapEflect(32, createExecutor(), 100)));
     }
     referenceConfiguration.ifPresent(
         configuration -> {
+          LoggerUtil.getLogger().info(String.format("generating reference from %s", configuration));
           Scene scene = newScene(configuration);
           Instant start = Instant.now();
           scene.run();
           timeOutMs = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
-          meters.put("score", new ImageDistanceMeter(display, display.getImage(), score));
+          LoggerUtil.getLogger().info(String.format("time out is set to %d ms", timeOutMs));
+          meters.put(score.name(), new ImageDistanceMeter(display, display.getImage(), score));
         });
     return meters;
   }
