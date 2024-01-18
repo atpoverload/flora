@@ -19,6 +19,7 @@ java_library(
         "//src/main/java/flora/meter",
         "//src/main/java/flora/knob",
         "//src/main/java/flora/knob/util",
+        "//src/main/java/flora/util",
         "@maven//:commons_cli_commons_cli",
         "@maven//:org_json_json",
         "@sunflow//jar",
