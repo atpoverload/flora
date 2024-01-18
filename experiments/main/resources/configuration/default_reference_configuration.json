@@ -5,6 +5,6 @@
     "aaMin": 1,
     "aaMax": 2,
     "bucketSize": 32,
-    "aoSamples": 32,
+    "aoSamples": 64,
     "filter": "BLACKMAN_HARRIS"
 }
