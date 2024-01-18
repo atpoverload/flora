@@ -20,7 +20,7 @@ import org.sunflow.system.UI;
 public final class SceneRenderer {
   public static void main(String[] args) throws Exception {
     UI.verbosity(0);
-    LoggerUtil.getLogger().setLevel(Level.FINE);
+    LoggerUtil.getLogger().setLevel(Level.FINER);
 
     RenderingArgs renderingArgs = RenderingArgs.fromArgs(args);
     MeteringMachine machine =

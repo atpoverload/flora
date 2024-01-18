@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
@@ -27,6 +28,7 @@ public final class LoggerUtil {
                   " ", makePrefix(record), record.getMessage(), System.lineSeparator());
             }
           });
+      handler.setLevel(Level.FINE);
 
       Logger logger = Logger.getLogger(NAME);
       logger.setUseParentHandlers(false);

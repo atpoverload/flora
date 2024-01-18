@@ -63,12 +63,12 @@ final class RenderingEngine {
     }
     referenceConfiguration.ifPresent(
         configuration -> {
-          LoggerUtil.getLogger().info(String.format("generating reference from %s", configuration));
+          LoggerUtil.getLogger().fine(String.format("generating reference from %s", configuration));
           Scene scene = newScene(configuration);
           Instant start = Instant.now();
           scene.run();
           timeOutMs = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
-          LoggerUtil.getLogger().info(String.format("time out is set to %d ms", timeOutMs));
+          LoggerUtil.getLogger().fine(String.format("time out is set to %d ms", timeOutMs));
           meters.put(score.name(), new ImageDistanceMeter(display, display.getImage(), score));
         });
     return meters;
