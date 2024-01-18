@@ -7,7 +7,7 @@
         "aaMax": 0,
         "bucketSize": 43,
         "aoSamples": 28,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 35,
@@ -27,7 +27,7 @@
         "aaMax": 0,
         "bucketSize": 43,
         "aoSamples": 27,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 37,
@@ -47,7 +47,7 @@
         "aaMax": 0,
         "bucketSize": 43,
         "aoSamples": 48,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 32,
@@ -137,7 +137,7 @@
         "aaMax": 0,
         "bucketSize": 39,
         "aoSamples": 27,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
@@ -177,7 +177,7 @@
         "aaMax": 0,
         "bucketSize": 52,
         "aoSamples": 28,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 39,
@@ -357,7 +357,7 @@
         "aaMax": 0,
         "bucketSize": 28,
         "aoSamples": 45,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
@@ -467,7 +467,7 @@
         "aaMax": -1,
         "bucketSize": 28,
         "aoSamples": 45,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
@@ -507,7 +507,7 @@
         "aaMax": 0,
         "bucketSize": 39,
         "aoSamples": 27,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 39,
@@ -517,7 +517,7 @@
         "aaMax": 0,
         "bucketSize": 28,
         "aoSamples": 48,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
@@ -667,7 +667,7 @@
         "aaMax": 0,
         "bucketSize": 28,
         "aoSamples": 48,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
@@ -747,7 +747,7 @@
         "aaMax": 0,
         "bucketSize": 28,
         "aoSamples": 32,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 40,
@@ -877,7 +877,7 @@
         "aaMax": 0,
         "bucketSize": 36,
         "aoSamples": 26,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 40,
@@ -917,7 +917,7 @@
         "aaMax": 0,
         "bucketSize": 37,
         "aoSamples": 58,
-        "filter": "BLACKMAN-HARRIS"
+        "filter": "BLACKMAN_HARRIS"
     },
     {
         "threads": 38,
