@@ -34,7 +34,7 @@ public class EflectMeter implements Meter {
     Instant end = Instant.MIN;
     for (EnergyFootprint footprint : eflect.read()) {
       start = TimeUtil.min(footprint.start, start);
-      end = TimeUtil.min(footprint.end, end);
+      end = TimeUtil.max(footprint.end, end);
       if (footprint.energy > 0) {
         energy += footprint.energy;
       }

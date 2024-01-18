@@ -80,6 +80,7 @@ public final class SamplingFuture<T> implements Future<List<T>> {
     if (isCollecting.get()) {
       cancel(true);
     }
+    // TODO: should this only be available once?
     return collectedData;
   }
 

@@ -99,6 +99,7 @@ public final class Eflect {
         processor.add(sample);
       }
     }
+    dataFutures.clear();
     footprints.addAll(processor.process());
   }
 
