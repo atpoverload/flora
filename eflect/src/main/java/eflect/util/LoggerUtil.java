@@ -8,52 +8,48 @@ import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-/** Utility to helps with the {@link Logger}. */
+/** Helper for logging. */
 public final class LoggerUtil {
-  private static final SimpleDateFormat dateFormatter =
+  private static final String NAME = "eflect";
+  private static final SimpleDateFormat DATE_FORMATTER =
       new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a z");
-  private static final Formatter formatter =
-      new Formatter() {
-        @Override
-        public String format(LogRecord record) {
-          return String.join(
-              " ",
-              makePrefix(new Date(record.getMillis())),
-              record.getMessage(),
-              System.lineSeparator());
-        }
-      };
-  private static boolean setup = false;
 
-  private static String makePrefix(Date date) {
-    return String.join(
-        " ",
-        "eflect",
-        "(" + dateFormatter.format(date) + ")",
-        "[" + Thread.currentThread().getName() + "]:");
+  private static boolean IS_INITIALIZED = false;
+
+  public static synchronized Logger getLogger() {
+    if (!IS_INITIALIZED) {
+      ConsoleHandler handler = new ConsoleHandler();
+      handler.setFormatter(
+          new Formatter() {
+            @Override
+            public String format(LogRecord record) {
+              return String.join(
+                  " ", makePrefix(record), record.getMessage(), System.lineSeparator());
+            }
+          });
+
+      Logger logger = Logger.getLogger(NAME);
+      logger.setUseParentHandlers(false);
+
+      for (Handler hdlr : logger.getHandlers()) {
+        logger.removeHandler(hdlr);
+      }
+      logger.addHandler(handler);
+      IS_INITIALIZED = true;
+
+      return logger;
+    } else {
+      return Logger.getLogger(NAME);
+    }
   }
 
-  /** Sets up the logger, if necessary, and returns it. */
-  public static synchronized Logger getLogger() {
-    if (!setup) {
-      try {
-        ConsoleHandler handler = new ConsoleHandler();
-        handler.setFormatter(formatter);
-
-        Logger logger = Logger.getLogger("eflect");
-        logger.setUseParentHandlers(false);
-
-        for (Handler hdlr : logger.getHandlers()) {
-          logger.removeHandler(hdlr);
-        }
-        logger.addHandler(handler);
-
-        setup = true;
-      } catch (Exception e) {
-        setup = false;
-      }
-    }
-    return Logger.getLogger("eflect");
+  private static String makePrefix(LogRecord record) {
+    return String.join(
+        " ",
+        String.format("[%s]", record.getLevel()),
+        NAME,
+        String.format("(%s)", DATE_FORMATTER.format(new Date(record.getMillis()))),
+        "[" + Thread.currentThread().getName() + "]:");
   }
 
   private LoggerUtil() {}

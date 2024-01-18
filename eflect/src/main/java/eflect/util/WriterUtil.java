@@ -5,12 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /** Utility to write csv data. */
 public final class WriterUtil {
-  private static final Logger logger = LoggerUtil.getLogger();
-
   public static void writeCsv(String directory, String fileName, String header, Iterable<?> data) {
     try (PrintWriter writer = new PrintWriter(new FileWriter(new File(directory, fileName)))) {
       writer.println(header);
@@ -18,7 +15,7 @@ public final class WriterUtil {
         writer.println(d.toString());
       }
     } catch (IOException e) {
-      logger.log(Level.INFO, "unable to write " + new File(directory, fileName), e);
+      LoggerUtil.getLogger().log(Level.FINE, "unable to write " + new File(directory, fileName), e);
     }
   }
 }

@@ -5,13 +5,12 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /** Utility to access data from /proc */
 public class ProcUtil {
   // /proc/pid/task
   private static final long PID = ProcessHandle.current().pid();
-  private static final Logger logger = LoggerUtil.getLogger();
 
   /** Reads this application's thread's jiffies stat files. */
   public static ArrayList<String> readTaskStats() {
@@ -25,7 +24,7 @@ public class ProcUtil {
       try {
         stats.add(Files.readString(Path.of(statFile.getPath())));
       } catch (Exception e) {
-        logger.info("unable to read task " + statFile);
+        LoggerUtil.getLogger().log(Level.FINE, "unable to read stats for task " + task, e);
       }
     }
     return stats;
@@ -44,7 +43,7 @@ public class ProcUtil {
         stats[i] = reader.readLine();
       }
     } catch (Exception e) {
-      logger.info("unable to read " + SYSTEM_STAT_FILE);
+      LoggerUtil.getLogger().log(Level.FINE, "unable to read cpu stats", e);
       e.printStackTrace();
     } finally {
       return stats;

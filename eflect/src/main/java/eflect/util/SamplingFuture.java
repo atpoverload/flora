@@ -14,13 +14,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /** A {@link Future} that allows for collecting data from a {@link Supplier}. */
 public final class SamplingFuture<T> implements Future<List<T>> {
-  private static final Logger logger = LoggerUtil.getLogger();
-
   /** Start a {@link SamplingFuture} that samples at a fixed {@link Duration}. */
   public static <T> SamplingFuture<T> fixedPeriod(
       Supplier<? extends T> source, Duration period, ScheduledExecutorService executor) {
@@ -164,7 +161,8 @@ public final class SamplingFuture<T> implements Future<List<T>> {
     try {
       return future.get();
     } catch (Exception e) {
-      logger.fine(String.format("could not consume a future of %s", future.getClass()));
+      LoggerUtil.getLogger()
+          .fine(String.format("could not consume a future of %s", future.getClass()));
     }
     return Optional.empty();
   }

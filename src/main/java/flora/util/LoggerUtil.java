@@ -10,13 +10,14 @@ import java.util.logging.Logger;
 
 /** Helper for logging. */
 public final class LoggerUtil {
-  private static final SimpleDateFormat dateFormatter =
+  private static final String NAME = "flora";
+  private static final SimpleDateFormat DATE_FORMATTER =
       new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a z");
 
-  private static boolean isInitialized = false;
+  private static boolean IS_INITIALIZED = false;
 
   public static synchronized Logger getLogger() {
-    if (!isInitialized) {
+    if (!IS_INITIALIZED) {
       ConsoleHandler handler = new ConsoleHandler();
       handler.setFormatter(
           new Formatter() {
@@ -27,18 +28,18 @@ public final class LoggerUtil {
             }
           });
 
-      Logger logger = Logger.getLogger("flora");
+      Logger logger = Logger.getLogger(NAME);
       logger.setUseParentHandlers(false);
 
       for (Handler hdlr : logger.getHandlers()) {
         logger.removeHandler(hdlr);
       }
       logger.addHandler(handler);
-      isInitialized = true;
+      IS_INITIALIZED = true;
 
       return logger;
     } else {
-      return Logger.getLogger("flora");
+      return Logger.getLogger(NAME);
     }
   }
 
@@ -46,8 +47,8 @@ public final class LoggerUtil {
     return String.join(
         " ",
         String.format("[%s]", record.getLevel()),
-        "flora",
-        String.format("(%s)", dateFormatter.format(new Date(record.getMillis()))),
+        NAME,
+        String.format("(%s)", DATE_FORMATTER.format(new Date(record.getMillis()))),
         "[" + Thread.currentThread().getName() + "]:");
   }
 

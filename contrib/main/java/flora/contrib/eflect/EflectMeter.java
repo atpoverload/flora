@@ -1,5 +1,6 @@
 package flora.contrib.eflect;
 
+import flora.util.LoggerUtil;
 import eflect.Eflect;
 import eflect.data.EnergyFootprint;
 import flora.Meter;
@@ -13,11 +14,13 @@ public class EflectMeter implements Meter {
 
   @Override
   public void start() {
+    LoggerUtil.getLogger().fine("starting eflect");
     eflect.start();
   }
 
   @Override
   public void stop() {
+    LoggerUtil.getLogger().fine("stopping eflect");
     eflect.stop();
   }
 
@@ -29,6 +32,7 @@ public class EflectMeter implements Meter {
         energy += footprint.energy;
       }
     }
+    LoggerUtil.getLogger().fine("eflect reports %fJ");
     return energy;
   }
 }

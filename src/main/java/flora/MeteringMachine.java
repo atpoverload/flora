@@ -18,12 +18,17 @@ public final class MeteringMachine {
     meters.values().forEach(Meter::start);
     try {
       workload.run();
-    } catch (Exception e) {
+    } catch (Exception error) {
       // safely turn off the meters if we failed to run the workload
       meters.values().forEach(Meter::stop);
+      // TODO: we may want a "partial" measurement here?
       meters.values().forEach(Meter::read);
-      throw new IllegalArgumentException(
-          "The workload failed with the given configuration, so the meters were stopped.", e);
+      if (error instanceof PerformanceFault) {
+        throw error;
+      } else {
+        throw new IllegalArgumentException(
+            String.format("Failed to run %s, so the meters were stopped.", workload), error);
+      }
     }
     meters.values().forEach(Meter::stop);
     Map<String, Double> measurement =

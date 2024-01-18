@@ -23,13 +23,15 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
 
   private final WorkFactory<K, C, W> workFactory;
   private final MeteringMachine machine;
-  private final DataCollector<Instant, C> collector = new DataCollector<>();
+  private final DataCollector<Integer, C> collector = new DataCollector<>();
 
   private final int numberOfObjectives;
   private final double[] failureMeasurement;
 
-  public FloraProblem(WorkFactory<K, C, W> workFactory, MeteringMachine machine) {
-    super("sunflow-rendering", workFactory.knobCount(), 1, machine.meters().length, 0);
+  private int iteration = 0;
+
+  public FloraProblem(String name, WorkFactory<K, C, W> workFactory, MeteringMachine machine) {
+    super(name, workFactory.knobCount(), 1, machine.meters().length, 0);
     this.workFactory = workFactory;
     this.machine = machine;
 
@@ -53,30 +55,29 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
 
   @Override
   public void evaluate(NumberSolution<Double> solution) {
-    Instant timestamp = Instant.now();
     if (!isFeasible(solution)) {
       makeFeasible(solution);
     }
     W work = workFactory.newWorkUnit(toIntArray(solution));
-    collector.addConfiguration(timestamp, work.configuration());
+    collector.addConfiguration(Integer.valueOf(iteration), work.configuration());
     try {
-      LoggerUtil.getLogger()
-          .info(String.format("executing configuration %s", work.configuration()));
+      LoggerUtil.getLogger().info(String.format("trying configuration %s", work.configuration()));
       Map<String, Double> measurement = machine.run(work);
       LoggerUtil.getLogger()
           .info(
-              String.format(
-                  "configuration %s had measurement %s", work.configuration(), measurement));
-      collector.addMeasurement(timestamp, measurement);
+              String.format("measured %s for configuration %s", measurement, work.configuration()));
+      collector.addMeasurement(Integer.valueOf(iteration), measurement);
       solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
     } catch (Exception error) {
       LoggerUtil.getLogger()
           .log(
               Level.INFO,
-              String.format("an error occurred with configuration %s", work.configuration()),
+              String.format("an error occurred for configuration %s", work.configuration()),
               error);
-      collector.addError(timestamp, error);
+      collector.addError(Integer.valueOf(iteration), error);
       solution.setObjectives(failureMeasurement);
+    } finally {
+      iteration++;
     }
   }
 
@@ -111,7 +112,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
             .collect(toList()));
   }
 
-  public DataCollector<Instant, C> getCollector() {
+  public DataCollector<Integer, C> getCollector() {
     return collector;
   }
 }

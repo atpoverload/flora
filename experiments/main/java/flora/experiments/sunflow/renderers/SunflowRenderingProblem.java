@@ -27,6 +27,7 @@ final class SunflowRenderingProblem {
     // wire everything together
     FloraProblem<RenderingKnobs, RenderingConfiguration, Scene> problem =
         new FloraProblem<>(
+            "sunflow-rendering",
             new SquareSceneFactory(renderingArgs.engine.knobs(), renderingArgs.engine::newScene),
             machine);
     D_NSGAII nsga = new D_NSGAII();
