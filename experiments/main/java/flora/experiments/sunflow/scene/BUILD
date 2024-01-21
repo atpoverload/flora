@@ -9,6 +9,7 @@ java_library(
         "//src/main/java/flora",
         "//src/main/java/flora/fault",
         "//src/main/java/flora/knob",
+        "//src/main/java/flora/knob/util",
         "@ears//jar",
         "@sunflow//jar",
     ],

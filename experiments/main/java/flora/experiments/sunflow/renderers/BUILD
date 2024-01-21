@@ -1,7 +1,7 @@
 RENDERER_SRCS = [
-    "SunflowRenderingProblem.java",
-    "ReferenceSceneRenderer.java",
     "SceneRenderer.java",
+    "SunflowRenderingProblem.java",
+    "SunflowRenderingReplayProblem.java"
 ]
 
 java_library(
@@ -51,6 +51,30 @@ java_binary(
 java_binary(
     name = "SunflowRenderingProblem",
     srcs = ["SunflowRenderingProblem.java"],
+    deps = [
+        ":renderers",
+        "//contrib/main/java/flora/contrib/ears",
+        "//experiments/main/java/flora/experiments/sunflow/image",
+        "//experiments/main/java/flora/experiments/sunflow/scene",
+        "//experiments/main/java/flora/experiments/sunflow/scene/util",
+        "//experiments/main/java/flora/experiments/sunflow/scenes",
+        "//src/main/java/flora",
+        "//src/main/java/flora/util",
+        "//src/main/java/flora/util:json",
+        "@ears//jar",
+        "@janino//jar",
+        "@maven//:commons_cli_commons_cli",
+        "@maven//:org_json_json",
+        "@sunflow//jar",
+    ],
+    data = [
+        "//eflect/src/main/native:libCPUScaler.so",
+    ],
+)
+
+java_binary(
+    name = "SunflowRenderingReplayProblem",
+    srcs = ["SunflowRenderingReplayProblem.java"],
     deps = [
         ":renderers",
         "//contrib/main/java/flora/contrib/ears",

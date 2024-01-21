@@ -1,6 +1,7 @@
 package flora.experiments.sunflow.scene;
 
 import flora.WorkFactory;
+import flora.knob.util.Knobs;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
@@ -121,5 +122,17 @@ public final class SquareSceneFactory
     configuration[3] = aaMax;
 
     return configuration;
+  }
+
+  public int[] decode(RenderingConfiguration configuration) {
+    return new int[] {
+      knobs.threads.toIndex(Math.min(Knobs.ALL_CPUS.end(), configuration.threads())),
+      knobs.width.toIndex(configuration.width()),
+      knobs.aaMin.toIndex(configuration.aaMin()),
+      knobs.aaMax.toIndex(configuration.aaMax()),
+      knobs.bucketSize.toIndex(configuration.bucketSize()),
+      knobs.aoSamples.toIndex(configuration.aoSamples()),
+      knobs.filter.toIndex(configuration.filter())
+    };
   }
 }

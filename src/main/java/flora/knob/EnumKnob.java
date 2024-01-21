@@ -23,6 +23,10 @@ public final class EnumKnob<E extends Enum<E>> implements Knob {
     return values.size();
   }
 
+  public int toIndex(Enum<E> value) {
+    return value.ordinal();
+  }
+
   /** Returns the enum value of ordinality {@code index} if it is in range, and throws otherwise. */
   @Override
   @SuppressWarnings("unchecked")

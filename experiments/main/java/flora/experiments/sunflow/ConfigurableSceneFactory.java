@@ -73,4 +73,8 @@ public final class ConfigurableSceneFactory
     }
     return configuration;
   }
+
+  public int[] decode(RenderingConfiguration configuration) {
+    return new int[0];
+  }
 }

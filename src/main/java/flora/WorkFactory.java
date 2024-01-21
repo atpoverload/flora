@@ -11,6 +11,8 @@ public interface WorkFactory<K, C, W extends WorkUnit<K, C>> {
   /** The number of configurations each knob has. */
   int[] configurationSize();
 
+  int[] decode(C configuration);
+
   /** Creates a new work unit from the given configuration. */
   W newWorkUnit(int[] configuration);
 
