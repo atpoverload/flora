@@ -8,6 +8,7 @@ import eflect.util.Rapl;
 import flora.Meter;
 import flora.contrib.eflect.EflectMeter;
 import flora.experiments.sunflow.image.BufferedImageDisplay;
+import flora.experiments.sunflow.image.ConstrainedImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scene.RenderingConfiguration;
@@ -22,6 +23,7 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.sunflow.PluginRegistry;
@@ -35,16 +37,19 @@ final class RenderingEngine {
   private final Optional<RenderingConfiguration> referenceConfiguration;
   private final Optional<String> sceneFile;
   private final BufferedImageDisplay display = new BufferedImageDisplay();
+  private final OptionalDouble constraint;
 
   private int timeOutMs = DEFAULT_TIMEOUT;
 
   RenderingEngine(
       Optional<String> sceneFile,
       RenderingKnobs knobs,
-      Optional<RenderingConfiguration> referenceConfiguration) {
+      Optional<RenderingConfiguration> referenceConfiguration,
+      OptionalDouble constraint) {
     this.knobs = knobs;
     this.referenceConfiguration = referenceConfiguration;
     this.sceneFile = sceneFile;
+    this.constraint = constraint;
     // TODO: we know this is a discovered fault in sunflow's backend, so we add graceful termination
     PluginRegistry.imageSamplerPlugins.registerPlugin("bucket", CancelingBucketRenderer.class);
   }
@@ -69,7 +74,12 @@ final class RenderingEngine {
           scene.run();
           timeOutMs = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
           LoggerUtil.getLogger().fine(String.format("time out is set to %d ms", timeOutMs));
-          meters.put(score.name(), new ImageDistanceMeter(display, display.getImage(), score));
+          meters.put(
+              score.name(),
+              constraint.isPresent()
+                  ? new ConstrainedImageDistanceMeter(
+                      display, display.getImage(), score, constraint.getAsDouble())
+                  : new ImageDistanceMeter(display, display.getImage(), score));
         });
     return meters;
   }

@@ -19,6 +19,7 @@ java "-${MAX_HEAP_SIZE_FLAG}" \
     -jar bazel-bin/experiments/main/java/flora/experiments/sunflow/renderers/SunflowRenderingReplayProblem_deploy.jar \
     --knobs "${PWD}/experiments/main/resources/knob/default_knobs.json" \
     --configuration "${PWD}/experiments/main/resources/configuration/default_reference_configuration.json" \
+    --constraint "30.0" \
     --scene "${PWD}/experiments/main/resources/scene/aliens_shiny.sc" \
     --output "${DATA_DIR}/aliens_shiny.json" \
     ${PWD}/experiments/main/resources/pareto_fronts/gumbo_and_teapot.json

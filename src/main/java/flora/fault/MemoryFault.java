@@ -8,8 +8,8 @@ public final class MemoryFault extends PerformanceFault {
     OUT_OF_MEMORY,
   }
 
-  public final MemoryFaultType faultType;
-  public final Optional<String> message;
+  private final MemoryFaultType faultType;
+  private final Optional<String> message;
 
   public MemoryFault(MemoryFaultType faultType) {
     this.faultType = faultType;

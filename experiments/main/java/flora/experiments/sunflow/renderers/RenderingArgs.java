@@ -10,6 +10,7 @@ import flora.knob.util.Knobs;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
@@ -48,9 +49,10 @@ public class RenderingArgs {
       new Options()
           .addOption("s", "scene", true, "scene to render")
           .addOption("k", "knobs", true, "rendering knobs to use")
-          .addOption("c", "configuration", true, "reference configuration to use")
           .addOption("o", "output", true, "file to output to")
-          .addOption("r", "reference", false, "use the default reference configuration");
+          .addOption("c", "configuration", true, "reference configuration to use")
+          .addOption("r", "reference", false, "use the default reference configuration")
+          .addOption("t", "constraint", true, "maximum allowable reference scoring");
 
   static RenderingArgs fromArgs(String[] args) throws Exception {
     CommandLine cmd = new DefaultParser().parse(OPTIONS, args);
@@ -72,7 +74,11 @@ public class RenderingArgs {
               JsonSceneUtil.parseConfiguration(
                   Files.readString(Paths.get(cmd.getOptionValue("configuration")))));
     }
-    return new RenderingArgs(new RenderingEngine(sceneFile, knobs, configuration), cmd);
+    OptionalDouble constraint =
+        cmd.hasOption("constraint")
+            ? OptionalDouble.of(Double.parseDouble(cmd.getOptionValue("constraint")))
+            : OptionalDouble.empty();
+    return new RenderingArgs(new RenderingEngine(sceneFile, knobs, configuration, constraint), cmd);
   }
 
   final RenderingEngine engine;

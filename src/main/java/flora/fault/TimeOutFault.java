@@ -4,8 +4,8 @@ import flora.PerformanceFault;
 import java.time.Duration;
 
 public final class TimeOutFault extends PerformanceFault {
-  public final Duration deadline;
-  public final Duration runtime;
+  private final Duration deadline;
+  private final Duration runtime;
 
   public TimeOutFault(Duration deadline, Duration runtime) {
     this.deadline = deadline;
@@ -14,6 +14,7 @@ public final class TimeOutFault extends PerformanceFault {
 
   @Override
   public String description() {
-    return String.format("{\"deadline\":%s,\"runtime\":%s}", deadline.toMillis(), runtime.toMillis());
+    return String.format(
+        "{\"deadline\":%s,\"runtime\":%s}", deadline.toMillis(), runtime.toMillis());
   }
 }
