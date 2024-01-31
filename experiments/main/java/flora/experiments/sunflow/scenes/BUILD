@@ -4,6 +4,7 @@ java_library(
     srcs = glob(["*.java"]),
     deps = [
         "//experiments/main/java/flora/experiments/sunflow",
+        "//experiments/main/java/flora/experiments/sunflow/scene",
         "@sunflow//jar",
     ],
 )

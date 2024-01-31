@@ -1,0 +1,1452 @@
+[
+    {
+        "threads": 39,
+        "width": 365,
+        "height": 365,
+        "aaMin": -1,
+        "aaMax": -1,
+        "bucketSize": 43,
+        "aoSamples": 6,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 35,
+        "width": 461,
+        "height": 461,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 54,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 538,
+        "height": 538,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 34,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 549,
+        "height": 549,
+        "aaMin": -4,
+        "aaMax": -1,
+        "bucketSize": 45,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 554,
+        "height": 554,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 36,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 36,
+        "aoSamples": 21,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 486,
+        "height": 486,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 7,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 37,
+        "width": 588,
+        "height": 588,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 34,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 532,
+        "height": 532,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 530,
+        "height": 530,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 32,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 617,
+        "height": 617,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 550,
+        "height": 550,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 6,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 36,
+        "width": 537,
+        "height": 537,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 399,
+        "height": 399,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 49,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 633,
+        "height": 633,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 35,
+        "aoSamples": 10,
+        "filter": "BOX"
+    },
+    {
+        "threads": 39,
+        "width": 604,
+        "height": 604,
+        "aaMin": -1,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 9,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 479,
+        "height": 479,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 26,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 635,
+        "height": 635,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 35,
+        "aoSamples": 23,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 552,
+        "height": 552,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 384,
+        "height": 384,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 49,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 40,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 24,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 399,
+        "height": 399,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 49,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 627,
+        "height": 627,
+        "aaMin": -4,
+        "aaMax": -1,
+        "bucketSize": 45,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 40,
+        "aoSamples": 21,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 620,
+        "height": 620,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 606,
+        "height": 606,
+        "aaMin": -1,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 25,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 407,
+        "height": 407,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 49,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 498,
+        "height": 498,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 26,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 25,
+        "aoSamples": 13,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 36,
+        "width": 510,
+        "height": 510,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 22,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 36,
+        "width": 474,
+        "height": 474,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 26,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 489,
+        "height": 489,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 35,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 627,
+        "height": 627,
+        "aaMin": -4,
+        "aaMax": -1,
+        "bucketSize": 45,
+        "aoSamples": 18,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 372,
+        "height": 372,
+        "aaMin": -3,
+        "aaMax": -1,
+        "bucketSize": 43,
+        "aoSamples": 6,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 544,
+        "height": 544,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 31,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 614,
+        "height": 614,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 491,
+        "height": 491,
+        "aaMin": -1,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 407,
+        "height": 407,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 6,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 636,
+        "height": 636,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 24,
+        "aoSamples": 13,
+        "filter": "BOX"
+    },
+    {
+        "threads": 38,
+        "width": 548,
+        "height": 548,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 34,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 475,
+        "height": 475,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 34,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 36,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 36,
+        "width": 479,
+        "height": 479,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 22,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 36,
+        "aoSamples": 16,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 489,
+        "height": 489,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 22,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 489,
+        "height": 489,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 25,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 554,
+        "height": 554,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 50,
+        "aoSamples": 9,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 9,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 24,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 40,
+        "aoSamples": 21,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 37,
+        "width": 475,
+        "height": 475,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 34,
+        "aoSamples": 9,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 614,
+        "height": 614,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 540,
+        "height": 540,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 67,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 407,
+        "height": 407,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 50,
+        "aoSamples": 20,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 24,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 10,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 36,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 18,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 25,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 542,
+        "height": 542,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 31,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 632,
+        "height": 632,
+        "aaMin": -1,
+        "aaMax": 0,
+        "bucketSize": 36,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 34,
+        "aoSamples": 16,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 552,
+        "height": 552,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 21,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 547,
+        "height": 547,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 21,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 628,
+        "height": 628,
+        "aaMin": -1,
+        "aaMax": 0,
+        "bucketSize": 36,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 554,
+        "height": 554,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 50,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 35,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 14,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 490,
+        "height": 490,
+        "aaMin": -1,
+        "aaMax": -1,
+        "bucketSize": 28,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 542,
+        "height": 542,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 31,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 409,
+        "height": 409,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 23,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 25,
+        "aoSamples": 16,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 37,
+        "width": 540,
+        "height": 540,
+        "aaMin": -1,
+        "aaMax": 0,
+        "bucketSize": 31,
+        "aoSamples": 9,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 26,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 457,
+        "height": 457,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 55,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 538,
+        "height": 538,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 22,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 551,
+        "height": 551,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 20,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 420,
+        "height": 420,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 13,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 36,
+        "aoSamples": 7,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 614,
+        "height": 614,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 39,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 479,
+        "height": 479,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 22,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 639,
+        "height": 639,
+        "aaMin": -3,
+        "aaMax": -1,
+        "bucketSize": 22,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 490,
+        "height": 490,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 28,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 638,
+        "height": 638,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 24,
+        "aoSamples": 10,
+        "filter": "BOX"
+    },
+    {
+        "threads": 38,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 30,
+        "aoSamples": 25,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 37,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 32,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 7,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 40,
+        "aoSamples": 16,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 37,
+        "width": 542,
+        "height": 542,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 31,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 25,
+        "aoSamples": 18,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 475,
+        "height": 475,
+        "aaMin": -1,
+        "aaMax": 0,
+        "bucketSize": 31,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 23,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 20,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 461,
+        "height": 461,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 50,
+        "aoSamples": 10,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 7,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 16,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 26,
+        "aoSamples": 11,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 39,
+        "aoSamples": 14,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 427,
+        "height": 427,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 9,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 21,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 34,
+        "width": 461,
+        "height": 461,
+        "aaMin": -2,
+        "aaMax": -1,
+        "bucketSize": 50,
+        "aoSamples": 12,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 38,
+        "width": 424,
+        "height": 424,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 50,
+        "aoSamples": 11,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 13,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 479,
+        "height": 479,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 22,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 22,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 544,
+        "height": 544,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 21,
+        "aoSamples": 5,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 573,
+        "height": 573,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 10,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 606,
+        "height": 606,
+        "aaMin": -3,
+        "aaMax": -1,
+        "bucketSize": 38,
+        "aoSamples": 14,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 475,
+        "height": 475,
+        "aaMin": -1,
+        "aaMax": 0,
+        "bucketSize": 24,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 491,
+        "height": 491,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 29,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 36,
+        "aoSamples": 8,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 12,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 612,
+        "height": 612,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 25,
+        "aoSamples": 7,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 37,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 27,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 36,
+        "aoSamples": 11,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 38,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 13,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 6,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 549,
+        "height": 549,
+        "aaMin": -2,
+        "aaMax": 0,
+        "bucketSize": 44,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 26,
+        "aoSamples": 16,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 10,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 425,
+        "height": 425,
+        "aaMin": -2,
+        "aaMax": -2,
+        "bucketSize": 50,
+        "aoSamples": 8,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 0,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 10,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 14,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 14,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 15,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 544,
+        "height": 544,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 21,
+        "aoSamples": 6,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 545,
+        "height": 545,
+        "aaMin": 0,
+        "aaMax": 1,
+        "bucketSize": 31,
+        "aoSamples": 10,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 628,
+        "height": 628,
+        "aaMin": 0,
+        "aaMax": 0,
+        "bucketSize": 43,
+        "aoSamples": 23,
+        "filter": "GAUSSIAN"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 24,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 640,
+        "height": 640,
+        "aaMin": 1,
+        "aaMax": 2,
+        "bucketSize": 37,
+        "aoSamples": 16,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 22,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 39,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 29,
+        "aoSamples": 20,
+        "filter": "BLACKMAN_HARRIS"
+    },
+    {
+        "threads": 40,
+        "width": 637,
+        "height": 637,
+        "aaMin": 1,
+        "aaMax": 1,
+        "bucketSize": 37,
+        "aoSamples": 9,
+        "filter": "BLACKMAN_HARRIS"
+    }
+]

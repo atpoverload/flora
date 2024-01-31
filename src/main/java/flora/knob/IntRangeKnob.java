@@ -34,6 +34,18 @@ public final class IntRangeKnob implements IntKnob {
     return configCount;
   }
 
+  /** Returns the index for {@code value} if it's in range, and throws otherwise. */
+  public int toIndex(int value) {
+    if (value < start || end < value) {
+      throw new KnobIndexException(this, value);
+    }
+    double idx = (double) (value - start) / step;
+    if (idx > Math.floor(idx)) {
+      throw new KnobIndexException(this, value);
+    }
+    return (int) idx;
+  }
+
   /** Returns the value for {@code index} if it's in range, and throws otherwise. */
   @Override
   @SuppressWarnings("unchecked")

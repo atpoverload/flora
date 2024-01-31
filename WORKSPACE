@@ -33,11 +33,11 @@ nixpkgs_local_repository(
 
 load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_java_configure")
 nixpkgs_java_configure(
-    attribute_path = "jdk17.home",
-    repository = "@nixpkgs",
-    toolchain = True,
-    toolchain_name = "nixpkgs_java",
-    toolchain_version = "17",
+attribute_path = "jdk17.home",
+repository = "@nixpkgs",
+toolchain = True,
+toolchain_name = "nixpkgs_java",
+toolchain_version = "17",
 )
 
 rules_java_toolchains()
@@ -64,6 +64,14 @@ http_archive(
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
+
+maven_install(
+    artifacts = ["org.json:json:20231013", "commons-cli:commons-cli:1.6.0"],
+    generate_compat_repositories = True,
+    repositories = [
+        "https://repo.maven.apache.org/maven2/",
+    ],
+)
 
 # grpc
 # https://rules-proto-grpc.com/en/latest/#installation

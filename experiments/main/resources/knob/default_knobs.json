@@ -1,0 +1,32 @@
+{
+    "width": {
+        "type": "IntRangeKnob",
+        "start": 128,
+        "end": 640
+    },
+    "height": {
+        "type": "IntRangeKnob",
+        "start": 128,
+        "end": 640
+    },
+    "aaMin": {
+        "type": "IntRangeKnob",
+        "start": -4,
+        "end": 4
+    },
+    "aaMax": {
+        "type": "IntRangeKnob",
+        "start": -2,
+        "end": 4
+    },
+    "bucketSize": {
+        "type": "IntRangeKnob",
+        "start": 16,
+        "end": 512
+    },
+    "aoSamples": {
+        "type": "IntRangeKnob",
+        "start": 1,
+        "end": 64
+    }
+}

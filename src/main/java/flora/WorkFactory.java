@@ -8,9 +8,17 @@ public interface WorkFactory<K, C, W extends WorkUnit<K, C>> {
   /** The number of knobs. */
   int knobCount();
 
-  /** Something made of {@link Knob(s)} that are used by the {@link WorkUnit}. */
-  int configurationCount(int knob);
+  /** The number of configurations each knob has. */
+  int[] configurationSize();
+
+  int[] decode(C configuration);
 
   /** Creates a new work unit from the given configuration. */
   W newWorkUnit(int[] configuration);
+
+  boolean isValid(int[] configuration);
+
+  int[] fixConfiguration(int[] configuration);
+
+  int[] randomConfiguration();
 }
