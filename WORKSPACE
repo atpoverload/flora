@@ -115,5 +115,8 @@ grpc_java_repositories()
 
 http_jar(
     name = "ears",
-    urls = ["https://test.lpm.feri.um.si/ears.jar"],
+    urls = [
+        # "https://test.lpm.feri.um.si/ears.jar",
+        "https://test.lpm.feri.um.si/ears2.jar",
+    ],
 )
