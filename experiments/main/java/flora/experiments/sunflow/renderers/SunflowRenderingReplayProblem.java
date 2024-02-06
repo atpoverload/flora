@@ -44,7 +44,7 @@ public final class SunflowRenderingReplayProblem {
     if (renderingArgs.cmd.hasOption("reference_snapshot")) {
       System.out.println("????");
       System.out.println(renderingArgs.cmd.getOptionValue("reference_snapshot"));
-      nsga.loadState(renderingArgs.cmd.getOptionValue("reference_snapshot"), false);
+      nsga.loadState(renderingArgs.cmd.getOptionValue("reference_snapshot"), true);
     }
 
     // run
