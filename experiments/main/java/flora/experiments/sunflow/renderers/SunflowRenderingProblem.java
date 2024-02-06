@@ -31,14 +31,20 @@ final class SunflowRenderingProblem {
             new SquareSceneFactory(renderingArgs.engine.knobs(), renderingArgs.engine::newScene),
             machine);
     D_NSGAII nsga = new D_NSGAII();
+
+    // run
     nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 10000, 0, 0));
 
+    // dump data
     if (renderingArgs.cmd.hasOption("output")) {
       JSONObject data = JsonUtil.toJson(problem.getCollector(), JsonSceneUtil::toJson);
       try (PrintWriter writer = new PrintWriter(renderingArgs.cmd.getOptionValue("output"))) {
         writer.println(data);
       } catch (Exception e) {
       }
+    }
+    if (renderingArgs.cmd.hasOption("snapshot")) {
+      nsga.saveState(renderingArgs.cmd.getOptionValue("snapshot"));
     }
   }
 }

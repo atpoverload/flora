@@ -7,7 +7,6 @@ import flora.WorkFactory;
 import flora.WorkUnit;
 import flora.util.DataCollector;
 import flora.util.LoggerUtil;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -61,18 +60,25 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
     W work = workFactory.newWorkUnit(toIntArray(solution));
     collector.addConfiguration(Integer.valueOf(iteration), work.configuration());
     try {
-      LoggerUtil.getLogger().info(String.format("trying configuration %s", work.configuration()));
+      LoggerUtil.getLogger()
+          .info(
+              String.format(
+                  "iteration %d - trying configuration %s", iteration, work.configuration()));
       Map<String, Double> measurement = machine.run(work);
       LoggerUtil.getLogger()
           .info(
-              String.format("measured %s for configuration %s", measurement, work.configuration()));
+              String.format(
+                  "iteration %d - measured %s for configuration %s",
+                  iteration, measurement, work.configuration()));
       collector.addMeasurement(Integer.valueOf(iteration), measurement);
       solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
     } catch (Exception error) {
       LoggerUtil.getLogger()
           .log(
               Level.INFO,
-              String.format("an error occurred for configuration %s", work.configuration()),
+              String.format(
+                  "iteration %d - an error occurred for configuration %s (%s)",
+                  iteration, work.configuration(), error.toString()),
               error);
       collector.addError(Integer.valueOf(iteration), error);
       solution.setObjectives(failureMeasurement);

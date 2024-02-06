@@ -1,7 +1,7 @@
 package flora.experiments.sunflow.renderers;
 
 import flora.MeteringMachine;
-import flora.contrib.ears.FloraReplayProblem;
+import flora.contrib.ears.FloraProblem;
 import flora.experiments.sunflow.image.ImageDistanceScore;
 import flora.experiments.sunflow.scene.RenderingConfiguration;
 import flora.experiments.sunflow.scene.RenderingKnobs;
@@ -31,28 +31,35 @@ public final class SunflowRenderingReplayProblem {
     SquareSceneFactory sceneFactory =
         new SquareSceneFactory(renderingArgs.engine.knobs(), renderingArgs.engine::newScene);
 
-    ArrayList<int[]> configurations = new ArrayList<>();
-    for (String configFile : renderingArgs.cmd.getArgs()) {
-      for (Object config : new JSONArray(Files.readString(Paths.get(configFile)))) {
-        RenderingConfiguration configuration =
-            JsonSceneUtil.parseConfiguration((JSONObject) config);
-        configurations.add(sceneFactory.decode(configuration));
-      }
-    }
-
     MeteringMachine machine =
         new MeteringMachine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
-    FloraReplayProblem<RenderingKnobs, RenderingConfiguration, Scene> problem =
-        new FloraReplayProblem<>("sunflow-rendering", sceneFactory, machine, configurations);
-    D_NSGAII nsga = new D_NSGAII();
-    nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 10000, 0, 0));
 
+    // wire everything together
+    FloraProblem<RenderingKnobs, RenderingConfiguration, Scene> problem =
+        new FloraProblem<>(
+            "sunflow-rendering",
+            new SquareSceneFactory(renderingArgs.engine.knobs(), renderingArgs.engine::newScene),
+            machine);
+    D_NSGAII nsga = new D_NSGAII();
+    if (renderingArgs.cmd.hasOption("reference_snapshot")) {
+      System.out.println("????");
+      System.out.println(renderingArgs.cmd.getOptionValue("reference_snapshot"));
+      nsga.loadState(renderingArgs.cmd.getOptionValue("reference_snapshot"), false);
+    }
+
+    // run
+    nsga.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 1000, 0, 0));
+
+    // dump data
     if (renderingArgs.cmd.hasOption("output")) {
       JSONObject data = JsonUtil.toJson(problem.getCollector(), JsonSceneUtil::toJson);
       try (PrintWriter writer = new PrintWriter(renderingArgs.cmd.getOptionValue("output"))) {
         writer.println(data);
       } catch (Exception e) {
       }
+    }
+    if (renderingArgs.cmd.hasOption("snapshot")) {
+      nsga.saveState(renderingArgs.cmd.getOptionValue("snapshot"));
     }
   }
 }

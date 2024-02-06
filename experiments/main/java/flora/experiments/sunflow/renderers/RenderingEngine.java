@@ -61,11 +61,15 @@ final class RenderingEngine {
   Map<String, Meter> createMeters(ImageDistanceScore score) {
     Map<String, Meter> meters = new HashMap<>();
     meters.put("runtime", new Stopwatch());
+    LoggerUtil.getLogger().fine("checking for rapl");
     if (Rapl.getInstance() != null) {
+      LoggerUtil.getLogger().fine("found rapl!");
       meters.put("energy", new EflectMeter(Eflect.raplEflect(32, createExecutor(), 100)));
     } else if (Powercap.SOCKET_COUNT > 0) {
+      LoggerUtil.getLogger().fine("found powercap!");
       meters.put("energy", new EflectMeter(Eflect.powercapEflect(32, createExecutor(), 100)));
     }
+    LoggerUtil.getLogger().fine("checking for reference configuration");
     referenceConfiguration.ifPresent(
         configuration -> {
           LoggerUtil.getLogger().fine(String.format("generating reference from %s", configuration));
@@ -74,6 +78,14 @@ final class RenderingEngine {
           scene.run();
           timeOutMs = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
           LoggerUtil.getLogger().fine(String.format("time out is set to %d ms", timeOutMs));
+          if (constraint.isPresent()) {
+            LoggerUtil.getLogger()
+                .fine(
+                    String.format(
+                        "setting image quality constraint to %f", constraint.getAsDouble()));
+          } else {
+            LoggerUtil.getLogger().fine("setting no image quality constraint");
+          }
           meters.put(
               score.name(),
               constraint.isPresent()

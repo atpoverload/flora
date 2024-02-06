@@ -49,7 +49,9 @@ public class RenderingArgs {
       new Options()
           .addOption("s", "scene", true, "scene to render")
           .addOption("k", "knobs", true, "rendering knobs to use")
-          .addOption("o", "output", true, "file to output to")
+          .addOption("o", "output", true, "file to output results to")
+          .addOption("p", "snapshot", true, "file to output snapshots to")
+          .addOption("f", "reference_snapshot", true, "input snapshots to")
           .addOption("c", "configuration", true, "reference configuration to use")
           .addOption("r", "reference", false, "use the default reference configuration")
           .addOption("t", "constraint", true, "maximum allowable reference scoring");
