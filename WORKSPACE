@@ -115,8 +115,9 @@ grpc_java_repositories()
 
 http_jar(
     name = "ears",
+    sha256 = "340cffece3021fbc167046cbdb1b7d16ee14742135359a006375fffc68762b59",
     urls = [
         # "https://test.lpm.feri.um.si/ears.jar",
-        "https://test.lpm.feri.um.si/ears2.jar",
+        "https://test.lpm.feri.um.si/ears3.jar",
     ],
 )
