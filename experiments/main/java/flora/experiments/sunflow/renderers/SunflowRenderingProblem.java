@@ -24,24 +24,24 @@ final class SunflowRenderingProblem {
     RenderingArgs renderingArgs = RenderingArgs.fromArgs(args);
     LoggerUtil.getLogger()
         .info(String.format("running scene %s", renderingArgs.cmd.getOptionValue("scene")));
-    LoggerUtil.getLogger().info(String.format("with knobs %s", renderingArgs.engine.knobs()));
+    LoggerUtil.getLogger()
+        .info(String.format("with knobs %s", JsonSceneUtil.toJson(renderingArgs.engine.knobs())));
     MeteringMachine machine =
         new MeteringMachine(renderingArgs.engine.createMeters(ImageDistanceScore.MSE));
 
     // wire everything together
     FloraProblem<RenderingKnobs, RenderingConfiguration, Scene> problem =
         new FloraProblem<>(
-            "sunflow-rendering",
+            "sunflow-render",
             new SquareSceneFactory(renderingArgs.engine.knobs(), renderingArgs.engine::newScene),
             machine);
     D_NSGAII nsga = new D_NSGAII();
-    if (renderingArgs.cmd.hasOption("reference_snapshot")) {
+    if (renderingArgs.cmd.hasOption("load")) {
       LoggerUtil.getLogger()
           .info(
               String.format(
-                  "starting from provided state %s",
-                  renderingArgs.cmd.getOptionValue("reference_snapshot")));
-      nsga.loadState(renderingArgs.cmd.getOptionValue("reference_snapshot"), true);
+                  "starting from provided state %s", renderingArgs.cmd.getOptionValue("load")));
+      nsga.loadState(renderingArgs.cmd.getOptionValue("load"), true);
     }
 
     // run
@@ -57,10 +57,10 @@ final class SunflowRenderingProblem {
       } catch (Exception e) {
       }
     }
-    if (renderingArgs.cmd.hasOption("snapshot")) {
+    if (renderingArgs.cmd.hasOption("save")) {
       LoggerUtil.getLogger()
-          .info(String.format("writing state to %s", renderingArgs.cmd.getOptionValue("snapshot")));
-      nsga.saveState(renderingArgs.cmd.getOptionValue("snapshot"));
+          .info(String.format("writing state to %s", renderingArgs.cmd.getOptionValue("save")));
+      nsga.saveState(renderingArgs.cmd.getOptionValue("save"));
     }
   }
 }

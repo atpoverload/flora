@@ -49,12 +49,13 @@ public class RenderingArgs {
       new Options()
           .addOption("s", "scene", true, "scene to render")
           .addOption("k", "knobs", true, "rendering knobs to use")
-          .addOption("o", "output", true, "file to output results to")
-          .addOption("p", "snapshot", true, "file to output snapshots to")
-          .addOption("f", "reference_snapshot", true, "input snapshots to")
           .addOption("c", "configuration", true, "reference configuration to use")
-          .addOption("r", "reference", false, "use the default reference configuration")
-          .addOption("t", "constraint", true, "maximum allowable reference scoring");
+          .addOption("t", "constraint", true, "maximum allowable reference scoring")
+          .addOption("o", "output", true, "file to output results to")
+          // options for ears
+          .addOption("n", "iterations", true, "number of iterations to run for")
+          .addOption("p", "save", true, "file to output state to")
+          .addOption("f", "load", true, "file to load state from");
 
   static RenderingArgs fromArgs(String[] args) throws Exception {
     CommandLine cmd = new DefaultParser().parse(OPTIONS, args);
@@ -65,16 +66,13 @@ public class RenderingArgs {
             ? JsonSceneUtil.parseKnobs(Files.readString(Paths.get(cmd.getOptionValue("knobs"))))
             : DEFAULT_KNOBS;
     Optional<RenderingConfiguration> configuration = Optional.empty();
-    if (cmd.hasOption("reference") && cmd.hasOption("configuration")) {
-      throw new IllegalArgumentException(
-          "Only one of \"configuration\" or \"reference\" can be present.");
-    } else if (cmd.hasOption("reference")) {
-      configuration = Optional.of(REFERENCE_CONFIGURATION);
-    } else if (cmd.hasOption("configuration")) {
+    if (cmd.hasOption("configuration")) {
       configuration =
           Optional.of(
               JsonSceneUtil.parseConfiguration(
                   Files.readString(Paths.get(cmd.getOptionValue("configuration")))));
+    } else {
+      // configuration = Optional.of(REFERENCE_CONFIGURATION);
     }
     OptionalDouble constraint =
         cmd.hasOption("constraint")

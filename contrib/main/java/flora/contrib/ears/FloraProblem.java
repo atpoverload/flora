@@ -20,6 +20,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
     return solution.getVariables().stream().mapToInt(Double::intValue).toArray();
   }
 
+  private final String name;
   private final WorkFactory<K, C, W> workFactory;
   private final MeteringMachine machine;
   private final DataCollector<Integer, C> collector = new DataCollector<>();
@@ -31,6 +32,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
 
   public FloraProblem(String name, WorkFactory<K, C, W> workFactory, MeteringMachine machine) {
     super(name, workFactory.knobCount(), 1, machine.meters().length, 0);
+    this.name = name;
     this.workFactory = workFactory;
     this.machine = machine;
 
@@ -63,13 +65,11 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
       LoggerUtil.getLogger()
           .info(
               String.format(
-                  "iteration %d - trying configuration %s", iteration, work.configuration()));
+                  "[%s] iteration %d - trying configuration %s",
+                  name, iteration, work.configuration()));
       Map<String, Double> measurement = machine.run(work);
       LoggerUtil.getLogger()
-          .info(
-              String.format(
-                  "iteration %d - measured %s for configuration %s",
-                  iteration, measurement, work.configuration()));
+          .info(String.format("[%s] iteration %d - measured %s", name, iteration, measurement));
       collector.addMeasurement(Integer.valueOf(iteration), measurement);
       solution.setObjectives(measurement.values().stream().mapToDouble(d -> d).toArray());
     } catch (Exception error) {
@@ -77,8 +77,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
           .log(
               Level.INFO,
               String.format(
-                  "iteration %d - an error occurred for configuration %s (%s)",
-                  iteration, work.configuration(), error.toString()),
+                  "[%s] iteration %d - an error occurred (%s)", name, iteration, error.toString()),
               error);
       collector.addError(Integer.valueOf(iteration), error);
       solution.setObjectives(failureMeasurement);

@@ -3,24 +3,37 @@ mkdir "${DATA_DIR}"
 
 MAX_HEAP_SIZE_FLAG="Xmx12G"
 
-SCENES=experiments/main/resources/scene
+SCENES="experiments/main/resources/scene"
+RESOURCES="experiments/main/resources"
+
+SUNFLOW="${PWD}/bazel-bin/experiments/main/java/flora/experiments/sunflow/renderers/SunflowRenderingProblem_deploy.jar"
+KNOBS="${PWD}/${RESOURCES}/knob/test_knobs.json"
+CONFIGURATION="${PWD}/${RESOURCES}/configuration/test_configuration.json"
+
 SCENE_NAME=aliens_shiny
-
-RESOURCES=experiments/main/resources
-
-# java "-${MAX_HEAP_SIZE_FLAG}" \
-    # -jar bazel-bin/experiments/main/java/flora/experiments/sunflow/renderers/SunflowRenderingProblem_deploy.jar \
-    # --knobs "${PWD}/experiments/main/resources/knob/test_knobs.json" \
-    # --configuration "${PWD}/experiments/main/resources/configuration/test_configuration.json" \
-    # --scene "${PWD}/${SCENES}/${SCENE_NAME}.sc" \
-    # --output "${DATA_DIR}/${SCENE_NAME}_results.json" \
-    # --snapshot "${DATA_DIR}/${SCENE_NAME}_snapshot.json"
+OTHER_SCENE_NAME=gumbo_and_teapot
 
 java "-${MAX_HEAP_SIZE_FLAG}" \
-    -jar bazel-bin/experiments/main/java/flora/experiments/sunflow/renderers/SunflowRenderingReplayProblem_deploy.jar \
-    --knobs "${PWD}/${RESOURCES}/knob/test_knobs.json" \
-    --configuration "${PWD}/${RESOURCES}/configuration/test_configuration.json" \
+    -jar "${SUNFLOW}" \
+    --knobs "${KNOBS}" \
+    --configuration "${CONFIGURATION}"\
     --scene "${PWD}/${SCENES}/${SCENE_NAME}.sc" \
-    --output "${DATA_DIR}/${SCENE_NAME}_results2.json" \
-    --snapshot "${DATA_DIR}/${SCENE_NAME}_snapshot2.json" \
-    --reference_snapshot "${DATA_DIR}/${SCENE_NAME}_snapshot.json"
+    --output "${DATA_DIR}/${SCENE_NAME}_results.json" \
+    --save "${DATA_DIR}/${SCENE_NAME}_state.json"
+
+java "-${MAX_HEAP_SIZE_FLAG}" \
+    -jar "${SUNFLOW}" \
+    --knobs "${KNOBS}" \
+    --configuration "${CONFIGURATION}"\
+    --scene "${PWD}/${SCENES}/${OTHER_SCENE_NAME}.sc" \
+    --output "${DATA_DIR}/${OTHER_SCENE_NAME}_results.json" \
+    --save "${DATA_DIR}/${OTHER_SCENE_NAME}_state.json"
+
+java "-${MAX_HEAP_SIZE_FLAG}" \
+    -jar "${SUNFLOW}" \
+    --knobs "${KNOBS}" \
+    --configuration "${CONFIGURATION}"\
+    --scene "${PWD}/${SCENES}/${SCENE_NAME}.sc" \
+    --output "${PWD}/${DATA_DIR}/${SCENE_NAME}_replay_results.json" \
+    --save "${PWD}/${DATA_DIR}/${SCENE_NAME}_replay_state.json" \
+    --load "${PWD}/${DATA_DIR}/${OTHER_SCENE_NAME}_state.json"

@@ -1,1 +1,2902 @@
-[{"numberOfObjectives":2,"objectives":[0.138360342,150.86962890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.048999467336804735,"variables":[10.0,43.0,0.0,0.0,0.0,7.0,0.0],"id":86,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.138360342},{"numberOfObjectives":2,"objectives":[0.863907585,6.530029296875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.027708577582801302,"variables":[9.0,47.0,1.0,3.0,0.0,21.0,3.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.863907585},{"numberOfObjectives":2,"objectives":[0.218101543,32.27685546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.01473491644615587,"variables":[9.0,45.0,0.0,1.0,2.0,10.0,5.0],"id":28,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.218101543},{"numberOfObjectives":2,"objectives":[0.132260363,220.929931640625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.044021329842476226,"variables":[10.0,26.0,0.0,0.0,0.0,9.0,0.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.132260363},{"numberOfObjectives":2,"objectives":[0.190908933,41.5712890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.08473694826478652,"variables":[9.0,43.0,0.0,1.0,0.0,9.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.190908933},{"numberOfObjectives":2,"objectives":[0.818913134,6.77880859375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.19587173159194657,"variables":[9.0,47.0,1.0,3.0,0.0,16.0,3.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.818913134},{"numberOfObjectives":2,"objectives":[0.391117386,11.7109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.014899694862119898,"variables":[9.0,47.0,1.0,2.0,0.0,9.0,2.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.391117386},{"numberOfObjectives":2,"objectives":[0.206066349,33.1474609375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.016982747139530185,"variables":[9.0,45.0,0.0,1.0,0.0,19.0,7.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.206066349},{"numberOfObjectives":2,"objectives":[0.175317806,60.64306640625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.06038606205521273,"variables":[10.0,44.0,0.0,1.0,0.0,7.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.175317806},{"numberOfObjectives":2,"objectives":[0.387755674,13.60986328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.011850363151804377,"variables":[8.0,47.0,0.0,2.0,1.0,21.0,1.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.387755674},{"numberOfObjectives":2,"objectives":[0.386841326,13.7236328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.003403757832901917,"variables":[9.0,47.0,1.0,2.0,0.0,16.0,1.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.386841326},{"numberOfObjectives":2,"objectives":[0.13335804,215.550048828125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.27035330158223736,"variables":[8.0,26.0,0.0,0.0,0.0,7.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.13335804},{"numberOfObjectives":2,"objectives":[0.230956499,29.788330078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.01892891313104702,"variables":[11.0,45.0,0.0,1.0,0.0,18.0,5.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.230956499},{"numberOfObjectives":2,"objectives":[1.695425673,6.277587890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.03621207927298922,"variables":[11.0,47.0,3.0,3.0,0.0,26.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.695425673},{"numberOfObjectives":2,"objectives":[0.55533172,9.418212890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.25557974664792665,"variables":[8.0,47.0,2.0,2.0,0.0,28.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.55533172},{"numberOfObjectives":2,"objectives":[0.180463182,57.7509765625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.02425615911246374,"variables":[10.0,44.0,0.0,1.0,0.0,19.0,0.0],"id":28,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.180463182},{"numberOfObjectives":2,"objectives":[0.852642778,6.77734375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.024144939210404063,"variables":[9.0,47.0,1.0,3.0,0.0,19.0,2.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.852642778},{"numberOfObjectives":2,"objectives":[0.396043131,11.47265625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.011129012793787696,"variables":[9.0,47.0,1.0,2.0,0.0,8.0,2.0],"id":86,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.396043131},{"numberOfObjectives":2,"objectives":[0.338469126,21.563720703125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.025500403474812444,"variables":[8.0,42.0,0.0,2.0,1.0,7.0,1.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.338469126},{"numberOfObjectives":2,"objectives":[0.350081576,21.457763671875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.023817191342509057,"variables":[7.0,42.0,1.0,2.0,1.0,7.0,1.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.350081576},{"numberOfObjectives":2,"objectives":[0.193610771,38.465576171875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.02755579756058911,"variables":[10.0,44.0,0.0,1.0,0.0,7.0,7.0],"id":28,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.193610771},{"numberOfObjectives":2,"objectives":[1.7488524330000002,6.276123046875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":"Infinity","variables":[11.0,47.0,3.0,3.0,0.0,31.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.7488524330000002},{"numberOfObjectives":2,"objectives":[0.334457554,24.9208984375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.09626365853833381,"variables":[11.0,41.0,0.0,2.0,1.0,6.0,1.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.334457554},{"numberOfObjectives":2,"objectives":[0.857570291,6.724609375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.008094987100792091,"variables":[9.0,47.0,1.0,3.0,0.0,15.0,3.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.857570291},{"numberOfObjectives":2,"objectives":[0.179645463,60.40478515625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.016410511402777484,"variables":[9.0,44.0,0.0,1.0,0.0,10.0,0.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.179645463},{"numberOfObjectives":2,"objectives":[0.142412199,110.633544921875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.16548669757908616,"variables":[9.0,41.0,0.0,0.0,0.0,13.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.142412199},{"numberOfObjectives":2,"objectives":[0.180509226,55.218994140625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.08047068687101477,"variables":[9.0,44.0,0.0,1.0,0.0,13.0,0.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.180509226},{"numberOfObjectives":2,"objectives":[0.24359085,29.785888671875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.08624796033180926,"variables":[10.0,45.0,1.0,1.0,0.0,18.0,5.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.24359085},{"numberOfObjectives":2,"objectives":[0.383649691,13.799072265625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.018290982268266455,"variables":[10.0,47.0,0.0,2.0,1.0,15.0,1.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.383649691},{"numberOfObjectives":2,"objectives":[1.628897277,6.34912109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.056832052095448636,"variables":[11.0,47.0,3.0,3.0,0.0,22.0,2.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.628897277},{"numberOfObjectives":2,"objectives":[0.362502826,14.43310546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.039631526423224143,"variables":[9.0,47.0,1.0,2.0,0.0,6.0,1.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.362502826},{"numberOfObjectives":2,"objectives":[0.358627474,19.081298828125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.039812570794740605,"variables":[11.0,45.0,0.0,2.0,1.0,6.0,1.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.358627474},{"numberOfObjectives":2,"objectives":[0.399241721,10.3759765625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.014191350100428053,"variables":[9.0,47.0,1.0,2.0,0.0,6.0,3.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.399241721},{"numberOfObjectives":2,"objectives":[0.196366052,36.284912109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.019954906067940405,"variables":[8.0,45.0,0.0,1.0,0.0,6.0,7.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.196366052},{"numberOfObjectives":2,"objectives":[1.557616507,6.35498046875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.402616133770267,"variables":[10.0,47.0,3.0,3.0,0.0,13.0,3.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.557616507},{"numberOfObjectives":2,"objectives":[0.900349976,6.448486328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.07111128072635377,"variables":[11.0,47.0,2.0,3.0,0.0,21.0,3.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.900349976},{"numberOfObjectives":2,"objectives":[1.690571807,6.31640625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.028712582519725156,"variables":[10.0,47.0,3.0,3.0,0.0,14.0,3.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.690571807},{"numberOfObjectives":2,"objectives":[0.131195585,224.881103515625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":"Infinity","variables":[8.0,26.0,0.0,0.0,0.0,6.0,0.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.131195585},{"numberOfObjectives":2,"objectives":[0.202285687,35.275634765625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.020348659582782973,"variables":[9.0,45.0,0.0,1.0,0.0,7.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.202285687},{"numberOfObjectives":2,"objectives":[0.136226486,160.97314453125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.05390570781553766,"variables":[10.0,24.0,0.0,0.0,0.0,8.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.136226486},{"numberOfObjectives":2,"objectives":[0.139051587,148.941650390625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.033505103351254825,"variables":[10.0,43.0,0.0,0.0,0.0,20.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.139051587},{"numberOfObjectives":2,"objectives":[0.224409871,31.331787109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.019330314813680846,"variables":[9.0,45.0,0.0,1.0,2.0,16.0,5.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.224409871},{"numberOfObjectives":2,"objectives":[0.210288019,32.64453125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.01142244401884835,"variables":[9.0,45.0,1.0,1.0,0.0,17.0,7.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.210288019},{"numberOfObjectives":2,"objectives":[0.412019059,9.64111328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.01310969260147848,"variables":[9.0,47.0,1.0,2.0,0.0,20.0,3.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.412019059},{"numberOfObjectives":2,"objectives":[0.40701476,9.85302734375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.01126027380070893,"variables":[10.0,47.0,1.0,2.0,0.0,13.0,3.0],"id":86,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.40701476},{"numberOfObjectives":2,"objectives":[0.138633655,150.5869140625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.009246775407893298,"variables":[11.0,45.0,0.0,0.0,0.0,18.0,0.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.138633655},{"numberOfObjectives":2,"objectives":[0.146431837,108.14013671875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.054236063748705404,"variables":[10.0,41.0,0.0,0.0,0.0,24.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.146431837},{"numberOfObjectives":2,"objectives":[0.17503851,72.98291015625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.17395766777780383,"variables":[9.0,42.0,0.0,1.0,0.0,10.0,0.0],"id":3,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.17503851},{"numberOfObjectives":2,"objectives":[0.425670799,9.50830078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.08961239441433483,"variables":[10.0,47.0,1.0,2.0,0.0,29.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.425670799},{"numberOfObjectives":2,"objectives":[0.147118976,99.413330078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.061172509978930714,"variables":[11.0,47.0,0.0,0.0,3.0,9.0,7.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.147118976},{"numberOfObjectives":2,"objectives":[1.6494862270000001,6.34619140625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.03827549515592722,"variables":[11.0,47.0,3.0,3.0,0.0,21.0,2.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.6494862270000001},{"numberOfObjectives":2,"objectives":[0.167029512,97.551025390625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.13816417412419024,"variables":[5.0,44.0,0.0,0.0,17.0,13.0,5.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.167029512},{"numberOfObjectives":2,"objectives":[0.134332497,162.109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.2514331412354095,"variables":[9.0,24.0,0.0,0.0,0.0,10.0,0.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.134332497},{"numberOfObjectives":2,"objectives":[0.977929529,6.393310546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.4067354993210537,"variables":[10.0,47.0,2.0,3.0,0.0,31.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.977929529},{"numberOfObjectives":2,"objectives":[0.141415252,143.638427734375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.17731639855246753,"variables":[7.0,43.0,0.0,0.0,0.0,29.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.141415252},{"numberOfObjectives":2,"objectives":[1.7543806910000002,6.276123046875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":"Infinity","variables":[11.0,47.0,3.0,3.0,0.0,31.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.7543806910000002},{"numberOfObjectives":2,"objectives":[0.133393388,260.34130859375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":"Infinity","variables":[9.0,27.0,0.0,0.0,0.0,11.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.133393388},{"numberOfObjectives":2,"objectives":[0.982317713,6.393310546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.40631070423772003,"variables":[10.0,47.0,2.0,3.0,0.0,31.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.982317713},{"numberOfObjectives":2,"objectives":[0.133427535,215.550048828125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.3878952098653785,"variables":[8.0,26.0,0.0,0.0,0.0,7.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.133427535},{"numberOfObjectives":2,"objectives":[1.562535271,6.36181640625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.3611202639111015,"variables":[10.0,47.0,3.0,3.0,0.0,13.0,2.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.562535271},{"numberOfObjectives":2,"objectives":[0.574188999,9.418212890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.2507967597936683,"variables":[8.0,47.0,2.0,2.0,0.0,28.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.574188999},{"numberOfObjectives":2,"objectives":[0.135426981,162.109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.21719895915180637,"variables":[9.0,24.0,0.0,0.0,0.0,10.0,0.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.135426981},{"numberOfObjectives":2,"objectives":[0.819958906,6.869384765625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.16548332741152474,"variables":[9.0,47.0,1.0,3.0,0.0,16.0,2.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.819958906},{"numberOfObjectives":2,"objectives":[0.176684004,60.64306640625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.15801632490365156,"variables":[10.0,44.0,0.0,1.0,0.0,7.0,0.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.176684004},{"numberOfObjectives":2,"objectives":[0.175073389,95.799560546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.15032349391003552,"variables":[10.0,40.0,0.0,1.0,0.0,15.0,0.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.175073389},{"numberOfObjectives":2,"objectives":[0.14378678,127.182861328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.12320754599150176,"variables":[11.0,47.0,0.0,0.0,0.0,6.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.14378678},{"numberOfObjectives":2,"objectives":[0.430257361,9.50830078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.10401578232227657,"variables":[10.0,47.0,1.0,2.0,0.0,29.0,3.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.430257361},{"numberOfObjectives":2,"objectives":[0.25078795,29.785888671875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.10087863229384694,"variables":[10.0,45.0,1.0,1.0,0.0,18.0,5.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.25078795},{"numberOfObjectives":2,"objectives":[0.338862066,23.35009765625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.09087464074491314,"variables":[8.0,42.0,0.0,2.0,1.0,6.0,1.0],"id":3,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.338862066},{"numberOfObjectives":2,"objectives":[0.90446375,6.448486328125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.07140020534445059,"variables":[10.0,47.0,2.0,3.0,0.0,21.0,3.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.90446375},{"numberOfObjectives":2,"objectives":[0.142833593,143.704345703125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.07042946903005882,"variables":[10.0,43.0,0.0,0.0,0.0,30.0,0.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.142833593},{"numberOfObjectives":2,"objectives":[0.146048704,112.905517578125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.06728840862496925,"variables":[10.0,41.0,0.0,0.0,0.0,15.0,7.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.146048704},{"numberOfObjectives":2,"objectives":[0.139901577,153.544921875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.06657532434602798,"variables":[10.0,43.0,0.0,0.0,0.0,10.0,0.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.139901577},{"numberOfObjectives":2,"objectives":[1.638671726,6.34912109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.06401973094142878,"variables":[11.0,47.0,3.0,3.0,0.0,22.0,2.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.638671726},{"numberOfObjectives":2,"objectives":[0.193545706,43.894775390625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.05772848551130879,"variables":[10.0,42.0,0.0,1.0,0.0,9.0,7.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.193545706},{"numberOfObjectives":2,"objectives":[0.191491417,54.968505859375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.057676512693776716,"variables":[9.0,44.0,0.0,1.0,0.0,29.0,0.0],"id":3,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.191491417},{"numberOfObjectives":2,"objectives":[0.226263878,31.331787109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.05554376439304527,"variables":[9.0,45.0,0.0,1.0,2.0,16.0,5.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.226263878},{"numberOfObjectives":2,"objectives":[1.701560285,6.277587890625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.05161306578948608,"variables":[11.0,47.0,3.0,3.0,0.0,26.0,3.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.701560285},{"numberOfObjectives":2,"objectives":[0.367363787,14.43310546875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.04817041568028386,"variables":[9.0,47.0,1.0,2.0,0.0,6.0,1.0],"id":35,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.367363787},{"numberOfObjectives":2,"objectives":[0.202217298,36.284912109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.04729257339350144,"variables":[9.0,45.0,0.0,1.0,0.0,6.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.202217298},{"numberOfObjectives":2,"objectives":[1.567444522,6.35498046875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.04701915525312559,"variables":[10.0,47.0,3.0,3.0,0.0,13.0,3.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.567444522},{"numberOfObjectives":2,"objectives":[0.153338828,99.413330078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.04442577731614413,"variables":[11.0,47.0,0.0,0.0,3.0,9.0,7.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.153338828},{"numberOfObjectives":2,"objectives":[0.401954077,11.0869140625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.043314947011622106,"variables":[10.0,45.0,1.0,2.0,0.0,16.0,3.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.401954077},{"numberOfObjectives":2,"objectives":[0.141997804,144.796142578125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.040541269785884335,"variables":[10.0,43.0,0.0,0.0,0.0,23.0,0.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.141997804},{"numberOfObjectives":2,"objectives":[1.671163617,6.34619140625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.0390780083200004,"variables":[11.0,47.0,3.0,3.0,0.0,21.0,2.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":1.671163617},{"numberOfObjectives":2,"objectives":[0.137292595,160.97314453125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.03647008224717949,"variables":[10.0,24.0,0.0,0.0,0.0,8.0,0.0],"id":3,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.137292595},{"numberOfObjectives":2,"objectives":[0.181300701,56.629150390625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.031469868792734904,"variables":[9.0,44.0,0.0,1.0,0.0,11.0,0.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.181300701},{"numberOfObjectives":2,"objectives":[0.86745118,6.530029296875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.03029844084328862,"variables":[9.0,47.0,1.0,3.0,0.0,21.0,3.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.86745118},{"numberOfObjectives":2,"objectives":[0.150515168,106.0205078125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.0291418953742505,"variables":[10.0,41.0,0.0,0.0,0.0,25.0,7.0],"id":46,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.150515168},{"numberOfObjectives":2,"objectives":[0.359194757,19.739013671875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.027809655463065082,"variables":[8.0,43.0,1.0,2.0,1.0,8.0,1.0],"id":28,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.359194757},{"numberOfObjectives":2,"objectives":[0.168491777,97.551025390625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.02763201284949838,"variables":[5.0,44.0,0.0,0.0,17.0,13.0,5.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.168491777},{"numberOfObjectives":2,"objectives":[0.857448539,6.77734375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.026800335932973113,"variables":[9.0,47.0,1.0,3.0,0.0,19.0,2.0],"id":88,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.857448539},{"numberOfObjectives":2,"objectives":[0.348378544,21.99365234375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.026756617755438628,"variables":[11.0,43.0,0.0,2.0,1.0,6.0,1.0],"id":3,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.348378544},{"numberOfObjectives":2,"objectives":[0.364819942,17.505126953125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.025923582559325146,"variables":[11.0,44.0,0.0,2.0,1.0,6.0,1.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.364819942},{"numberOfObjectives":2,"objectives":[0.410367446,10.16845703125],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.023673940044083616,"variables":[10.0,47.0,0.0,2.0,0.0,13.0,3.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.410367446},{"numberOfObjectives":2,"objectives":[0.825595438,6.77880859375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.02348992693343209,"variables":[9.0,47.0,1.0,3.0,0.0,16.0,3.0],"id":17,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.825595438},{"numberOfObjectives":2,"objectives":[0.195118235,38.465576171875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.022426979112286968,"variables":[10.0,44.0,0.0,1.0,0.0,7.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.195118235},{"numberOfObjectives":2,"objectives":[0.194973123,40.847412109375],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.022339421624074738,"variables":[11.0,47.0,0.0,1.0,0.0,6.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.194973123},{"numberOfObjectives":2,"objectives":[0.148349693,109.0947265625],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.018763243285796854,"variables":[10.0,41.0,0.0,0.0,0.0,21.0,7.0],"id":27,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.148349693},{"numberOfObjectives":2,"objectives":[0.147272448,110.633544921875],"overallConstraintViolation":0.0,"timeStamp":0,"generationNumber":0,"evaluationNumber":0,"parents":[],"paretoFitness":0.0,"rank":0.0,"location":0,"crowdingDistance":0.016418763355392205,"variables":[9.0,41.0,0.0,0.0,0.0,13.0,7.0],"id":95,"numberOfViolatedConstraint":0,"numberOfConstraints":0,"eval":0.147272448}]
+[
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.172366278,
+            83.830078125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.09185359349924516,
+        "variables": [
+            10.0,
+            46.0,
+            0.0,
+            1.0,
+            0.0,
+            5.0,
+            0.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.172366278
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.135637334,
+            140.701171875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.21897008576137786,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            0.0,
+            3.0,
+            5.0,
+            0.0
+        ],
+        "id": 15,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.135637334
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.131819788,
+            289.7470703125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.2812608706662677,
+        "variables": [
+            9.0,
+            14.0,
+            0.0,
+            0.0,
+            3.0,
+            23.0,
+            0.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.131819788
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.157519105,
+            101.3115234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03261918043132259,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            7.0,
+            23.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.157519105
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.173942231,
+            66.985107421875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.06513592456722643,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            5.0,
+            0.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.173942231
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.889750651,
+            0.791259765625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.01789082041245643,
+        "variables": [
+            11.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            9.0,
+            5.0
+        ],
+        "id": 15,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.889750651
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.128375341,
+            314.48583984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.10214175798342333,
+        "variables": [
+            8.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            5.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.128375341
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.879111455,
+            1.012451171875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.01601729623264598,
+        "variables": [
+            11.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            8.0,
+            5.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.879111455
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.878507008,
+            1.32958984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.5857076715271041,
+        "variables": [
+            8.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            6.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.878507008
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.177111259,
+            61.29443359375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02135306469457346,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            9.0,
+            0.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.177111259
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.891578755,
+            0.36572265625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.008781581738920675,
+        "variables": [
+            9.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            22.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.891578755
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.363984045,
+            15.786865234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.014847873702532294,
+        "variables": [
+            11.0,
+            47.0,
+            0.0,
+            2.0,
+            1.0,
+            4.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.363984045
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.365281767,
+            14.43310546875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.004787752178959854,
+        "variables": [
+            9.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            6.0,
+            1.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.365281767
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.438158771,
+            5.8994140625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.5848384276657508,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            30.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.438158771
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.181714699,
+            58.3623046875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.019885686530835264,
+        "variables": [
+            11.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            20.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.181714699
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.18728902,
+            54.968505859375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.0236589165044254,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            29.0,
+            0.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.18728902
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.331359796,
+            24.877197265625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.031260315558988255,
+        "variables": [
+            10.0,
+            38.0,
+            0.0,
+            2.0,
+            1.0,
+            7.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.331359796
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.392242676,
+            8.15234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.044615651431028955,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            5.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.392242676
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.127237794,
+            326.50537109375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.1811107089084203,
+        "variables": [
+            9.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            6.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.127237794
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.139806754,
+            118.04833984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.11819479740570285,
+        "variables": [
+            10.0,
+            45.0,
+            0.0,
+            0.0,
+            1.0,
+            21.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.139806754
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.125930993,
+            382.4833984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": "Infinity",
+        "variables": [
+            9.0,
+            15.0,
+            0.0,
+            0.0,
+            1.0,
+            6.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.125930993
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.20830006,
+            38.737060546875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.027216714619813412,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            2.0,
+            5.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.20830006
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.210443193,
+            34.1904296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02509236631761536,
+        "variables": [
+            10.0,
+            44.0,
+            1.0,
+            1.0,
+            2.0,
+            7.0,
+            5.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.210443193
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.184359934,
+            55.051025390625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.007547254097548693,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            23.0,
+            0.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.184359934
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.437898819,
+            6.055419921875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.005275137030284743,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            25.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.437898819
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.20162368,
+            54.58154296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.057238670148799235,
+        "variables": [
+            9.0,
+            41.0,
+            0.0,
+            1.0,
+            2.0,
+            5.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.20162368
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.895589983,
+            0.334716796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": "Infinity",
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            26.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.895589983
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.397403454,
+            7.345703125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.020591825909431333,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            7.0,
+            5.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.397403454
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.427664549,
+            6.2685546875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02733049532812632,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            21.0,
+            5.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.427664549
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.224274304,
+            29.839599609375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03292182119900269,
+        "variables": [
+            9.0,
+            45.0,
+            0.0,
+            1.0,
+            2.0,
+            21.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.224274304
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.404808235,
+            6.522216796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.024131425784733693,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            17.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.404808235
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.177603747,
+            60.64306640625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.013653886119569345,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            7.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.177603747
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.151403449,
+            103.361328125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.066809854168971,
+        "variables": [
+            8.0,
+            44.0,
+            0.0,
+            0.0,
+            11.0,
+            9.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.151403449
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.133827038,
+            209.709228515625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.24070543416106635,
+        "variables": [
+            10.0,
+            36.0,
+            0.0,
+            0.0,
+            0.0,
+            4.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.133827038
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.181984699,
+            55.218994140625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.012101790094955248,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            13.0,
+            0.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.181984699
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.364521902,
+            14.43896484375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.005228594895897174,
+        "variables": [
+            9.0,
+            47.0,
+            1.0,
+            2.0,
+            1.0,
+            6.0,
+            1.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.364521902
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.359109641,
+            17.42578125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.025143181223951372,
+        "variables": [
+            10.0,
+            44.0,
+            1.0,
+            2.0,
+            0.0,
+            11.0,
+            1.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.359109641
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.43474285,
+            6.21923828125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.013854875984790165,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            24.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.43474285
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.166684305,
+            98.483154296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.06503572704980505,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            15.0,
+            22.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.166684305
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.414045491,
+            6.386962890625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.030360455026610715,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            15.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.414045491
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.341819199,
+            22.29296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.027443677232986095,
+        "variables": [
+            9.0,
+            40.0,
+            0.0,
+            2.0,
+            1.0,
+            7.0,
+            1.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.341819199
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.366841861,
+            13.76123046875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.015665499107269526,
+        "variables": [
+            10.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            11.0,
+            1.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.366841861
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.135099787,
+            199.390380859375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.18293115356375972,
+        "variables": [
+            11.0,
+            35.0,
+            0.0,
+            0.0,
+            0.0,
+            4.0,
+            0.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.135099787
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.3754807,
+            13.510498046875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.04767992419973179,
+        "variables": [
+            9.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            19.0,
+            1.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.3754807
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.329346482,
+            28.046142578125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.1381427096720182,
+        "variables": [
+            9.0,
+            39.0,
+            0.0,
+            2.0,
+            1.0,
+            5.0,
+            1.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.329346482
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.203728543,
+            41.25732421875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.050136030086146206,
+        "variables": [
+            10.0,
+            42.0,
+            1.0,
+            1.0,
+            2.0,
+            5.0,
+            5.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.203728543
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.349543535,
+            18.225341796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.028109785439873886,
+        "variables": [
+            8.0,
+            44.0,
+            0.0,
+            2.0,
+            1.0,
+            5.0,
+            1.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.349543535
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.23502112,
+            29.83447265625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.1412109207526472,
+        "variables": [
+            9.0,
+            45.0,
+            1.0,
+            1.0,
+            2.0,
+            21.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.23502112
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.345808627,
+            21.563720703125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.020680145075085813,
+        "variables": [
+            9.0,
+            42.0,
+            0.0,
+            2.0,
+            1.0,
+            7.0,
+            1.0
+        ],
+        "id": 15,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.345808627
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.21313875,
+            31.550537109375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02935561659742892,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            2.0,
+            13.0,
+            5.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.21313875
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.126066238,
+            900.350341796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": "Infinity",
+        "variables": [
+            10.0,
+            10.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.126066238
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.905001469,
+            0.334716796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": "Infinity",
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            26.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.905001469
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.126271861,
+            509.788330078125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.623363890020762,
+        "variables": [
+            10.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.126271861
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.44442672,
+            5.8994140625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.5715365491535151,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            30.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.44442672
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.879408844,
+            1.32958984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.5648023266233981,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            6.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.879408844
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.127499573,
+            340.96923828125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.2052967410460713,
+        "variables": [
+            9.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            22.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.127499573
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.237594098,
+            29.83447265625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.1384398309265019,
+        "variables": [
+            9.0,
+            45.0,
+            1.0,
+            1.0,
+            2.0,
+            21.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.237594098
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.330764703,
+            28.046142578125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.13055647681863503,
+        "variables": [
+            9.0,
+            39.0,
+            0.0,
+            2.0,
+            1.0,
+            5.0,
+            1.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.330764703
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.132329583,
+            289.7470703125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.09904340855215715,
+        "variables": [
+            7.0,
+            14.0,
+            0.0,
+            0.0,
+            3.0,
+            23.0,
+            0.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.132329583
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.135303926,
+            230.288818359375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.09319945119538024,
+        "variables": [
+            10.0,
+            36.0,
+            0.0,
+            0.0,
+            2.0,
+            3.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.135303926
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.136404332,
+            165.708251953125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.07928587161308995,
+        "variables": [
+            9.0,
+            43.0,
+            0.0,
+            0.0,
+            0.0,
+            4.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.136404332
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.135655683,
+            209.709228515625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.07316764454126758,
+        "variables": [
+            11.0,
+            36.0,
+            0.0,
+            0.0,
+            0.0,
+            4.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.135655683
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.16756637,
+            98.483154296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.04906067095392853,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            15.0,
+            22.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.16756637
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.131025401,
+            314.48583984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.04696622948199651,
+        "variables": [
+            8.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            5.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.131025401
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.137689938,
+            140.701171875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.04668233700513773,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            0.0,
+            3.0,
+            5.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.137689938
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.174064446,
+            73.308837890625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.04467435934168029,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            4.0,
+            0.0
+        ],
+        "id": 18,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.174064446
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.203827333,
+            54.58154296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03670166087553244,
+        "variables": [
+            9.0,
+            41.0,
+            0.0,
+            1.0,
+            2.0,
+            5.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.203827333
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.140231274,
+            128.115234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03423959816659973,
+        "variables": [
+            9.0,
+            45.0,
+            0.0,
+            0.0,
+            1.0,
+            6.0,
+            0.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.140231274
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.127559086,
+            326.50537109375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03395195874622463,
+        "variables": [
+            9.0,
+            14.0,
+            0.0,
+            0.0,
+            1.0,
+            6.0,
+            0.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.127559086
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.89800876,
+            0.351806640625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.03266817032268287,
+        "variables": [
+            9.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            27.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.89800876
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.430655585,
+            6.2685546875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.029765300795855838,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            21.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.430655585
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.190025348,
+            54.968505859375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02877217622480625,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            29.0,
+            0.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.190025348
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.351305933,
+            18.225341796875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.028419922075670123,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            2.0,
+            1.0,
+            5.0,
+            1.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.351305933
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.341942429,
+            22.29296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.027234362960567818,
+        "variables": [
+            9.0,
+            40.0,
+            0.0,
+            2.0,
+            1.0,
+            7.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.341942429
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.415410646,
+            6.386962890625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02716305674777739,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            15.0,
+            5.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.415410646
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.224481222,
+            29.839599609375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.027047425768372494,
+        "variables": [
+            9.0,
+            45.0,
+            0.0,
+            1.0,
+            2.0,
+            21.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.224481222
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.206746968,
+            41.25732421875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.026610002704475028,
+        "variables": [
+            10.0,
+            42.0,
+            1.0,
+            1.0,
+            2.0,
+            5.0,
+            5.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.206746968
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.383923936,
+            13.510498046875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02592597531663018,
+        "variables": [
+            9.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            19.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.383923936
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.880141638,
+            1.012451171875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.024965049533373588,
+        "variables": [
+            11.0,
+            48.0,
+            1.0,
+            3.0,
+            0.0,
+            8.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.880141638
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.366612158,
+            14.43310546875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02487901168766616,
+        "variables": [
+            9.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            6.0,
+            1.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.366612158
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.147696928,
+            121.447509765625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.0240666155707303,
+        "variables": [
+            10.0,
+            45.0,
+            0.0,
+            0.0,
+            1.0,
+            22.0,
+            0.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.147696928
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.359935981,
+            17.505126953125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02386371240045067,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            2.0,
+            1.0,
+            6.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.359935981
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.376074895,
+            13.76123046875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02325002773049686,
+        "variables": [
+            10.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            11.0,
+            1.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.376074895
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.152378345,
+            110.531494140625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02267771471371706,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            11.0,
+            8.0,
+            0.0
+        ],
+        "id": 15,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.152378345
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.396012192,
+            13.4638671875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02215382026764148,
+        "variables": [
+            10.0,
+            47.0,
+            1.0,
+            2.0,
+            0.0,
+            24.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.396012192
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.178136782,
+            60.64306640625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.021884147371346557,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            7.0,
+            0.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.178136782
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.183828672,
+            57.36962890625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.02156754387541043,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            22.0,
+            0.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.183828672
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.160084805,
+            101.3115234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.021272531323504543,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            7.0,
+            23.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.160084805
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.155218352,
+            103.361328125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.020137816579519102,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            0.0,
+            11.0,
+            9.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.155218352
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.175104233,
+            66.985107421875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.019300915488978353,
+        "variables": [
+            10.0,
+            44.0,
+            0.0,
+            1.0,
+            0.0,
+            5.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.175104233
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.410164596,
+            7.03955078125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.019010650622858838,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            9.0,
+            5.0
+        ],
+        "id": 97,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.410164596
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.40143234,
+            7.345703125
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.01872385501748386,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            7.0,
+            5.0
+        ],
+        "id": 100,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.40143234
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.150265028,
+            118.04833984375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.018138716559185836,
+        "variables": [
+            11.0,
+            45.0,
+            0.0,
+            0.0,
+            1.0,
+            21.0,
+            0.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.150265028
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.438390719,
+            6.14990234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.018089584404507288,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            26.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.438390719
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.210780413,
+            38.666015625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.01587911879346325,
+        "variables": [
+            10.0,
+            42.0,
+            1.0,
+            1.0,
+            2.0,
+            13.0,
+            5.0
+        ],
+        "id": 29,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.210780413
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.212999598,
+            34.1904296875
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.015387480830132874,
+        "variables": [
+            10.0,
+            44.0,
+            1.0,
+            1.0,
+            2.0,
+            7.0,
+            5.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.212999598
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.396543013,
+            8.15234375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.013756248584129572,
+        "variables": [
+            10.0,
+            48.0,
+            1.0,
+            2.0,
+            0.0,
+            5.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.396543013
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.218011105,
+            31.550537109375
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.012008628306390278,
+        "variables": [
+            9.0,
+            44.0,
+            0.0,
+            1.0,
+            2.0,
+            13.0,
+            5.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.218011105
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.3358491,
+            24.877197265625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.011785609079318353,
+        "variables": [
+            10.0,
+            38.0,
+            0.0,
+            2.0,
+            1.0,
+            7.0,
+            1.0
+        ],
+        "id": 13,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.3358491
+    },
+    {
+        "numberOfObjectives": 2,
+        "objectives": [
+            0.335575187,
+            25.543212890625
+        ],
+        "overallConstraintViolation": 0.0,
+        "timeStamp": 0,
+        "generationNumber": 0,
+        "evaluationNumber": 0,
+        "parents": [],
+        "paretoFitness": 0.0,
+        "rank": 0.0,
+        "location": 0,
+        "crowdingDistance": 0.010048357346159572,
+        "variables": [
+            9.0,
+            38.0,
+            0.0,
+            2.0,
+            1.0,
+            6.0,
+            1.0
+        ],
+        "id": 92,
+        "numberOfConstraints": 0,
+        "numberOfViolatedConstraint": 0,
+        "eval": 0.335575187
+    }
+]
