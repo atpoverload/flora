@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package flora.experiments.sunflow.image;
+
+option java_multiple_files = true;
+option java_package = "flora.experiments.sunflow.image";
+
+service PIQEService {
+  rpc ComputePiqe (ComputePiqeRequest) returns (ComputePiqeResponse) {}
+}
+
+message ComputePiqeRequest {
+  optional uint64 width = 1;
+  optional uint64 height = 2;
+  repeated ImageRow image_row = 3;
+  
+  message ImageRow {
+    repeated uint64 pixel = 1;
+  }
+}
+
+message ComputePiqeResponse {
+  optional float score = 1;
+}
