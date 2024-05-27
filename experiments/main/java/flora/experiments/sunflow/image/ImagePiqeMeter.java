@@ -8,7 +8,7 @@ import java.awt.image.Raster;
 import java.util.ArrayList;
 
 /** A {@link SnapshotMeter} that computes the mse image distance with a reference image. */
-public final class ImagePiqeMeter2 extends SnapshotMeter {
+public final class ImagePiqeMeter extends SnapshotMeter {
   private final BufferedImageDisplay display;
   private final PiqeServiceBlockingStub piqe;
 
