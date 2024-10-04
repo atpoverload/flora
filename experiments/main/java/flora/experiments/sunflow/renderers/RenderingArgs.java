@@ -51,10 +51,10 @@ public class RenderingArgs {
           .addOption("k", "knobs", true, "rendering knobs to use")
           .addOption("c", "configuration", true, "reference configuration to use")
           .addOption("t", "constraint", true, "maximum allowable reference scoring")
-          .addOption("o", "output", true, "file to output results to")
+          .addOption("o", "output", true, "directory to output results to")
           // options for ears
           .addOption("n", "iterations", true, "number of iterations to run for")
-          .addOption("p", "save", true, "file to output state to")
+          // .addOption("p", "save", true, "file to output state to")
           .addOption("f", "load", true, "file to load state from");
 
   static RenderingArgs fromArgs(String[] args) throws Exception {

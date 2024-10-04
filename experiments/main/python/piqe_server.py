@@ -6,10 +6,10 @@ import numpy as np
 from pypiqe import piqe
 
 from piqe_service_pb2 import ComputePiqeResponse
-from piqe_service_pb2_grpc import PIQEService, add_PIQEServiceServicer_to_server
+from piqe_service_pb2_grpc import PiqeService, add_PiqeServiceServicer_to_server
 
 
-class PIQENvmlService(PIQEService):
+class PiqeServiceImpl(PiqeService):
     def ComputePiqe(self, request, context):
         image = np.empty(shape=(request.height, request.width))
         for j in range(request.height):
@@ -23,9 +23,9 @@ class PIQENvmlService(PIQEService):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    add_PIQEServiceServicer_to_server(PIQENvmlService(), server)
-    server.add_insecure_port('localhost:8980')
-    print('starting piqe server at localhost:8980')
+    add_PiqeServiceServicer_to_server(PiqeServiceImpl(), server)
+    server.add_insecure_port('localhost:8913')
+    print('starting piqe server at localhost:8913')
     server.start()
     server.wait_for_termination()
 

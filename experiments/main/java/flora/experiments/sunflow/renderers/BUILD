@@ -51,6 +51,7 @@ java_binary(
 java_binary(
     name = "SunflowRenderingProblem",
     srcs = ["SunflowRenderingProblem.java"],
+    visibility = ["//experiments:__pkg__"],
     deps = [
         ":renderers",
         "//contrib/main/java/flora/contrib/ears",

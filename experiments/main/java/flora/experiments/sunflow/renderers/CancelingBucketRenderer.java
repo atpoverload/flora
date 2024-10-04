@@ -205,7 +205,7 @@ public final class CancelingBucketRenderer implements ImageSampler {
       while (true) {
         int bx, by;
         synchronized (CancelingBucketRenderer.this) {
-          if (bucketCounter >= bucketCoords.length) return;
+          if (UI.taskCanceled() || bucketCounter >= bucketCoords.length) return;
           UI.taskUpdate(bucketCounter);
           bx = bucketCoords[bucketCounter + 0];
           by = bucketCoords[bucketCounter + 1];

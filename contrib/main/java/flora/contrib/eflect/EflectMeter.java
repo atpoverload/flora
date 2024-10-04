@@ -4,6 +4,7 @@ import eflect.Eflect;
 import eflect.data.EnergyFootprint;
 import eflect.util.TimeUtil;
 import flora.Meter;
+import flora.fault.ConstraintFault;
 import flora.util.LoggerUtil;
 import java.time.Duration;
 import java.time.Instant;
@@ -38,6 +39,11 @@ public class EflectMeter implements Meter {
       if (footprint.energy > 0) {
         energy += footprint.energy;
       }
+    }
+    if (energy <= 0) {
+      LoggerUtil.getLogger()
+          .fine(String.format("eflect reported a non-positive value (%fJ)", energy));
+      throw new ConstraintFault(energy, 0);
     }
     LoggerUtil.getLogger()
         .fine(

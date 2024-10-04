@@ -40,4 +40,8 @@ public final class MeteringMachine {
   public final String[] meters() {
     return meters.keySet().toArray(String[]::new);
   }
+
+  public final Meter getMeter(String meter) {
+    return meters.get(meter);
+  }
 }

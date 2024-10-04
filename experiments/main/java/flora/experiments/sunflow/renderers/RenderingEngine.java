@@ -11,6 +11,7 @@ import flora.experiments.sunflow.image.BufferedImageDisplay;
 import flora.experiments.sunflow.image.ConstrainedImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceMeter;
 import flora.experiments.sunflow.image.ImageDistanceScore;
+import flora.experiments.sunflow.image.ImagePiqeMeter;
 import flora.experiments.sunflow.scene.RenderingConfiguration;
 import flora.experiments.sunflow.scene.RenderingKnobs;
 import flora.experiments.sunflow.scene.Scene;
@@ -26,12 +27,15 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 import org.sunflow.PluginRegistry;
 
 /** Experiment code to render a given scene. */
 final class RenderingEngine {
+  private static final Logger logger = LoggerUtil.getLogger();
+
   private static final int DEFAULT_TIMEOUT =
-      60 * 60 * 1000; // 1 hour timeout for the reference image (just in case)
+      10 * 60 * 1000; // 5 minute timeout for the reference image (just in case)
 
   private final RenderingKnobs knobs;
   private final Optional<RenderingConfiguration> referenceConfiguration;
@@ -61,30 +65,34 @@ final class RenderingEngine {
   Map<String, Meter> createMeters(ImageDistanceScore score) {
     Map<String, Meter> meters = new HashMap<>();
     meters.put("runtime", new Stopwatch());
-    LoggerUtil.getLogger().fine("checking for rapl");
+    logger.info("checking for rapl");
     if (Rapl.getInstance() != null) {
-      LoggerUtil.getLogger().fine("found rapl!");
+      logger.info("found rapl!");
       meters.put("energy", new EflectMeter(Eflect.raplEflect(32, createExecutor(), 100)));
     } else if (Powercap.SOCKET_COUNT > 0) {
-      LoggerUtil.getLogger().fine("found powercap!");
+      logger.info("found powercap!");
       meters.put("energy", new EflectMeter(Eflect.powercapEflect(32, createExecutor(), 100)));
+    } else {
+      logger.info("unable to find rapl; no energy will be provided");
     }
-    LoggerUtil.getLogger().fine("checking for reference configuration");
-    referenceConfiguration.ifPresent(
+    logger.info("adding PIQE meter");
+    meters.put("piqe", new ImagePiqeMeter(display, 100.0));
+    logger.info("checking for reference configuration");
+    referenceConfiguration.ifPresentOrElse(
         configuration -> {
-          LoggerUtil.getLogger().fine(String.format("generating reference from %s", configuration));
+          logger.info(String.format("generating reference from %s", configuration));
           Scene scene = newScene(configuration);
           Instant start = Instant.now();
           scene.run();
           timeOutMs = (int) (3 * Duration.between(start, Instant.now()).toMillis() / 2);
-          LoggerUtil.getLogger().fine(String.format("time out is set to %d ms", timeOutMs));
+          logger.info(String.format("time out is set to %d ms", timeOutMs));
           if (constraint.isPresent()) {
             LoggerUtil.getLogger()
-                .fine(
+                .info(
                     String.format(
                         "setting image quality constraint to %f", constraint.getAsDouble()));
           } else {
-            LoggerUtil.getLogger().fine("setting no image quality constraint");
+            logger.info("setting no image quality constraint");
           }
           meters.put(
               score.name(),
@@ -92,7 +100,8 @@ final class RenderingEngine {
                   ? new ConstrainedImageDistanceMeter(
                       display, display.getImage(), score, constraint.getAsDouble())
                   : new ImageDistanceMeter(display, display.getImage(), score));
-        });
+        },
+        () -> logger.info("no reference configuration to generate"));
     return meters;
   }
 

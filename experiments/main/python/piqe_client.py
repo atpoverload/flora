@@ -2,12 +2,12 @@
 import grpc
 
 from piqe_service_pb2 import ComputePiqeRequest
-from piqe_service_pb2_grpc import PIQEServiceStub
+from piqe_service_pb2_grpc import PiqeServiceStub
 
 
-class PIQEClient:
+class PiqeClient:
     def __init__(self, addr):
-        self.stub = PIQEServiceStub(grpc.insecure_channel(addr))
+        self.stub = PiqeServiceStub(grpc.insecure_channel(addr))
 
     def compute(self, image):
         request = ComputePiqeRequest()
@@ -21,7 +21,7 @@ class PIQEClient:
 
 
 def main():
-    client = PIQEClient('localhost:8980')
+    client = PiqeClient('localhost:8913')
     print(client.compute([[1, 0], [0, 1]]))
 
 

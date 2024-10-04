@@ -79,6 +79,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
               String.format(
                   "[%s] iteration %d - an error occurred (%s)", name, iteration, error.toString()),
               error);
+      error.printStackTrace();
       collector.addError(Integer.valueOf(iteration), error);
       solution.setObjectives(failureMeasurement);
     } finally {

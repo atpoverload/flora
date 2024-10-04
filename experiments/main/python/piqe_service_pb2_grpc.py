@@ -5,7 +5,7 @@ import grpc
 import piqe_service_pb2 as piqe__service__pb2
 
 
-class PIQEServiceStub(object):
+class PiqeServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,13 +15,13 @@ class PIQEServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ComputePiqe = channel.unary_unary(
-                '/flora.experiments.sunflow.image.PIQEService/ComputePiqe',
+                '/flora.experiments.sunflow.image.PiqeService/ComputePiqe',
                 request_serializer=piqe__service__pb2.ComputePiqeRequest.SerializeToString,
                 response_deserializer=piqe__service__pb2.ComputePiqeResponse.FromString,
                 )
 
 
-class PIQEServiceServicer(object):
+class PiqeServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def ComputePiqe(self, request, context):
@@ -31,7 +31,7 @@ class PIQEServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_PIQEServiceServicer_to_server(servicer, server):
+def add_PiqeServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ComputePiqe': grpc.unary_unary_rpc_method_handler(
                     servicer.ComputePiqe,
@@ -40,12 +40,12 @@ def add_PIQEServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'flora.experiments.sunflow.image.PIQEService', rpc_method_handlers)
+            'flora.experiments.sunflow.image.PiqeService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class PIQEService(object):
+class PiqeService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -59,7 +59,7 @@ class PIQEService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/flora.experiments.sunflow.image.PIQEService/ComputePiqe',
+        return grpc.experimental.unary_unary(request, target, '/flora.experiments.sunflow.image.PiqeService/ComputePiqe',
             piqe__service__pb2.ComputePiqeRequest.SerializeToString,
             piqe__service__pb2.ComputePiqeResponse.FromString,
             options, channel_credentials,

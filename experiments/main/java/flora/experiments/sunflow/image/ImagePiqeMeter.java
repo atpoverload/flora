@@ -11,13 +11,15 @@ import java.util.ArrayList;
 public final class ImagePiqeMeter extends SnapshotMeter {
   private final BufferedImageDisplay display;
   private final PiqeServiceBlockingStub piqe;
+  private final double constraint;
 
   public final ArrayList<BufferedImage> images = new ArrayList<>();
 
-  public ImagePiqeMeter2(BufferedImageDisplay display) {
+  public ImagePiqeMeter(BufferedImageDisplay display, double constraint) {
     this.display = display;
     ManagedChannelBuilder<?> channelBuilder =
-        ManagedChannelBuilder.forAddress("localhost", 8980).usePlaintext();
+        ManagedChannelBuilder.forAddress("localhost", 8913).usePlaintext();
+    this.constraint = constraint;
     this.piqe = PiqeServiceGrpc.newBlockingStub(channelBuilder.build());
   }
 
@@ -25,6 +27,7 @@ public final class ImagePiqeMeter extends SnapshotMeter {
   @Override
   public double read() {
     BufferedImage image = display.getImage();
+    images.add(image);
     ComputePiqeRequest.Builder request =
         ComputePiqeRequest.newBuilder().setWidth(image.getWidth()).setHeight(image.getHeight());
     Raster raster = image.getRaster();
@@ -34,6 +37,10 @@ public final class ImagePiqeMeter extends SnapshotMeter {
         request.getImageRowBuilder(j).addPixel(raster.getSample(j, i, 0));
       }
     }
-    return piqe.computePiqe(request.build()).getScore();
+    double score = piqe.computePiqe(request.build()).getScore();
+    if (constraint < score) {
+      throw new ImageQualityFault(score, constraint);
+    }
+    return score;
   }
 }

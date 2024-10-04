@@ -69,6 +69,11 @@ public final class RenderingKnobs {
 
   public int[] randomConfiguration() {
     ThreadLocalRandom random = ThreadLocalRandom.current();
+    int resolution = random.nextInt(this.resolutionX.configurationCount());
+    int bucketSize = random.nextInt(this.bucketSize.configurationCount());
+    while (this.bucketSize.fromIndex(bucketSize) > this.resolutionX.fromIndex(resolution)) {
+      bucketSize = random.nextInt(this.bucketSize.configurationCount());
+    }
     int aaMin = random.nextInt(this.aaMin.configurationCount());
     int aaMax = random.nextInt(this.aaMax.configurationCount());
     while (this.aaMin.fromIndex(aaMin) > this.aaMax.fromIndex(aaMax)) {
@@ -78,10 +83,10 @@ public final class RenderingKnobs {
     return new int[] {
       random.nextInt(this.threads.configurationCount()),
       // TODO: what about non-square images?
-      random.nextInt(this.resolutionX.configurationCount()),
+      resolution,
       aaMin,
       aaMax,
-      random.nextInt(this.bucketSize.configurationCount()),
+      bucketSize,
       random.nextInt(this.aoSamples.configurationCount()),
       random.nextInt(this.filter.configurationCount())
     };

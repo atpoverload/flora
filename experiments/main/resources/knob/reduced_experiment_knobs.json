@@ -1,0 +1,36 @@
+{
+    "width": {
+        "type": "IntRangeKnob",
+        "start": 128,
+        "end": 640,
+        "step": 128
+    },
+    "height": {
+        "type": "IntRangeKnob",
+        "start": 128,
+        "end": 640,
+        "step": 128
+    },
+    "aaMin": {
+        "type": "IntRangeKnob",
+        "start": -2,
+        "end": 2
+    },
+    "aaMax": {
+        "type": "IntRangeKnob",
+        "start": -2,
+        "end": 2
+    },
+    "bucketSize": {
+        "type": "IntRangeKnob",
+        "start": 20,
+        "end": 100,
+        "step": 20
+    },
+    "aoSamples": {
+        "type": "IntRangeKnob",
+        "start": 16,
+        "end": 80,
+        "step": 16
+    }
+}

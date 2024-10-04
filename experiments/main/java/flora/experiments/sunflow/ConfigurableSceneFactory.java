@@ -71,6 +71,10 @@ public final class ConfigurableSceneFactory
         > this.knobs[3].fromIndex(configuration[3], Integer.class)) {
       configuration[3]++;
     }
+    while (this.knobs[4].fromIndex(configuration[4], Integer.class)
+        > this.knobs[1].fromIndex(configuration[1], Integer.class)) {
+      configuration[4]--;
+    }
     return configuration;
   }
 

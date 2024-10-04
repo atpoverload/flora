@@ -4,6 +4,7 @@ java_library(
     srcs = glob(["*.java"]),
     deps = [
         "//src/main/java/flora",
+        "//src/main/java/flora/fault",
         "//src/main/java/flora/util",
         "//eflect/src/main/java/eflect",
         "//eflect/src/main/java/eflect/data",
