@@ -203,14 +203,16 @@ public final class CancelingBucketRenderer implements ImageSampler {
     @Override
     public void run() {
       while (true) {
+        if (outOfMemory.get() || UI.taskCanceled()) return;
         int bx, by;
         synchronized (CancelingBucketRenderer.this) {
-          if (UI.taskCanceled() || bucketCounter >= bucketCoords.length) return;
+          if (bucketCounter >= bucketCoords.length) return;
           UI.taskUpdate(bucketCounter);
           bx = bucketCoords[bucketCounter + 0];
           by = bucketCoords[bucketCounter + 1];
           bucketCounter += 2;
         }
+        if (outOfMemory.get() || UI.taskCanceled()) return;
         try {
           renderBucket(display, bx, by, threadID, istate);
         } catch (OutOfMemoryError e) {
@@ -220,7 +222,7 @@ public final class CancelingBucketRenderer implements ImageSampler {
             outOfMemory.set(true);
           }
         }
-        if (UI.taskCanceled()) return;
+        if (outOfMemory.get() || UI.taskCanceled()) return;
       }
     }
 
@@ -276,11 +278,11 @@ public final class CancelingBucketRenderer implements ImageSampler {
         samples[index] = new ImageSample(rx, ry, i);
       }
     }
-    if (outOfMemory.get()) return;
+    if (outOfMemory.get()|| UI.taskCanceled()) return;
     for (int x = 0; x < sbw - 1; x += maxStepSize)
       for (int y = 0; y < sbh - 1; y += maxStepSize)
         refineSamples(samples, sbw, x, y, maxStepSize, thresh, istate);
-    if (outOfMemory.get()) return;
+    if (outOfMemory.get()|| UI.taskCanceled()) return;
     if (dumpBuckets) {
       UI.printInfo(Module.BCKT, "Dumping bucket [%d, %d] to file ...", bx, by);
       GenericBitmap bitmap = new GenericBitmap(sbw, sbh);
@@ -289,6 +291,7 @@ public final class CancelingBucketRenderer implements ImageSampler {
           bitmap.writePixel(x, y, samples[index].c, samples[index].alpha);
       bitmap.save(String.format("bucket_%04d_%04d.png", bx, by));
     }
+    if (outOfMemory.get()|| UI.taskCanceled()) return;
     if (displayAA) {
       // color coded image of what is visible
       float invArea = invSubPixelSize * invSubPixelSize;
@@ -336,7 +339,7 @@ public final class CancelingBucketRenderer implements ImageSampler {
         }
       }
     }
-    if (outOfMemory.get()) return;
+    if (outOfMemory.get()|| UI.taskCanceled()) return;
     // update pixels
     display.imageUpdate(x0, y0, bw, bh, bucketRGB, bucketAlpha);
   }
