@@ -2,7 +2,7 @@ package flora.contrib.ears;
 
 import static java.util.stream.Collectors.toList;
 
-import flora.MeteringMachine;
+import flora.Machine;
 import flora.WorkFactory;
 import flora.WorkUnit;
 import flora.util.DataCollector;
@@ -22,7 +22,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
 
   private final String name;
   private final WorkFactory<K, C, W> workFactory;
-  private final MeteringMachine machine;
+  private final Machine machine;
   private final DataCollector<Integer, C> collector = new DataCollector<>();
 
   private final int numberOfObjectives;
@@ -30,8 +30,8 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
 
   private int iteration = 0;
 
-  public FloraProblem(String name, WorkFactory<K, C, W> workFactory, MeteringMachine machine) {
-    super(name, workFactory.knobCount(), 1, machine.meters().length, 0);
+  public FloraProblem(String name, WorkFactory<K, C, W> workFactory, Machine machine) {
+    super(name, workFactory.knobCount(), 1, machine.meters().size(), 0);
     this.name = name;
     this.workFactory = workFactory;
     this.machine = machine;
@@ -47,7 +47,7 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
       this.upperLimit.add((double) configCount);
     }
 
-    this.numberOfObjectives = machine.meters().length;
+    this.numberOfObjectives = machine.meters().size();
     this.failureMeasurement =
         IntStream.range(/* start= */ 0, numberOfObjectives)
             .mapToDouble(i -> Double.MAX_VALUE - 1)
@@ -59,7 +59,8 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
     if (!isFeasible(solution)) {
       makeFeasible(solution);
     }
-    W work = workFactory.newWorkUnit(toIntArray(solution));
+    System.out.println(solution);
+    W work = workFactory.newWorkUnit(new int[] {1, 1});
     collector.addConfiguration(Integer.valueOf(iteration), work.configuration());
     try {
       LoggerUtil.getLogger()

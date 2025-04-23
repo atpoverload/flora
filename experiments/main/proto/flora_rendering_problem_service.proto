@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package flora.experiments.rendering;
+
+option java_multiple_files = true;
+option java_package = "flora.experiments.rendering";
+
+import "experiments/main/proto/knob.proto";
+
+service FloraRenderingProblemService {
+  rpc NextConfiguration (Empty) returns (RenderingConfiguration) {}
+  rpc Evaluate (RenderingScore) returns (Empty) {}
+}
+
+message Empty {}
+
+message RenderingKnobs {
+  optional knob.RangeKnob resolutionX = 1;
+  optional knob.RangeKnob resolutionY = 2;
+}
+
+message RenderingConfiguration {
+  optional int64 resolutionX = 1;
+  optional int64 resolutionY = 2;
+}
+
+message RenderingScore {
+  optional double energy = 1;
+}

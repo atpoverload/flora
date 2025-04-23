@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package flora.knob;
+
+option java_multiple_files = true;
+option java_package = "flora.knob";
+
+message RangeKnob {
+  optional int32 start = 1;
+  optional int32 end = 2;
+  optional int32 step = 3;
+}
