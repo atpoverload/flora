@@ -7,7 +7,7 @@ from flora_rendering_problem_service_pb2 import Empty, RenderingScore
 from flora_rendering_problem_service_pb2_grpc import FloraRenderingProblemServiceStub
 
 
-class PiqeClient:
+class FloraRenderingClient:
     def __init__(self, addr):
         self.stub = FloraRenderingProblemServiceStub(
             grpc.insecure_channel(addr))
@@ -22,7 +22,7 @@ class PiqeClient:
 
 
 def main():
-    client = PiqeClient('localhost:8980')
+    client = FloraRenderingClient('localhost:8980')
     while True:
         print(client.next_configuration())
         print(client.evaluate(random.random()))
