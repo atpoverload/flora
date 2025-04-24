@@ -59,8 +59,9 @@ public final class FloraProblem<K, C, W extends WorkUnit<K, C>> extends NumberPr
     if (!isFeasible(solution)) {
       makeFeasible(solution);
     }
-    System.out.println(solution);
-    W work = workFactory.newWorkUnit(new int[] {1, 1});
+    LoggerUtil.getLogger()
+        .info(String.format("[%s] iteration %d - trying solution %s", name, iteration, solution));
+    W work = workFactory.newWorkUnit(toIntArray(solution));
     collector.addConfiguration(Integer.valueOf(iteration), work.configuration());
     try {
       LoggerUtil.getLogger()
