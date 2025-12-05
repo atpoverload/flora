@@ -6,6 +6,17 @@ bazel_dep(name = "grpc", version = "1.71.0")
 bazel_dep(name = "grpc-java", version = "1.69.0")
 
 http_jar = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+
+http_jar(
+    name = "sunflow",
+    urls = ["https://sunflow-deps.s3.amazonaws.com/sunflow.jar"],
+)
+
+http_jar(
+    name = "janino",
+    urls = ["https://sunflow-deps.s3.amazonaws.com/janino.jar"],
+)
+
 http_jar(
     name = "ears",
     sha256 = "340cffece3021fbc167046cbdb1b7d16ee14742135359a006375fffc68762b59",
@@ -14,3 +25,15 @@ http_jar(
         "https://test.lpm.feri.um.si/ears3.jar",
     ],
 )
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.json:json:20231013",
+        "commons-cli:commons-cli:1.7.0",
+    ],
+    repositories = [
+        "https://repo.maven.apache.org/maven2/",
+    ],
+)
+use_repo(maven, "maven")
