@@ -11,6 +11,7 @@ public final class EnergyAccountant implements Accountant<Collection<EnergyFootp
   private final int domainCount;
   private final int componentCount;
   private final double wrapAround;
+  private final double[][] energyBuffer;
   private final Accountant<Collection<ThreadActivity>> activityAccountant;
   private final double[][] energyMin;
   private final double[][] energyMax;
@@ -26,6 +27,7 @@ public final class EnergyAccountant implements Accountant<Collection<EnergyFootp
     this.domainCount = domainCount;
     this.componentCount = componentCount;
     this.wrapAround = wrapAround;
+    this.energyBuffer = Powercap.MAX_ENERGY_JOULES;
     this.activityAccountant = activityAccountant;
     energyMin = new double[domainCount][componentCount];
     energyMax = new double[domainCount][componentCount];
@@ -102,14 +104,20 @@ public final class EnergyAccountant implements Accountant<Collection<EnergyFootp
         for (int domain = 0; domain < domainCount; domain++) {
           for (int component = 0; component < componentCount; component++) {
             double componentEnergy = energyMax[domain][component] - energyMin[domain][component];
-            energy[domain] += componentEnergy;
+            if (componentEnergy < 0) {
+              energy[domain] += energyBuffer[domain][component];
+            } else {
+              energy[domain] += componentEnergy;
+            }
           }
         }
-        for (int domain = 0; domain < domainCount; domain++) {
-          if (energy[domain] < 0) {
-            energy[domain] += wrapAround;
-          }
-        }
+        // if (wrapAround != 0) {
+        //   for (int domain = 0; domain < domainCount; domain++) {
+        //     if (energy[domain] < 0) {
+        //       energy[domain] += wrapAround;
+        //     }
+        //   }
+        // }
       }
       for (ThreadActivity thread : activityAccountant.process()) {
         double taskEnergy = thread.activity * energy[thread.domain];
