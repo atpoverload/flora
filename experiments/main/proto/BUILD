@@ -37,13 +37,21 @@ java_grpc_library(
     ]
 )
 
-# proto_library(
-#     name = "piqe_service_protos",
-#     srcs = ["piqe_service.proto"],
-# )
+proto_library(
+    name = "piqe_service_protos",
+    srcs = ["piqe_service.proto"],
+)
 
-# java_grpc_library(
-#     name = "piqe_service_java_grpc",
-#     visibility = ["//visibility:public"],
-#     protos = [":piqe_service_protos"],
-# )
+java_proto_library(
+    name = "piqe_service_java_protos",
+    visibility = ["//visibility:public"],
+    deps = [":piqe_service_protos"],
+)
+
+java_grpc_library(
+    name = "piqe_service_java_grpc",
+    visibility = ["//visibility:public"],
+    srcs = [":piqe_service_protos"],
+    deps = [":piqe_service_java_protos"],
+
+)

@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -14,7 +14,7 @@
           pkgs.mkShellNoCC {
             name = "rules_nixpkgs_shell";
 
-            packages = with pkgs; [ bazel_6 bazel-buildtools cacert nix git jdk17 gcc ];
+            packages = with pkgs; [ bazel_8 bazel-buildtools cacert nix git jdk17 gcc ];
           };
       });
 }
