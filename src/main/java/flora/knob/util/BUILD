@@ -1,3 +1,5 @@
+load("@rules_java//java:java_library.bzl", "java_library")
+
 THIRD_PARTY = ["JsonKnobUtil.java"]
 
 java_library(
