@@ -66,10 +66,11 @@ final class RenderingEngine {
     Map<String, Meter> meters = new HashMap<>();
     meters.put("runtime", new Stopwatch());
     logger.info("checking for rapl");
-    if (Rapl.getInstance() != null) {
-      logger.info("found rapl!");
-      meters.put("energy", new EflectMeter(Eflect.raplEflect(32, createExecutor(), 100)));
-    } else if (Powercap.SOCKET_COUNT > 0) {
+    // if (Rapl.getInstance() != null) {
+    //   logger.info("found rapl!");
+    //   meters.put("energy", new EflectMeter(Eflect.raplEflect(32, createExecutor(), 100)));
+    // } else
+    if (Powercap.SOCKET_COUNT > 0) {
       logger.info("found powercap!");
       meters.put("energy", new EflectMeter(Eflect.powercapEflect(32, createExecutor(), 100)));
     } else {

@@ -102,14 +102,16 @@ public final class EnergyAccountant implements Accountant<Collection<EnergyFootp
         for (int domain = 0; domain < domainCount; domain++) {
           for (int component = 0; component < componentCount; component++) {
             double componentEnergy = energyMax[domain][component] - energyMin[domain][component];
-            energy[domain] += componentEnergy;
+            if (componentEnergy > 0) {
+              energy[domain] += componentEnergy;
+            }
           }
         }
-        for (int domain = 0; domain < domainCount; domain++) {
-          if (energy[domain] < 0) {
-            energy[domain] += wrapAround;
-          }
-        }
+        // for (int domain = 0; domain < domainCount; domain++) {
+        //   if (energy[domain] < 0) {
+        //     energy[domain] += wrapAround;
+        //   }
+        // }
       }
       for (ThreadActivity thread : activityAccountant.process()) {
         double taskEnergy = thread.activity * energy[thread.domain];

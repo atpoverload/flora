@@ -35,16 +35,17 @@ public final class Eflect {
             () -> new ProcStatSample(Instant.now(), readProcStat()),
             () -> new ProcTaskSample(Instant.now(), readTaskStats()),
             () -> new EnergySample(Instant.now(), Rapl.getInstance().getEnergyStats())),
-        new AccountantMerger<EnergyFootprint>(
-            () ->
-                new EnergyAccountant(
-                    Rapl.getInstance().getSocketCount(),
-                    /* componentCount= */ 3,
-                    /* wrapAround= */ Rapl.getInstance().getWrapAroundEnergy(),
-                    new JiffiesAccountant(
+        () ->
+            new AccountantMerger<EnergyFootprint>(
+                () ->
+                    new EnergyAccountant(
                         Rapl.getInstance().getSocketCount(),
-                        cpu -> cpu / (CPU_COUNT / Rapl.getInstance().getSocketCount()))),
-            mergeAttempts));
+                        /* componentCount= */ 3,
+                        /* wrapAround= */ Rapl.getInstance().getWrapAroundEnergy(),
+                        new JiffiesAccountant(
+                            Rapl.getInstance().getSocketCount(),
+                            cpu -> cpu / (CPU_COUNT / Rapl.getInstance().getSocketCount()))),
+                mergeAttempts));
   }
 
   public static Eflect powercapEflect(
@@ -56,21 +57,23 @@ public final class Eflect {
             () -> new ProcStatSample(Instant.now(), readProcStat()),
             () -> new ProcTaskSample(Instant.now(), readTaskStats()),
             () -> new EnergySample(Instant.now(), Powercap.getEnergyStats())),
-        new AccountantMerger<EnergyFootprint>(
-            () ->
-                new EnergyAccountant(
-                    Powercap.SOCKET_COUNT,
-                    /* componentCount= */ 2,
-                    /* wrapAround= */ 0,
-                    new JiffiesAccountant(
-                        Powercap.SOCKET_COUNT, cpu -> cpu / (CPU_COUNT / Powercap.SOCKET_COUNT))),
-            mergeAttempts));
+        () ->
+            new AccountantMerger<EnergyFootprint>(
+                () ->
+                    new EnergyAccountant(
+                        Powercap.SOCKET_COUNT,
+                        /* componentCount= */ 2,
+                        /* wrapAround= */ 0,
+                        new JiffiesAccountant(
+                            Powercap.SOCKET_COUNT,
+                            cpu -> cpu / (CPU_COUNT / Powercap.SOCKET_COUNT))),
+                mergeAttempts));
   }
 
   private final int periodMillis;
   private final ScheduledExecutorService executor;
   private final List<Supplier<Sample>> sources;
-  private final SampleProcessor<Collection<EnergyFootprint>> processor;
+  private final Supplier<SampleProcessor<Collection<EnergyFootprint>>> processorFactory;
 
   private final ArrayList<SamplingFuture<Sample>> dataFutures = new ArrayList<>();
   private final ArrayList<EnergyFootprint> footprints = new ArrayList<>();
@@ -79,11 +82,11 @@ public final class Eflect {
       int periodMillis,
       ScheduledExecutorService executor,
       List<Supplier<Sample>> sources,
-      SampleProcessor<Collection<EnergyFootprint>> processor) {
+      Supplier<SampleProcessor<Collection<EnergyFootprint>>> processorFactory) {
     this.periodMillis = periodMillis;
     this.executor = executor;
     this.sources = sources;
-    this.processor = processor;
+    this.processorFactory = processorFactory;
   }
 
   public void start() {
@@ -94,6 +97,7 @@ public final class Eflect {
   }
 
   public void stop() {
+    SampleProcessor<Collection<EnergyFootprint>> processor = processorFactory.get();
     for (SamplingFuture<Sample> future : dataFutures) {
       for (Sample sample : future.get()) {
         processor.add(sample);
