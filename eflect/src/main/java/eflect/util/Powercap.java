@@ -3,6 +3,8 @@ package eflect.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /** Simple wrapper to read powercap's energy with pure Java. */
@@ -43,14 +45,14 @@ public final class Powercap {
   }
 
   private static double[][] getMaximumEnergy() {
-    if (!Files.exists(POWERCAP_ROOT)) {
-      logger.warning("couldn't check the maximum energy; powercap likely not available");
+    if (!Files.exists(Path.of(POWERCAP_PATH))) {
+      // logger.warning("couldn't check the maximum energy; powercap likely not available");
       return new double[0][0];
     }
     // TODO: this is a hack and we need to formalize it
     try {
       double[][] maxEnergy =
-          Files.list(POWERCAP_ROOT)
+          Files.list(Path.of(POWERCAP_PATH))
               .filter(p -> p.getFileName().toString().contains("intel-rapl"))
               .map(
                   socket -> {
@@ -62,8 +64,8 @@ public final class Powercap {
                                       Path.of(socket.toString(), "max_energy_range_uj")))
                               / 1000000;
                     } catch (Exception e) {
-                      logger.warning(
-                          String.format("couldn't check the maximum energy for socket %s", socket));
+                      // logger.warning(
+                      //     String.format("couldn't check the maximum energy for socket %s", socket));
                     }
                     try {
                       overflowValues[1] =
@@ -75,19 +77,19 @@ public final class Powercap {
                                           "max_energy_range_uj")))
                               / 1000000;
                     } catch (Exception e) {
-                      logger.warning(
-                          String.format("couldn't check the maximum energy for socket %s", socket));
+                        // logger.warning(
+                        //     String.format("couldn't check the maximum energy for socket %s", socket));
                     }
-                    logger.info(
-                        String.format(
-                            "retrieved overflow values for %s: %s",
-                            socket.getFileName(), Arrays.toString(overflowValues)));
+                    // logger.info(
+                    //     String.format(
+                    //         "retrieved overflow values for %s: %s",
+                    //         socket.getFileName(), Arrays.toString(overflowValues)));
                     return overflowValues;
                   })
               .toArray(double[][]::new);
       return maxEnergy;
     } catch (Exception e) {
-      logger.warning("couldn't check the maximum energy; powercap likely not available");
+      // logger.warning("couldn't check the maximum energy; powercap likely not available");
       return new double[0][0];
     }
   }
