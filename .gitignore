@@ -25,3 +25,9 @@ replay_pid*
 
 # bazel
 bazel-*
+
+.venv/
+
+*pb2*
+
+sunflow-data/
