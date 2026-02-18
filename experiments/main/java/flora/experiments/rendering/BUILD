@@ -1,3 +1,6 @@
+load("@rules_java//java:java_library.bzl", "java_library")
+load("@rules_java//java:java_binary.bzl", "java_binary")
+
 java_library(
     name = "rendering",
     srcs = glob(["*.java"]),

@@ -30,7 +30,7 @@ public final class RenderingScoreMachine extends Machine {
     return meters;
   }
 
-  private static class RenderingScoreMeter implements Meter {
+  public static class RenderingScoreMeter implements Meter {
     private final Supplier<Double> score;
 
     RenderingScoreMeter(Supplier<Double> score) {

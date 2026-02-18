@@ -2,6 +2,8 @@ package flora.experiments.rendering;
 
 import static flora.util.LoggerUtil.getLogger;
 
+import flora.MeteringMachine;
+import java.util.Map;
 import flora.contrib.ears.FloraProblem;
 import flora.knob.RangeKnob;
 import io.grpc.Grpc;
@@ -70,7 +72,17 @@ public class FloraRenderingProblemServer {
                                 RangeKnob.newBuilder().setStart(100).setEnd(1000).setStep(50))
                             .build(),
                         serverImpl.nextConfiguration),
-                    new RenderingScoreMachine(serverImpl.lastScore)),
+                    new MeteringMachine(
+                        Map.of(
+                            "energy",
+                            new RenderingScoreMachine.RenderingScoreMeter(
+                                () -> {
+                                  try {
+                                    return serverImpl.lastScore.take().getEnergy();
+                                  } catch (Exception e) {
+                                    return 0.0;
+                                  }
+                                })))),
                 StopCriterion.EVALUATIONS,
                 100000,
                 0,
