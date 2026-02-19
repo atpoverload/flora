@@ -4,11 +4,11 @@ import sys
 
 from argparse import ArgumentParser
 
-import blender as bpy
+import bpy
 import grpc
 
 from jcarbon.report import to_dataframe
-from jcarbon.nvml.sampler import NvmlSampler, create_report
+from jcarbon.nvml.sampler import NvmlSampler
 
 from flora_rendering_problem_service_pb2 import Empty, RenderingScore
 from flora_rendering_problem_service_pb2_grpc import FloraRenderingProblemServiceStub
@@ -71,8 +71,8 @@ def create_scene(scene_path):
     return scene
 
 
-def create_output_dir(scene):
-    output_dir = os.path.join(os.path.dirname(scene), 'output')
+def create_output_dir(output_dir, scene_name, scene):
+    output_dir = os.path.join(output_dir, scene_name)
     os.makedirs(output_dir, exist_ok=True)
     scene.render.image_settings.file_format = 'PNG'
     return output_dir
@@ -81,17 +81,24 @@ def create_output_dir(scene):
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument(
-        's',
-        'scene',
+        '-s',
+        '--scene',
         help='path to blender scene file to render',
         type=str,
     )
     parser.add_argument(
-        'p',
-        'port',
+        '-p',
+        '--port',
         help='port for the EC server',
         type=int,
         default=8980,
+    )
+    parser.add_argument(
+        '-o',
+        '--output',
+        help='output directory',
+        type=str,
+        default="rendering-data",
     )
     return parser.parse_args()
 
@@ -100,9 +107,9 @@ def main():
     args = parse_args()
 
     scene_name = os.path.splitext(os.path.basename(args.scene))[0]
-    scene_path = os.path.join(os.path.dirname(args.scene), scene_name)
+    scene_path = os.path.join(os.path.dirname(args.scene), f"{scene_name}.blend")
     scene = create_scene(scene_path)
-    output = create_output_dir(scene_path)
+    output = create_output_dir(args.output, scene_name, scene)
 
     client = FloraRenderingClient(f'localhost:{args.port}')
     i = 0
@@ -112,8 +119,8 @@ def main():
 
         # ---- Render Settings ----
         print(f"setting rendering configuration to {config}")
-        scene.render.resolution_x = config.resolution_x
-        scene.render.resolution_y = config.resolution_y
+        scene.render.resolution_x = config.resolutionX
+        scene.render.resolution_y = config.resolutionY
         scene.render.resolution_percentage = 100
 
         if scene.render.engine == 'CYCLES':
@@ -121,7 +128,7 @@ def main():
             scene.cycles.use_adaptive_sampling = True
             scene.cycles.use_denoising = True
             scene.cycles.denoiser = 'OPENIMAGEDENOISE'
-            scene.cycles.denoising_optix = True
+            # scene.cycles.denoising_optix = True
 
         output_file = os.path.join(output, f'{scene_name}-{i}.png')
         scene.render.filepath = output_file
@@ -138,10 +145,10 @@ def main():
             sys.exit(1)
 
         sampler.sample()
-        report = to_dataframe(create_report(sampler.samples))
-        energy = report[report.source == ENERGY_SIGNAL].sum()
+        report = to_dataframe(sampler.create_report()).to_frame().reset_index()
+        energy = report[report.source == ENERGY_SIGNAL].value.sum()
 
-        print(f"consumed {config:.4f} J")
+        print(f"consumed {energy:.4f} J")
         client.evaluate(energy)
 
         i += 1

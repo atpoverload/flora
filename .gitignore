@@ -31,4 +31,5 @@ bazel-*
 *pb2*
 
 dataset/
+rendering-data/
 sunflow-data/
