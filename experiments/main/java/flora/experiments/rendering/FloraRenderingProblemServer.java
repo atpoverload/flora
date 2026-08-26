@@ -25,12 +25,14 @@ public class FloraRenderingProblemServer {
   private static final Integer PORT = Integer.valueOf(8980);
   private static final Path STATE_FILE_PATH = Path.of("/tmp", "state.json");
   private static final Path RESULT_FILE_PATH = Path.of("/tmp", "result.json");
+  private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
   private static final RenderingKnobs DEFAULT_KNOBS =
       RenderingKnobs.newBuilder()
-          .setResolutionX(RangeKnob.newBuilder().setStart(100).setEnd(1000).setStep(50))
-          .setResolutionY(RangeKnob.newBuilder().setStart(100).setEnd(1000).setStep(50))
-          .setAaSamples(RangeKnob.newBuilder().setStart(-2).setEnd(2).setStep(1))
-          .setAoSamples(RangeKnob.newBuilder().setStart(0).setEnd(96).setStep(1))
+          .setResolutionX(RangeKnob.newBuilder().setStart(200).setEnd(1250).setStep(50))
+          .setResolutionY(RangeKnob.newBuilder().setStart(200).setEnd(1250).setStep(50))
+          .setAaSamples(RangeKnob.newBuilder().setStart(0).setEnd(6).setStep(1))
+          .setAoSamples(RangeKnob.newBuilder().setStart(0).setEnd(97).setStep(1))
+          .setThreads(RangeKnob.newBuilder().setStart((int) CPU_COUNT / 2).setEnd(CPU_COUNT + 1).setStep(1))
           .addAllFilter(List.of("BOX", "GAUSSIAN", "BLACKMAN_HARRIS"))
           .build();
 
@@ -38,17 +40,15 @@ public class FloraRenderingProblemServer {
     return new MeteringMachine(
         Map.of(
             "energy",
-            new RenderingScoreMachine.RenderingScoreMeter(
+            new RenderingScoreMeter(
                 () -> serverImpl.currentScore.get().get().getEnergy()),
-            "runtime",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getRuntime()),
             "piqe",
-            new RenderingScoreMachine.RenderingScoreMeter(
+            new RenderingScoreMeter(
                 () -> serverImpl.currentScore.get().get().getPiqe()),
-            "mse",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getMse())));
+            "brisque",
+            new RenderingScoreMeter(
+                () -> serverImpl.currentScore.get().get().getBrisque())
+        ));
   }
 
   /** Spins up the server. */
@@ -98,7 +98,7 @@ public class FloraRenderingProblemServer {
                     DEFAULT_KNOBS, serverImpl.nextConfiguration, serverImpl::fetchLastScore),
                 createMeters(serverImpl));
         results.set(problem);
-        nsga1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 500, 0, 0));
+        nsga1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 10000, 0, 0));
         logger.info(String.format("writing result to %s", RESULT_FILE_PATH));
         JsonSceneUtil.writeResults(problem, RESULT_FILE_PATH);
         nsga1.saveState(STATE_FILE_PATH.toString());

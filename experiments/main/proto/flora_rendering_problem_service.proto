@@ -25,6 +25,8 @@ message RenderingKnobs {
   optional knob.RangeKnob ao_samples = 4;
   // Rendering filter
   repeated string filter = 5;
+  // Number of threads
+  optional knob.RangeKnob threads = 6;
 }
 
 message RenderingConfiguration {
@@ -39,6 +41,8 @@ message RenderingConfiguration {
   optional int64 ao_samples = 4;
   // Rendering filter
   optional string filter = 5;
+  // Number of threads
+  optional int64 threads = 6;
 }
 
 message RenderingScore {
@@ -46,4 +50,5 @@ message RenderingScore {
   optional double runtime = 2;
   optional double mse = 3;
   optional double piqe = 4;
+  optional double brisque = 5;
 }

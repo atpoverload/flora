@@ -13,10 +13,11 @@ class FloraRenderingProbemClient:
     def next_configuration(self):
         return self.stub.NextConfiguration(Empty())
 
-    def evaluate(self, energy=0, runtime=0, piqe=0, mse=0):
+    def evaluate(self, energy=0, runtime=0, piqe=0, mse=0, brisque=0):
         score = RenderingScore()
         score.energy = energy
         score.runtime = runtime
         score.piqe = piqe
         score.mse = mse
+        score.brisque = brisque
         return self.stub.Evaluate(score)
