@@ -97,7 +97,7 @@ public final class FloraReplayProblem<K, C, W extends WorkUnit<K, C>>
   @Override
   public void makeFeasible(NumberSolution<Double> solution) {
     if (solution.getVariables().size() != workFactory.knobCount()) {
-      NumberSolution<Double> newSolution = getRandomSolution();
+      NumberSolution<Double> newSolution = generateRandomSolution();
       for (int i = 0; i < workFactory.knobCount(); i++) {
         solution.setValue(i, newSolution.getValue(i));
       }
@@ -111,7 +111,7 @@ public final class FloraReplayProblem<K, C, W extends WorkUnit<K, C>>
   }
 
   @Override
-  public NumberSolution<Double> getRandomSolution() {
+  public NumberSolution<Double> generateRandomSolution() {
     if (configurations.size() < seedCount) {
       return new NumberSolution<>(
           numberOfObjectives,

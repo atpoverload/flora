@@ -9,6 +9,7 @@ java_library(
         "//src/main/java/flora/knob",
         "//src/main/java/flora/util",
         "//src/main/java/flora/work",
-        "@ears//jar",
+        # "@ears//jar",
+        "//lib:ears",
     ],
 )
