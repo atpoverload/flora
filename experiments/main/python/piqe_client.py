@@ -1,4 +1,5 @@
-""" a thin client to talk to a flora server. """
+"""a thin client to talk to a flora server."""
+
 import grpc
 
 from piqe_service_pb2 import ComputePiqeRequest
@@ -21,9 +22,8 @@ class PiqeClient:
 
 
 def main():
-    client = PiqeClient('localhost:8913')
+    client = PiqeClient("localhost:8913")
     print(client.compute([[1, 0], [0, 1]]))
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":

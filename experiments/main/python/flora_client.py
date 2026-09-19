@@ -1,15 +1,14 @@
-""" a thin client to talk to a flora server. """
+"""a thin client to talk to a flora server."""
+
 import grpc
 
 from flora_rendering_problem_service_pb2 import Empty, RenderingScore
 from flora_rendering_problem_service_pb2_grpc import FloraRenderingProblemServiceStub
 
 
-class FloraRenderingProbemClient:
+class FloraRenderingProblemClient:
     def __init__(self, addr):
-        self.stub = FloraRenderingProblemServiceStub(
-            grpc.insecure_channel(addr))
-
+        self.stub = FloraRenderingProblemServiceStub(grpc.insecure_channel(addr))
     def next_configuration(self):
         return self.stub.NextConfiguration(Empty())
 
