@@ -20,23 +20,28 @@ import org.um.feri.ears.algorithms.StateManager;
 import org.um.feri.ears.algorithms.moo.ibea.D_IBEA;
 import org.um.feri.ears.algorithms.moo.moead.D_MOEAD;
 import org.um.feri.ears.algorithms.moo.nsga2.D_NSGAII;
+import org.um.feri.ears.algorithms.moo.nsga3.D_NSGAIII;
 import org.um.feri.ears.problems.NumberProblem;
 import org.um.feri.ears.problems.NumberSolution;
 import org.um.feri.ears.problems.StopCriterion;
 import org.um.feri.ears.problems.Task;
 
 public class FloraRenderingProblemServer {
+
   private static final Logger logger = getLogger();
 
   private static final Integer PORT = Integer.valueOf(8980);
   private static final Path STATE_FILE_PATH = Path.of("/tmp", "state.json");
   private static final Path RESULT_FILE_PATH = Path.of("/tmp", "result.json");
+  private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
   private static final RenderingKnobs DEFAULT_KNOBS =
       RenderingKnobs.newBuilder()
-          .setResolutionX(RangeKnob.newBuilder().setStart(100).setEnd(1000).setStep(50))
-          .setResolutionY(RangeKnob.newBuilder().setStart(100).setEnd(1000).setStep(50))
-          .setAaSamples(RangeKnob.newBuilder().setStart(-2).setEnd(2).setStep(1))
-          .setAoSamples(RangeKnob.newBuilder().setStart(0).setEnd(96).setStep(1))
+          .setResolutionX(RangeKnob.newBuilder().setStart(200).setEnd(1250).setStep(50))
+          .setResolutionY(RangeKnob.newBuilder().setStart(200).setEnd(1250).setStep(50))
+          .setAaSamples(RangeKnob.newBuilder().setStart(0).setEnd(6).setStep(1))
+          .setAoSamples(RangeKnob.newBuilder().setStart(0).setEnd(97).setStep(1))
+          .setThreads(
+              RangeKnob.newBuilder().setStart((int) CPU_COUNT / 2).setEnd(CPU_COUNT + 1).setStep(1))
           .addAllFilter(List.of("BOX", "GAUSSIAN", "BLACKMAN_HARRIS"))
           .build();
 
@@ -44,29 +49,25 @@ public class FloraRenderingProblemServer {
     return new MeteringMachine(
         Map.of(
             "energy",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getEnergy()),
-            "runtime",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getRuntime()),
+            new RenderingScoreMeter(() -> serverImpl.currentScore.get().get().getEnergy()),
             "piqe",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getPiqe()),
-            "mse",
-            new RenderingScoreMachine.RenderingScoreMeter(
-                () -> serverImpl.currentScore.get().get().getMse())));
+            new RenderingScoreMeter(() -> serverImpl.currentScore.get().get().getPiqe()),
+            "brisque",
+            new RenderingScoreMeter(() -> serverImpl.currentScore.get().get().getBrisque())));
   }
 
   private enum ModelKind {
-    NSGA,
+    NSGAII,
+    NSGAIII,
     MOEAD,
-    IBEA;
+    IBEA,
   }
 
   private static final MOAlgorithm<Double, NumberSolution<Double>, NumberProblem<Double>>
       createModel(ModelKind model) {
     return switch (model) {
-      case NSGA -> new D_NSGAII();
+      case NSGAII -> new D_NSGAII();
+      case NSGAIII -> new D_NSGAIII();
       case MOEAD -> new D_MOEAD();
       case IBEA -> new D_IBEA();
     };
@@ -126,7 +127,7 @@ public class FloraRenderingProblemServer {
                     DEFAULT_KNOBS, serverImpl.nextConfiguration, serverImpl::fetchLastScore),
                 createMeters(serverImpl));
         results.set(problem);
-        model1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 500, 0, 0));
+        model1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 1200, 0, 0));
         logger.info(String.format("writing result to %s", RESULT_FILE_PATH));
         JsonSceneUtil.writeResults(problem, RESULT_FILE_PATH);
         model.get().saveState(STATE_FILE_PATH.toString());
