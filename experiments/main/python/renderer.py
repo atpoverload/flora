@@ -8,12 +8,13 @@ import bpy
 import numpy as np
 import pyRAPL
 from brisque import BRISQUE
-from collector import DataCollector
-from flora_client import FloraRenderingProblemClient
 from jcarbon.nvml.sampler import NvmlSampler
 from jcarbon.report import to_dataframe
 from PIL import Image
 from pypiqe import piqe
+
+from collector import DataCollector
+from flora_client import FloraRenderingProblemClient
 
 ENERGY_SIGNAL = "nvmlDeviceGetTotalEnergyConsumption"
 
@@ -186,20 +187,9 @@ def main():
             if sampler:
                 sampler.sample()
 
-            try:
-                print("Starting render...")
-                bpy.ops.render.render(write_still=True)
-                print(f"Render complete! Image saved at: {output_file}")
-            except Exception as e:
-                print(f"Error during rendering: {e}")
-
-                del scene
-                del measure
-                del client
-                if sampler:
-                    del sampler
-
-                sys.exit(1)
+            print("Starting render...")
+            bpy.ops.render.render(write_still=True)
+            print(f"Render complete! Image saved at: {output_file}")
 
             if sampler:
                 sampler.sample()
