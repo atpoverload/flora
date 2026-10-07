@@ -44,15 +44,19 @@ class RenderingConfiguration(_message.Message):
     def __init__(self, resolution_x: _Optional[int] = ..., resolution_y: _Optional[int] = ..., aa_samples: _Optional[int] = ..., ao_samples: _Optional[int] = ..., filter: _Optional[str] = ..., threads: _Optional[int] = ...) -> None: ...
 
 class RenderingScore(_message.Message):
-    __slots__ = ("energy", "runtime", "mse", "piqe", "brisque")
+    __slots__ = ("cpu_energy", "gpu_energy", "energy", "runtime", "piqe", "brisque", "mse")
+    CPU_ENERGY_FIELD_NUMBER: _ClassVar[int]
+    GPU_ENERGY_FIELD_NUMBER: _ClassVar[int]
     ENERGY_FIELD_NUMBER: _ClassVar[int]
     RUNTIME_FIELD_NUMBER: _ClassVar[int]
-    MSE_FIELD_NUMBER: _ClassVar[int]
     PIQE_FIELD_NUMBER: _ClassVar[int]
     BRISQUE_FIELD_NUMBER: _ClassVar[int]
+    MSE_FIELD_NUMBER: _ClassVar[int]
+    cpu_energy: float
+    gpu_energy: float
     energy: float
     runtime: float
-    mse: float
     piqe: float
     brisque: float
-    def __init__(self, energy: _Optional[float] = ..., runtime: _Optional[float] = ..., mse: _Optional[float] = ..., piqe: _Optional[float] = ..., brisque: _Optional[float] = ...) -> None: ...
+    mse: float
+    def __init__(self, cpu_energy: _Optional[float] = ..., gpu_energy: _Optional[float] = ..., energy: _Optional[float] = ..., runtime: _Optional[float] = ..., piqe: _Optional[float] = ..., brisque: _Optional[float] = ..., mse: _Optional[float] = ...) -> None: ...

@@ -1,21 +1,15 @@
 import logging
-from pathlib import Path
 
 import bpy
 
 from flora_rendering_problem_service_pb2 import RenderingConfiguration
-from sampler import DeviceSampler
 
 
-class Blender:
-    def __init__(self, output_dir: Path):
-        self.output_dir = output_dir
+class BlenderSceneRenderer:
+    def __init__(self, scene: bpy.types.Scene):
+        self.scene = scene
 
-    def load_scene(self, scene: Path):
-        bpy.ops.wm.open_mainfile(filepath=scene)
-        self.scene = bpy.context.scene
-
-    def set_render_settings(self, device: str = "cpu"):
+    def set_render_settings(self, device: str):
         self.device = device
 
         self.scene.display_settings.display_device = "sRGB"
@@ -28,33 +22,30 @@ class Blender:
         cycles = self.scene.cycles
         prefs = bpy.context.preferences.addons["cycles"].preferences
         self.scene.render.engine = "CYCLES"
+        rendering_device = None
         match self.device:
             case "cpu":
                 cycles.device = "CPU"
                 self.scene.render.threads_mode = "FIXED"
                 prefs.compute_device_type = "NONE"
-    
-                # Configure devices
-                prefs.get_devices()
-                for device in prefs.devices:
-                    device.use = device.type == "CPU"
-                    logging.info(
-                        f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
-                    )
+                rendering_device = "CPU"
             case "gpu":
                 cycles.device = "GPU"
                 prefs.compute_device_type = "CUDA"
-    
-                # Configure devices
-                prefs.get_devices()
-                for device in prefs.devices:
-                    device.use = device.type in [
-                        "CUDA",
-                        "OPTIX",
-                    ]  # Enable CUDA and OptiX
-                    logging.info(
-                        f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
-                    )
+                rendering_device = "CUDA"
+            case _:
+                raise ValueError("Invalid device setting. Must be 'cpu' or 'gpu'.")
+        
+        # Configure devices
+        prefs.get_devices()
+        if not prefs.devices:
+            raise RuntimeError("No compute devices found.")
+        
+        for device in prefs.devices:
+            device.use = device.type == rendering_device
+            logging.info(
+                f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
+            )
     
         # Force Blender to recognize the preference change
         bpy.context.preferences.is_dirty = True
@@ -62,12 +53,12 @@ class Blender:
         logging.info(f"Cycles Device Set To: {cycles.device}")
         logging.info(f"Compute Device Type Set To: {prefs.compute_device_type}")
 
-    def render(
+    def apply_configuration(
             self,
             configuration: RenderingConfiguration,
-            output_filename: str,
-            device_sampler: DeviceSampler
-    ) -> Path:
+            output_file_path: str | None = None,
+            warmup: bool = False
+    ):
         logging.info(f"Setting rendering configuration to {configuration}")
         self.scene.render.resolution_x = configuration.resolution_x
         self.scene.render.resolution_y = configuration.resolution_y
@@ -94,12 +85,16 @@ class Blender:
         self.scene.cycles.denoiser = "OPENIMAGEDENOISE"
         # self.scene.cycles.denoising_optix = True
 
-        output_file = self.output_dir / f"{output_filename}.png"
-        self.scene.render.filepath = output_file
+        self.scene.render.filepath = output_file_path if not warmup else "/tmp/warmup.png"
 
+    def render(self):
         logging.info("Starting render...")
-        with device_sampler:
-            bpy.ops.render.render(write_still=True)
-        
-        logging.info(f"Render complete! Image saved at: {output_file}")
-        return output_file
+        bpy.ops.render.render(write_still=True)
+        logging.info(f"Render complete! Image saved at: {self.scene.render.filepath}")
+
+    def cleanup(self):
+        logging.info("Cleaning up Blender scene...")
+        bpy.data.orphans_purge(do_recursive=True)
+        bpy.ops.wm.read_factory_settings(use_empty=True)
+        bpy.ops.wm.quit_blender()
+        logging.info("Blender scene cleanup complete.")

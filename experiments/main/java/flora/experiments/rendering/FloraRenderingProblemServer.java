@@ -41,7 +41,7 @@ public class FloraRenderingProblemServer {
           .setAaSamples(RangeKnob.newBuilder().setStart(0).setEnd(6).setStep(1))
           .setAoSamples(RangeKnob.newBuilder().setStart(0).setEnd(97).setStep(1))
           .setThreads(
-              RangeKnob.newBuilder().setStart((int) CPU_COUNT / 2).setEnd(CPU_COUNT + 1).setStep(1))
+              RangeKnob.newBuilder().setStart(CPU_COUNT / 2).setEnd(CPU_COUNT + 1).setStep(1))
           .addAllFilter(List.of("BOX", "GAUSSIAN", "BLACKMAN_HARRIS"))
           .build();
 
@@ -57,8 +57,8 @@ public class FloraRenderingProblemServer {
   }
 
   private enum ModelKind {
-    NSGAII,
-    NSGAIII,
+    NSGA2,
+    NSGA3,
     MOEAD,
     IBEA,
   }
@@ -66,8 +66,8 @@ public class FloraRenderingProblemServer {
   private static final MOAlgorithm<Double, NumberSolution<Double>, NumberProblem<Double>>
       createModel(ModelKind model) {
     return switch (model) {
-      case NSGAII -> new D_NSGAII();
-      case NSGAIII -> new D_NSGAIII();
+      case NSGA2 -> new D_NSGAII();
+      case NSGA3 -> new D_NSGAIII();
       case MOEAD -> new D_MOEAD();
       case IBEA -> new D_IBEA();
     };
@@ -75,12 +75,22 @@ public class FloraRenderingProblemServer {
 
   /** Spins up the server. */
   public static void main(String[] args) throws Exception {
-    if (args.length < 1) {
+    if (args.length < 3) {
       logger.info(String.format("starting new flora server at localhost:%d", PORT));
       System.exit(1);
     }
     ModelKind modelKind = ModelKind.valueOf(args[0]);
 
+    final int maxEvaluations = Integer.parseInt(args[1]);
+
+    String workspace = System.getenv("BUILD_WORKSPACE_DIRECTORY");
+    Path baseDir = (workspace != null) ? Path.of(workspace) : Path.of("");
+    Path outputDir = baseDir.resolve(args[2]);
+    Files.createDirectories(outputDir);
+
+    Path stateFileOutputPath = outputDir.resolve("state.json");
+    Path resultFileOutputPath = outputDir.resolve("result.json");
+    
     logger.info(String.format("starting new flora server at localhost:%d", PORT));
 
     FloraRenderingProblemServerImpl serverImpl = new FloraRenderingProblemServerImpl();
@@ -104,8 +114,11 @@ public class FloraRenderingProblemServer {
                     server.shutdown().awaitTermination(30, TimeUnit.SECONDS);
                   }
                   model.get().saveState(STATE_FILE_PATH.toString());
+                  model.get().saveState(stateFileOutputPath.toString());
                   System.out.println("writing result to" + RESULT_FILE_PATH);
                   JsonSceneUtil.writeResults(results.get(), RESULT_FILE_PATH);
+                  System.out.println("writing result to" + resultFileOutputPath);
+                  JsonSceneUtil.writeResults(results.get(), resultFileOutputPath);
                 } catch (Exception e) {
                   e.printStackTrace(System.err);
                 }
@@ -127,10 +140,13 @@ public class FloraRenderingProblemServer {
                     DEFAULT_KNOBS, serverImpl.nextConfiguration, serverImpl::fetchLastScore),
                 createMeters(serverImpl));
         results.set(problem);
-        model1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, 1200, 0, 0));
+        model1.execute(new Task<>(problem, StopCriterion.EVALUATIONS, maxEvaluations, 0, 0));
         logger.info(String.format("writing result to %s", RESULT_FILE_PATH));
         JsonSceneUtil.writeResults(problem, RESULT_FILE_PATH);
+        logger.info(String.format("writing result to %s", resultFileOutputPath));
+        JsonSceneUtil.writeResults(problem, resultFileOutputPath);
         model.get().saveState(STATE_FILE_PATH.toString());
+        model.get().saveState(stateFileOutputPath.toString());
         break;
       }
     } catch (Exception e) {

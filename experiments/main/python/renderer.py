@@ -1,108 +1,16 @@
-"""a thin client to talk to a flora server."""
-
-import os
+import logging
 import sys
 from argparse import ArgumentParser
+from pathlib import Path
 
-import bpy
-import numpy as np
-import pyRAPL
-from brisque import BRISQUE
-from jcarbon.nvml.sampler import NvmlSampler
-from jcarbon.report import to_dataframe
-from PIL import Image
-from pypiqe import piqe
+from experiment import Experiment
 
-from collector import DataCollector
-from flora_client import FloraRenderingProblemClient
-
-ENERGY_SIGNAL = "nvmlDeviceGetTotalEnergyConsumption"
-
-
-def create_scene(scene_path):
-    print(f"Loading scene from: {scene_path}")
-    bpy.ops.wm.open_mainfile(filepath=scene_path)
-
-    # Get the current scene
-    scene = bpy.context.scene
-
-    # ---- Fix Color Management ----
-    try:
-        scene.display_settings.display_device = "sRGB"
-        scene.view_settings.view_transform = "Standard"
-        scene.view_settings.look = "None"
-        scene.view_settings.exposure = 0.0
-        print("Color management settings applied successfully.")
-    except Exception as e:
-        print(f"Warning: Failed to apply color management settings: {e}")
-
-    return scene
-
-
-def create_output_dir(output_dir, scene_name, scene):
-    output_dir = os.path.join(output_dir, scene_name)
-    os.makedirs(output_dir, exist_ok=True)
-    scene.render.image_settings.file_format = "PNG"
-    return output_dir
-
-
-def set_device(device):
-    scene = bpy.context.scene
-    cycles = scene.cycles
-    prefs = bpy.context.preferences.addons["cycles"].preferences
-
-    scene.render.engine = "CYCLES"
-    match device:
-        case "cpu":
-            cycles.device = "CPU"
-            scene.render.threads_mode = "FIXED"
-            prefs.compute_device_type = "NONE"
-
-            # Configure devices
-            prefs.get_devices()
-            for device in prefs.devices:
-                device.use = device.type == "CPU"
-                print(
-                    f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
-                )
-
-            # Force Blender to recognize the preference change
-            bpy.context.preferences.is_dirty = True
-        case "gpu":
-            cycles.device = "GPU"
-            prefs.compute_device_type = "CUDA"
-
-            # Configure devices
-            prefs.get_devices()
-            for device in prefs.devices:
-                device.use = device.type in [
-                    "CUDA",
-                    "OPTIX",
-                ]  # Enable CUDA and OptiX
-                print(
-                    f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
-                )
-
-            # Force Blender to recognize the preference change
-            bpy.context.preferences.is_dirty = True
-        case _:
-            cycles.device = "GPU"
-            prefs.compute_device_type = "CUDA"
-
-            # Configure devices
-            prefs.get_devices()
-            for device in prefs.devices:
-                device.use = True
-                print(
-                    f"Device: {device.name}, Type: {device.type}, Enabled: {device.use}"
-                )
-
-            # Force Blender to recognize the preference change
-            bpy.context.preferences.is_dirty = True
-
-    # Verify
-    print("Cycles Device Set To:", cycles.device)
-    print("Compute Device Type Set To:", prefs.compute_device_type)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    stream=sys.stdout,
+    force=True
+)
 
 
 def parse_args():
@@ -132,109 +40,15 @@ def parse_args():
 
 def main():
     args = parse_args()
+    args.scene = Path(args.scene)
+    args.output = Path(args.output)
+    args.output.mkdir(parents=True, exist_ok=True)
 
-    scene_name = os.path.splitext(os.path.basename(args.scene))[0]
-    scene_path = os.path.join(os.path.dirname(args.scene), f"{scene_name}.blend")
-    scene = create_scene(scene_path)
-    output = create_output_dir(args.output, scene_name, scene)
-
-    device = args.device
-    set_device(device)
-
-    client = FloraRenderingProblemClient(f"localhost:{args.port}")
-    data_collector = DataCollector()
-
-    pyRAPL.setup()
-    measure = pyRAPL.Measurement("blender")
-
-    for i in range(1200):
-        config = client.next_configuration()
-        while True:
-            sampler = NvmlSampler() if device == "gpu" else None
-
-            # ---- Render Settings ----
-            print(f"setting rendering configuration to {config}")
-            scene.render.resolution_x = config.resolution_x
-            scene.render.resolution_y = config.resolution_y
-            scene.render.resolution_percentage = 100
-            if device == "cpu":
-                scene.render.threads = config.threads
-
-            if scene.render.engine == "CYCLES":
-                scene.cycles.samples = max((2**config.aa_samples) ** 2, 1)
-                scene.cycles.use_adaptive_sampling = True
-
-                # Ambient occlusion
-                world = bpy.context.scene.world
-                nodes = world.node_tree.nodes
-                ao_node = next(
-                    (n for n in nodes if n.type == "AMBIENT_OCCLUSION"), None
-                )
-                if ao_node is None:
-                    ao_node = nodes.new("ShaderNodeAmbientOcclusion")
-                ao_node.samples = config.ao_samples
-
-                scene.cycles.use_denoising = True
-                scene.cycles.denoiser = "OPENIMAGEDENOISE"
-                # scene.cycles.denoising_optix = True
-                scene.cycles.pixel_filter_type = config.filter
-
-            output_file = os.path.join(output, f"{scene_name}-{i}.png")
-            scene.render.filepath = output_file
-
-            print("Sampling CPU and GPU metrics before rendering...")
-            measure.begin()
-            if sampler:
-                sampler.sample()
-
-            print("Starting render...")
-            bpy.ops.render.render(write_still=True)
-            print(f"Render complete! Image saved at: {output_file}")
-
-            if sampler:
-                sampler.sample()
-
-            measure.end()
-            runtime = measure.result.duration / (1000**2)
-
-            cpu_energy = (
-                sum(measure.result.pkg) / (1000**2) if measure.result.pkg else 0
-            )
-            cpu_energy += (
-                sum(measure.result.dram) / (1000**2) if measure.result.dram else 0
-            )
-
-            gpu_energy = 0
-            if sampler:
-                report = to_dataframe(sampler.create_report()).to_frame().reset_index()
-                gpu_energy += report[report.source == ENERGY_SIGNAL].value.sum()
-
-            energy = cpu_energy + gpu_energy
-
-            img = Image.open(output_file).resize((1200, 1200)).convert("RGB")
-            arr = np.array(img)
-            piqe_score = piqe(arr)[0]
-            brisque_score = BRISQUE(url=False).score(img)
-            img.close()
-
-            scores = {
-                "energy": energy,
-                "runtime": runtime,
-                "piqe": piqe_score,
-                "brisque": brisque_score,
-                "mse": 0,
-            }
-            data_collector.add_record(i, config, scores)
-
-            for key, score in scores.items():
-                print(f"{key}:{score}")
-
-            client.evaluate(**scores)
-            break
-
-    data_collector.write_data(
-        os.path.join(output, f"results-{args.device.lower()}.json")
-    )
+    experiment = Experiment(args.scene, args.output)
+    experiment.setup(device=args.device, ec_port=args.port)
+    experiment.warmup()
+    experiment.run()
+    experiment.cleanup()
 
 
 if __name__ == "__main__":
