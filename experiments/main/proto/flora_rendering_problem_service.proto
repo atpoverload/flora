@@ -25,6 +25,8 @@ message RenderingKnobs {
   optional knob.RangeKnob ao_samples = 4;
   // Rendering filter
   repeated string filter = 5;
+  // Number of threads (only for CPU experiments)
+  optional knob.RangeKnob threads = 6;
 }
 
 message RenderingConfiguration {
@@ -39,11 +41,23 @@ message RenderingConfiguration {
   optional int64 ao_samples = 4;
   // Rendering filter
   optional string filter = 5;
+  // Number of threads (only for CPU experiments)
+  optional int64 threads = 6;
 }
 
 message RenderingScore {
-  optional double energy = 1;
-  optional double runtime = 2;
-  optional double mse = 3;
-  optional double piqe = 4;
+  // CPU energy
+  optional double cpu_energy = 1;
+  // GPU energy
+  optional double gpu_energy = 2;
+  // Sum of energies
+  optional double energy = 3;
+  // Duration of rendering
+  optional double runtime = 4;
+  // PIQE score, please read https://www.mathworks.com/help/images/ref/piqe.html
+  optional double piqe = 5;
+  // BRISQUE score, please read https://www.mathworks.com/help/images/ref/brisque.html
+  optional double brisque = 6;
+  // Mean squared error metric, please read https://quality.nfdi4ing.de/en/latest/image_quality/MeanSquared_Error.html
+  optional double mse = 7 [deprecated = true];
 }

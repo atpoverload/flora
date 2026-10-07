@@ -2,9 +2,10 @@ from concurrent import futures
 
 import grpc
 import numpy as np
+from pypiqe import piqe
+
 from piqe_service_pb2 import ComputePiqeResponse
 from piqe_service_pb2_grpc import PiqeService, add_PiqeServiceServicer_to_server
-from pypiqe import piqe
 
 
 class PiqeServiceImpl(PiqeService):

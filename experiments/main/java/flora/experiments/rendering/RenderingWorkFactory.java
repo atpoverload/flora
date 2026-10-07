@@ -25,6 +25,7 @@ public final class RenderingWorkFactory
           // KnobUtils.getConfigurationCount(knobs.getResolutionY()),
           KnobUtils.getConfigurationCount(knobs.getAaSamples()),
           KnobUtils.getConfigurationCount(knobs.getAoSamples()),
+          KnobUtils.getConfigurationCount(knobs.getThreads()),
           knobs.getFilterCount()
         };
     this.barrier = barrier;
@@ -63,7 +64,8 @@ public final class RenderingWorkFactory
             .setResolutionY(KnobUtils.getRangeValue(configuration[0], knobs.getResolutionY()))
             .setAaSamples(KnobUtils.getRangeValue(configuration[1], knobs.getAaSamples()))
             .setAoSamples(KnobUtils.getRangeValue(configuration[2], knobs.getAoSamples()))
-            .setFilter(knobs.getFilterList().get(configuration[3]))
+            .setThreads(KnobUtils.getRangeValue(configuration[3], knobs.getThreads()))
+            .setFilter(knobs.getFilterList().get(configuration[4]))
             .build(),
         nextConfiguration,
         barrier);
@@ -88,7 +90,8 @@ public final class RenderingWorkFactory
       random.nextInt(configurationSize[0]),
       random.nextInt(configurationSize[1]),
       random.nextInt(configurationSize[2]),
-      random.nextInt(configurationSize[3])
+      random.nextInt(configurationSize[3]),
+      random.nextInt(configurationSize[4])
     };
   }
 }

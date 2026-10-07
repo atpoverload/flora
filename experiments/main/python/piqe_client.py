@@ -19,11 +19,3 @@ class PiqeClient:
             row.pixel.extend(image[j])
             request.image_row.extend([row])
         return self.stub.ComputePiqe(request).score
-
-
-def main():
-    client = PiqeClient("localhost:8913")
-    print(client.compute([[1, 0], [0, 1]]))
-
-
-if __name__ == "__main__":
